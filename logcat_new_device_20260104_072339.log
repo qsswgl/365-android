@@ -1,0 +1,42 @@
+--------- beginning of main
+01-04 07:23:32.748 E/GPUAUX  ( 5549): [AUX]GuiExtAuxCheckAuxPath:663: Null anb
+01-04 07:23:32.962 E/GPUAUX  ( 5549): [AUX]GuiExtAuxCheckAuxPath:663: Null anb
+01-04 07:23:33.146 E/rver.telecom:ui( 6117): Not starting debugger since process cannot load the jdwp agent.
+01-04 07:23:33.157 E/VivoConfigStore( 6117): key:vivo.software.multilandscape isCached is false and systemuid value is true
+01-04 07:23:33.158 E/GPUAUX  ( 5549): [AUX]GuiExtAuxCheckAuxPath:663: Null anb
+01-04 07:23:33.159 E/VivoConfigStore( 6117): key:vivo.software.splitrecents isCached is false and systemuid value is false
+01-04 07:23:33.161 E/VivoConfigStore( 6117): key:vivo.software.splitratio isCached is false and systemuid value is false
+01-04 07:23:33.162 E/VivoConfigStore( 6117): key:vivo.software.virtualmultilands isCached is false and systemuid value is true
+01-04 07:23:33.163 E/VivoConfigStore( 6117): key:vivo.software.multiwindowresidentbar isCached is false and systemuid value is false
+01-04 07:23:33.164 E/VivoConfigStore( 6117): key:vivo.software.hovermode isCached is false and systemuid value is false
+01-04 07:23:33.300 E/VivoConfigStore( 6117): key:vivo.software.nightmode isCached is false and systemuid value is true
+01-04 07:23:33.371 E/VivoConfigStore( 6117): key:vivo.software.multiwindow isCached is false and systemuid value is true
+01-04 07:23:33.375 E/VivoConfigStore( 6117): key:vivo.software.freeform isCached is false and systemuid value is true
+01-04 07:23:33.380 E/VivoConfigStore( 6117): key:vivo.software.immersive isCached is false and systemuid value is false
+01-04 07:23:33.380 E/VivoConfigStore( 6117): key:vivo.software.multiwindow isCached is true and value is true
+01-04 07:23:33.458 E/GPUAUX  ( 5549): [AUX]GuiExtAuxCheckAuxPath:663: Null anb
+01-04 07:23:33.715 E/GPUAUX  ( 5549): [AUX]GuiExtAuxCheckAuxPath:663: Null anb
+01-04 07:23:33.969 E/GPUAUX  ( 5549): [AUX]GuiExtAuxCheckAuxPath:663: Null anb
+01-04 07:23:34.416 E/GPUAUX  ( 5549): [AUX]GuiExtAuxCheckAuxPath:663: Null anb
+01-04 07:23:34.416 E/GPUAUX  ( 5549): [AUX]GuiExtAuxCheckAuxPath:663: Null anb
+01-04 07:23:34.421 E/GPUAUX  ( 5549): [AUX]GuiExtAuxCheckAuxPath:663: Null anb
+01-04 07:23:34.421 E/GPUAUX  ( 5549): [AUX]GuiExtAuxCheckAuxPath:663: Null anb
+01-04 07:23:34.421 E/GPUAUX  ( 5549): [AUX]GuiExtAuxCheckAuxPath:663: Null anb
+01-04 07:23:34.455 E/GPUAUX  ( 5549): [AUX]GuiExtAuxCheckAuxPath:663: Null anb
+01-04 07:23:34.455 E/GPUAUX  ( 5549): [AUX]GuiExtAuxCheckAuxPath:663: Null anb
+01-04 07:23:34.455 E/GPUAUX  ( 5549): [AUX]GuiExtAuxCheckAuxPath:663: Null anb
+01-04 07:23:34.456 E/GPUAUX  ( 5549): [AUX]GuiExtAuxCheckAuxPath:663: Null anb
+01-04 07:23:34.554 E/WebView ( 5549): 加载错误: net::ERR_FAILED | URL: **********************************************
+01-04 07:23:39.004 E/GPUAUX  ( 5549): [AUX]GuiExtAuxCheckAuxPath:663: Null anb
+01-04 07:23:39.004 E/GPUAUX  ( 5549): [AUX]GuiExtAuxCheckAuxPath:663: Null anb
+01-04 07:23:39.004 E/GPUAUX  ( 5549): [AUX]GuiExtAuxCheckAuxPath:663: Null anb
+01-04 07:23:39.004 E/GPUAUX  ( 5549): [AUX]GuiExtAuxCheckAuxPath:663: Null anb
+01-04 07:23:39.004 E/GPUAUX  ( 5549): [AUX]GuiExtAuxCheckAuxPath:663: Null anb
+01-04 07:23:39.177 E/GPUAUX  ( 5549): [AUX]GuiExtAuxCheckAuxPath:663: Null anb
+01-04 07:23:39.177 E/GPUAUX  ( 5549): [AUX]GuiExtAuxCheckAuxPath:663: Null anb
+01-04 07:23:39.177 E/GPUAUX  ( 5549): [AUX]GuiExtAuxCheckAuxPath:663: Null anb
+01-04 07:23:39.177 E/GPUAUX  ( 5549): [AUX]GuiExtAuxCheckAuxPath:663: Null anb
+01-04 07:23:39.227 E/GPUAUX  ( 5549): [AUX]GuiExtAuxCheckAuxPath:663: Null anb
+01-04 07:23:39.228 E/GPUAUX  ( 5549): [AUX]GuiExtAuxCheckAuxPath:663: Null anb
+01-04 07:23:39.228 E/GPUAUX  ( 5549): [AUX]GuiExtAuxCheckAuxPath:663: Null anb
+01-04 07:23:39.228 E/GPUAUX  ( 5549): [AUX]GuiExtAuxCheckAuxPath:663: Null anb
