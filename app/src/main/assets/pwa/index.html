@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang=zh-CN>
+
+<head>
+    <meta charset=utf-8>
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
+    <title>365酒水连锁</title>
+    <meta name="description" content="365酒水连锁 - 您身边的酒水专家，提供优质酒水购买服务">
+
+    <!-- PWA Manifest -->
+    <script>
+        const PARAM_NAME = 'wxunionid';
+
+        // 1. 获取哈希值，去掉开头的 #
+        const hashStr = window.location.hash.slice(1); // 得到 "/?wxunionid=123123"
+
+        // 2. 解析哈希中的查询参数
+        const hashParams = new URLSearchParams(hashStr.split('?')[1] || '');
+
+        // 3. 获取参数值
+        const paramValue = hashParams.get(PARAM_NAME) || '';
+
+        document.write(`<link rel="manifest" href="https://oauth.qsgl.net/api/manifest/manifest.json?wxunionid=${paramValue}">`)
+    </script>
+    <!-- 主题色 -->
+    <meta name="theme-color" content="#ff6b35">
+    <meta name="msapplication-navbutton-color" content="#ff6b35">
+
+    <!-- Apple Web App 配置 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="365酒水">
+    <link rel="apple-touch-icon" href="/html/365/pwa/icons/icon-192.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/html/365/pwa/icons/icon-192.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="/html/365/pwa/icons/icon-512.png">
+
+    <!-- Android Chrome 配置 -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="365酒水连锁">
+
+    <!-- Windows Phone 配置 -->
+    <meta name="msapplication-TileImage" content="/html/365/pwa/icons/icon-192.png">
+    <meta name="msapplication-TileColor" content="#ff6b35">
+
+    <!-- 图标 -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/html/365/pwa/icons/icon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/html/365/pwa/icons/icon-512.png">
+
+    <!-- 视口配置 -->
+    <script>var coverSupport = 'CSS' in window && typeof CSS.supports === 'function' && (CSS.supports('top: env(a)') || CSS.supports('top: constant(a)'))
+        document.write('<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0' + (coverSupport ? ', viewport-fit=cover' : '') + '" />')</script>
+
+    <link rel=stylesheet href=/html/365/pwa/static/index.ed4a2d2b.css>
+</head>
+
+<body>
+    <noscript><strong>Please enable JavaScript to continue.</strong></noscript>
+    <div id=app></div>
+    <script src=/html/365/pwa/static/js/chunk-vendors.b7a75843.js></script>
+    <script src=/html/365/pwa/static/js/index.afe199a1.js></script>
+    <!-- <script src="/html/365/pwa/pwa-install.js"></script> -->
+     <script>
+        document.write("<script src='/html/365/pwa/pwa-install.js?t=" + Date.now() + "'><\/script>");
+    </script>
+    <script>
+        // 内联注册以提高自动化检测（例如 PWABuilder）发现 Service Worker 的概率
+        (function(){
+            if ('serviceWorker' in navigator) {
+                try {
+                    navigator.serviceWorker.register('/html/365/pwa/sw.js', { scope: '/html/365/pwa/' })
+                        .then(function(reg){
+                            console.log('[inline] Service Worker 已注册', reg.scope);
+                        })
+                        .catch(function(err){
+                            console.warn('[inline] Service Worker 注册失败', err);
+                        });
+                } catch (e) {
+                    // 忽略在某些受限环境下注册可能抛出的同步错误
+                }
+            }
+        })();
+    </script>
+    
+</body>
+</html>
