@@ -1,0 +1,127 @@
+
+2023/10/28-20:39:00 TrustPayClient Java V3.2.2 交易开始==========================
+2023/10/28-20:39:00 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxRequest":{"TrxType":"EntrustSign","SignNo":"SignNo","BusinessCode":"110014","SignChannel":"MERC","SubMerchantID":"","SinglePaymentLimit":"1","InValidDate":"2021/03/21","PayUnit":"04","PayStep":"3","PayFrequency":"1","PaymentType":"A","CustomCertType":"I","CustomCertNo":"CustomCertNo","NotifyType":"A","NotifyUrl":"NotifyUrl"}},"Signature-Algorithm":"SHA1withRSA","Signature":"dHEFIEt0l19KNTLjN42s/LlZNu2cooPGYtX3xnbIMO9vbkmIQx9lkaFzngh+9+YKjnqERTVoDERYlz+s/X/1ssJx8FBwVo5uesuWVlh0jSaa2ePs3bepYvzy4bAqZBg5xonxx9J08JVLNHPPFaRR7PmBKyAXKJl0ovG+vpt+2Hc="}
+2023/10/28-20:39:00 请求服务器地址:https://pay.abchina.com/ebus/ReceiveMerchantTrxReqServlet
+2023/10/28-20:39:00 发送请求报文：成功
+2023/10/28-20:39:00 解析返回报文成功，HTTP响应码:[200]，返回报文：
+                    {"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxResponse":{"ReturnCode":"2302","ErrorMessage":"商户提交的交易请求报文签名验证失败","TrxType":"EntrustSign","SignNo":"SignNo","EntrustSignRequestURL":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"SsQNE9SefBqSaeNHCZL8MKTZg9tLFwq5rjuY06Bh5i47yfMDvNmbiwE4hjxAjmI+zDT77jsakSGAV27RyEcX1jLNcUFSj/xaS8UShb6GRpaHcqx4p0rP3vthzBxFRkwHym0SAiYSCOSTHi/whF8dBx2dCszr0r3JQr8Jh/7lpOI="}}
+2023/10/28-20:39:00 验证线上支付平台响应报文的签名：正确
+2023/10/28-20:39:00 交易结束==================================================
+2023/10/28-20:41:22 TrustPayClient Java V3.2.2 交易开始==========================
+2023/10/28-20:41:22 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxRequest":{"TrxType":"EntrustSign","SignNo":"SignNo","BusinessCode":"110014","SignChannel":"MERC","SubMerchantID":"","SinglePaymentLimit":"1","InValidDate":"2021/03/21","PayUnit":"04","PayStep":"3","PayFrequency":"1","PaymentType":"A","CustomCertType":"I","CustomCertNo":"CustomCertNo","NotifyType":"A","NotifyUrl":"NotifyUrl"}},"Signature-Algorithm":"SHA1withRSA","Signature":"gmRjN3co+VPLRhd9F2RUw1cnK50C8d29ifAykaj8d50juxvANDvwMOHvIPimq6W+nPdxxHRkEak0aHnDLFet365pFhuc4DKMdfs/5/t0IgkpcHmcsQ1Vov9fzNMHd0bqznXKzJPAPgmEk4pNgy3hF0wEHkKqrf7cdsB8XqD3sfs="}
+2023/10/28-20:41:22 请求服务器地址:https://pay.abchina.com/ebus/ReceiveMerchantTrxReqServlet
+2023/10/28-20:41:22 发送请求报文：成功
+2023/10/28-20:41:22 解析返回报文成功，HTTP响应码:[200]，返回报文：
+                    {"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxResponse":{"ReturnCode":"0000","ErrorMessage":"交易成功","TrxType":"EntrustSign","SignNo":"SignNo","EntrustSignRequestURL":"https://pay.abchina.com/ebusperbank/EntrustSignRequestAct.ebf?TOKEN=16346229111763967912"}},"Signature-Algorithm":"SHA1withRSA","Signature":"U0A0K81SMAfxyLF/2xIYxDGsf5V7rxPfVRipyaYGWRrlqo6+xqofZG2GbS9ChXCF03V8B29kR5PBRCj3FMr4fExHdZ6H3Vm1dsYWMd8RotgljCM24PdZl2V49uNKILe1hhjB4DTi73yx3X6PG3Sfs3JfJw1GPM0qIYECU1W8efw="}}
+2023/10/28-20:41:22 验证线上支付平台响应报文的签名：正确
+2023/10/28-20:41:22 交易结束==================================================
+2023/10/28-23:33:09 TrustPayClient Java V3.2.2 交易开始==========================
+2023/10/28-23:33:09 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxRequest":{"TrxType":"AgentPay","OrderDate":"2023/10/28","OrderTime":"23:31:37","OrderNo":"202310282323","AgentSignNo":"202310282323","CardNo":"6228490018021556675","CurrencyCode":"156","Amount":"0.01","SubsidyAmount":"0.00","ReceiverAddress":"北京","Fee":"","CertificateNo":"232321200007051732","InstallmentMark":"0","CommodityType":"0101","PaymentLinkType":"1","BuyIP":"127.0.0.1","ExpiredDate":"30","ReceiveAccount":"","ReceiveAccName":"","MerchantRemarks":"","IsBreakAccount":"0","SplitAccTemplate":"","SplitAccInfoItems":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"NP2Vd1vK4ogWbtSCYxm8ZW2p9jnJ4Dnp9e8pzYx4lZG/VY/vc8n0zl4RHb/dg5ZW6ZlArloIu21ZgnohCi6iTKzZSQKQrDlfRUXW73oMqCJFp4ZMHrcBuf6Xi84yVJYGDChDtKwObgDFxc34DM7ZG21DpgM8Rq/MYN1Wqy0LFhE="}
+2023/10/28-23:33:09 请求服务器地址:https://pay.abchina.com/ebus/ReceiveMerchantTrxReqServlet
+2023/10/28-23:33:09 发送请求报文：成功
+2023/10/28-23:33:09 解析返回报文成功，HTTP响应码:[200]，返回报文：
+                    {"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxResponse":{"ReturnCode":"AP5863","ErrorMessage":"客户未签约或签约过期!","TrxType":"AgentPay","OrderNo":"202310282323"}},"Signature-Algorithm":"SHA1withRSA","Signature":"fpv03PErEBPWMjIzmYS1qM7yOrT/CdzrlYNKqhBOGlzVgqa2TWktMwO2vNVXOGxDZTsI1Wius3GFlL62I2ku10a9Wkesl1e5iyZdBV57/YKxKIWy76Qh7KYSIT7W/VOZPrvNfeXnixCtcoTU1yiQxUJX5zJ/8EE5MK158p2BCeY="}}
+2023/10/28-23:33:09 验证线上支付平台响应报文的签名：正确
+2023/10/28-23:33:09 交易结束==================================================
+2023/10/28-23:43:12 TrustPayClient Java V3.2.2 交易开始==========================
+2023/10/28-23:43:12 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxRequest":{"TrxType":"AgentPay","OrderDate":"2023/10/28","OrderTime":"23:31:37","OrderNo":"202310282323","AgentSignNo":"202310282323","CardNo":"4041178975262962","CurrencyCode":"156","Amount":"0.01","SubsidyAmount":"0.00","ReceiverAddress":"北京","Fee":"","CertificateNo":"232321200007051732","InstallmentMark":"0","CommodityType":"0101","PaymentLinkType":"1","BuyIP":"127.0.0.1","ExpiredDate":"30","ReceiveAccount":"","ReceiveAccName":"","MerchantRemarks":"","IsBreakAccount":"0","SplitAccTemplate":"","SplitAccInfoItems":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"GNaMuQcppPpDsN27lCApzFPKxN8d0vQ4Xlbh9NABFjjYO/k5sXLlDstfdAvb5y2dFzgrov8+iJ1Wz9LBea0ZwWV1nng14XkAfNQiB5Lfg0VeGn/rskGAedKDrniVOq4WHlGyfm9RTD6aDYJhxQpJDAg6JGOGi1nalmPq324qEsA="}
+2023/10/28-23:43:12 请求服务器地址:https://pay.abchina.com/ebus/ReceiveMerchantTrxReqServlet
+2023/10/28-23:43:12 发送请求报文：成功
+2023/10/28-23:43:12 解析返回报文成功，HTTP响应码:[200]，返回报文：
+                    {"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxResponse":{"ReturnCode":"AP5863","ErrorMessage":"客户未签约或签约过期!","TrxType":"AgentPay","OrderNo":"202310282323"}},"Signature-Algorithm":"SHA1withRSA","Signature":"fpv03PErEBPWMjIzmYS1qM7yOrT/CdzrlYNKqhBOGlzVgqa2TWktMwO2vNVXOGxDZTsI1Wius3GFlL62I2ku10a9Wkesl1e5iyZdBV57/YKxKIWy76Qh7KYSIT7W/VOZPrvNfeXnixCtcoTU1yiQxUJX5zJ/8EE5MK158p2BCeY="}}
+2023/10/28-23:43:12 验证线上支付平台响应报文的签名：正确
+2023/10/28-23:43:12 交易结束==================================================
+2023/10/28-23:46:29 TrustPayClient Java V3.2.2 交易开始==========================
+2023/10/28-23:46:29 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxRequest":{"TrxType":"EntrustPay","OrderDate":"2023/10/28","OrderTime":"23:45:42","OrderNo":"202310282323","EntrustSignNo":"202310282323","CardNo":"6228490018021556675","CurrencyCode":"156","Amount":"0.01","ReceiverAddress":"北京","PaymentLinkType":"1","BuyIP":"127.0.0.1","ReceiveAccount":"","ReceiveAccName":"","MerchantRemarks":"","IsBreakAccount":"0","BusinessCode":"0101","SplitAccInfoItems":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"ARm3YQJSQUAaLGfK7zImwZMTlxX1XVU0TcNeUrHx3IuVQhz/F1+uEetT9ugaWTlx01F5JWNMOnwVOGpJOEh6gIjIhxY0EKIn9aF+jhhvZOf06VoNsiJWKbweMsARGLSS2NqqoKRfMeHCiS4gu/DaNPCqXnt/GZaW6cHE14psQM0="}
+2023/10/28-23:46:29 请求服务器地址:https://pay.abchina.com/ebus/ReceiveMerchantTrxReqServlet
+2023/10/28-23:46:29 发送请求报文：成功
+2023/10/28-23:46:29 解析返回报文成功，HTTP响应码:[200]，返回报文：
+                    {"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxResponse":{"ReturnCode":"AP7354","ErrorMessage":"所送代收业务种类不是签约代收业务种类！","TrxType":"EntrustPay","OrderNo":"202310282323"}},"Signature-Algorithm":"SHA1withRSA","Signature":"zHm2OAjySzdj/cSWivcnNGkuteLsL+yU5NYSgXxNxDXl+RswC+E7w2FUbaw8wzdDJoFxA5+vC1vOTzWNY5kMv2V60yuL+hh+eWF32UMH5dITgEoaXQf4V2MX7A6xUl1l1zjWjq2wUSgU22Q/n4QmTP8CcKOwT+TgVnjnIKPN8eE="}}
+2023/10/28-23:46:29 验证线上支付平台响应报文的签名：正确
+2023/10/28-23:46:29 交易结束==================================================
+2023/10/28-23:47:20 TrustPayClient Java V3.2.2 交易开始==========================
+2023/10/28-23:47:20 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxRequest":{"TrxType":"EntrustPay","OrderDate":"2023/10/28","OrderTime":"23:45:42","OrderNo":"202310282323","EntrustSignNo":"202310282323","CardNo":"6228490018021556675","CurrencyCode":"156","Amount":"0.01","ReceiverAddress":"北京","PaymentLinkType":"1","BuyIP":"127.0.0.1","ReceiveAccount":"","ReceiveAccName":"","MerchantRemarks":"","IsBreakAccount":"0","BusinessCode":"110014","SplitAccInfoItems":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"CAidGSl1pTW2gi1fSWotoEKKNwDHxzM2UsKyTOdldNMZ/gm4ZMPYDxqXMIW26Qt/vsCOMPjOGACN8LvPIeMwyBgXdpSkqivJOxuTG7fctcVtHhDgISUSf/mKaLfB2KTSSt82+ilmKqApfLcrqPZACSBVIsf8/NYKMuFj/2jbsnY="}
+2023/10/28-23:47:20 请求服务器地址:https://pay.abchina.com/ebus/ReceiveMerchantTrxReqServlet
+2023/10/28-23:47:21 发送请求报文：成功
+2023/10/28-23:47:21 解析返回报文成功，HTTP响应码:[200]，返回报文：
+                    {"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxResponse":{"ReturnCode":"AP5251","ErrorMessage":"更新交易后数据状态时异常","TrxType":"EntrustPay","OrderNo":"202310282323"}},"Signature-Algorithm":"SHA1withRSA","Signature":"oG+0IXiT1TeSjzEOY9OVRTsbN4Rz0gg/nVrGg+sBdsspQ9WLb4sbLc6Ak2PKkv0k0TYZqsc7VaiZgoFa/2tCitGR/SCMpDlFZQWPZrqdZcnWed6ilNlsStcARBIu93+KCVi6GMUkelBPx9sC3gpfy5fSfPNfXmIY+eUaznbehQM="}}
+2023/10/28-23:47:21 验证线上支付平台响应报文的签名：正确
+2023/10/28-23:47:21 交易结束==================================================
+2023/10/28-23:53:07 TrustPayClient Java V3.2.2 交易开始==========================
+2023/10/28-23:53:07 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxRequest":{"TrxType":"AgentPay","OrderDate":"2023/10/28","OrderTime":"23:31:37","OrderNo":"202310281353","AgentSignNo":"202310282323","CardNo":"4041178975262962","CurrencyCode":"156","Amount":"0.01","SubsidyAmount":"0.00","ReceiverAddress":"北京","Fee":"","CertificateNo":"232321200007051732","InstallmentMark":"0","CommodityType":"0101","PaymentLinkType":"1","BuyIP":"127.0.0.1","ExpiredDate":"30","ReceiveAccount":"","ReceiveAccName":"","MerchantRemarks":"","IsBreakAccount":"0","SplitAccTemplate":"","SplitAccInfoItems":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"U0vF4DlDDTLs8A62ME9peL8fVPmCFuWSnJ1sG5ugRmpf3hlmcoK9M8pCi4wQedRzMEt2p+klNOCiy5EZnbQ0hrhwIcMT87G/GH7NHJgTbwNOyCiaWtdQWmpWhm3c2LMzd2ew0Omnae5kz+VfAyyjSd51iiVAvebaLCLXLRNDUfs="}
+2023/10/28-23:53:07 请求服务器地址:https://pay.abchina.com/ebus/ReceiveMerchantTrxReqServlet
+2023/10/28-23:53:07 发送请求报文：成功
+2023/10/28-23:53:07 解析返回报文成功，HTTP响应码:[200]，返回报文：
+                    {"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxResponse":{"ReturnCode":"AP5863","ErrorMessage":"客户未签约或签约过期!","TrxType":"AgentPay","OrderNo":"202310281353"}},"Signature-Algorithm":"SHA1withRSA","Signature":"Y7iiC6kXSkTvsj40xnpnN8L/UUJD4KA1cdULhaYBYpij7vS3X6Bi+0wOdzXqBHIgA9cvAl99W+fPgqFkm4sUNQuZF7XqHh/8ixAvivvupM2BXIfB/rpnJjpc/rdaJqt8NzgcFW98nqjrusV2YJ1zBs0wadalNoVDIEsfHFuiBc0="}}
+2023/10/28-23:53:07 验证线上支付平台响应报文的签名：正确
+2023/10/28-23:53:07 交易结束==================================================
+2023/10/28-23:53:18 TrustPayClient Java V3.2.2 交易开始==========================
+2023/10/28-23:53:18 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxRequest":{"TrxType":"EntrustPay","OrderDate":"2023/10/28","OrderTime":"23:45:42","OrderNo":"202310282353","EntrustSignNo":"202310282323","CardNo":"6228490018021556675","CurrencyCode":"156","Amount":"0.01","ReceiverAddress":"北京","PaymentLinkType":"1","BuyIP":"127.0.0.1","ReceiveAccount":"","ReceiveAccName":"","MerchantRemarks":"","IsBreakAccount":"0","BusinessCode":"110014","SplitAccInfoItems":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"GqNpQifemZiFjmillW9TDMvH0I02A6K1TifZbjjEV4kGtR/GnKmSPmEYNYR6ZqrqVceCopzoA/b/cDIM3p7HNfVRXpMPEs9MtH1KcQZkrq5EnRaSwXT4xX/mmi3mnxkfKm5DbGKbB3QhGuMOnMIT3y4x2MyxafOE+yfMMZSRGtY="}
+2023/10/28-23:53:18 请求服务器地址:https://pay.abchina.com/ebus/ReceiveMerchantTrxReqServlet
+2023/10/28-23:53:18 发送请求报文：成功
+2023/10/28-23:53:18 解析返回报文成功，HTTP响应码:[200]，返回报文：
+                    {"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxResponse":{"ReturnCode":"0000","ErrorMessage":"交易成功","TrxType":"EntrustPay","OrderNo":"202310282353"}},"Signature-Algorithm":"SHA1withRSA","Signature":"OnnLj4Uo42+y59C1A07dI8YI9/gcs8ujVTb7UzBVkEQlhdy4sWlmyMm9zh8U7aOcRfpMPWzALh9hKjrQ8Ebt8aKTsrDBa5JDEoVfizrPkJ82jXecAOs4KZqaB3GS1nrRdvaENlkCL07zfoDSpDY7KxuFwMhjpvthJbwlBGfqwPQ="}}
+2023/10/28-23:53:18 验证线上支付平台响应报文的签名：正确
+2023/10/28-23:53:18 交易结束==================================================
+2023/10/28-23:54:37 TrustPayClient Java V3.2.2 交易开始==========================
+2023/10/28-23:54:37 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxRequest":{"TrxType":"Refund","OrderDate":"2023/10/28","OrderTime":"23:54:06","OrderNo":"202310282353","NewOrderNo":"refund202310282353","CurrencyCode":"156","TrxAmount":"0.01","MerchantRemarks":"","MerRefundAccountNo":"","MerRefundAccountName":"","MerRefundAccountFlag":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"npRCEOGqUizO6FrZGgjVkDlQ2Sv3QNDWvE1QMKkq+plUgDLV4XMa05AQWZyEZ779xOLWEsjGlXDJAizbHlql6I0aP0AM/2oe1mdW86Ye+QRtPNgPvOe+IJj1Lc5qKC9Nmp77IxL56ljEk7WX8zv+fbhAw8kJzcWawFIjWtxDOhE="}
+2023/10/28-23:54:37 请求服务器地址:https://pay.abchina.com/ebus/ReceiveMerchantTrxReqServlet
+2023/10/28-23:54:38 发送请求报文：成功
+2023/10/28-23:54:38 解析返回报文成功，HTTP响应码:[200]，返回报文：
+                    {"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxResponse":{"ReturnCode":"0000","ErrorMessage":"交易成功","TrxType":"Refund","OrderNo":"202310282353","NewOrderNo":"refund202310282353","TrxAmount":"0.01","BatchNo":"000187","VoucherNo":"008952","HostDate":"2023/10/28","HostTime":"23:54:54","iRspRef":"ASECEP01221112533981"}},"Signature-Algorithm":"SHA1withRSA","Signature":"uD33GzbRq/F3J2HlyZ0iVxPfxrX+d4XQArKo/5gNAmLHNg7srE5RXSYa+LFy17jxJl0NxE04rAJqRPc0AX3+KiKoGqMOnvS53iq4QDY8nv8NxtUnzBa5mnm2CKHYyM9xeTvRM2T1F674pNppeHPtvt/8/1tJFA9+wyVWGKc0WoI="}}
+2023/10/28-23:54:38 验证线上支付平台响应报文的签名：正确
+2023/10/28-23:54:38 交易结束==================================================
+2023/10/28-23:54:50 TrustPayClient Java V3.2.2 交易开始==========================
+2023/10/28-23:54:50 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxRequest":{"TrxType":"Refund","OrderDate":"2023/10/28","OrderTime":"23:54:06","OrderNo":"202310282323","NewOrderNo":"refund202310282323","CurrencyCode":"156","TrxAmount":"0.01","MerchantRemarks":"","MerRefundAccountNo":"","MerRefundAccountName":"","MerRefundAccountFlag":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"iIA3d3lnkNAkBDl2eNtnkPf2W2KkKChquxHNvGPhjjqMrZR+zC+gg0c+Vgqm0yBk/o1LW9KWqGDwTh8P0ViGCxoJeM5tnJDu0xS19v0+4DvIDp0DnM9fGkE2GJ7y2ZtrYVrWZ8BeCrAxPoWPEt1ubxoyoG6XX8rHXVYmCPAzgwc="}
+2023/10/28-23:54:50 请求服务器地址:https://pay.abchina.com/ebus/ReceiveMerchantTrxReqServlet
+2023/10/28-23:54:50 发送请求报文：成功
+2023/10/28-23:54:50 解析返回报文成功，HTTP响应码:[200]，返回报文：
+                    {"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxResponse":{"ReturnCode":"0000","ErrorMessage":"交易成功","TrxType":"Refund","OrderNo":"202310282323","NewOrderNo":"refund202310282323","TrxAmount":"0.01","BatchNo":"000187","VoucherNo":"008058","HostDate":"2023/10/28","HostTime":"23:54:54","iRspRef":"ASECEP01221648678721"}},"Signature-Algorithm":"SHA1withRSA","Signature":"4Sh7ap+5eVVe4VFn7Ll73GIjos8BMdGKzcUCeJBLouzrFc0ebxKCGtNMCiudCwK4sbu56dR4E5q03S2WfYKW3QMOavJmxUSrvzKHBVkNxqc6bA32wIbzyfaabNRghKf2tmBXBeNxW1FcZVbG4kybEcLPLJfR93cl0P/nSnlE4xM="}}
+2023/10/28-23:54:50 验证线上支付平台响应报文的签名：正确
+2023/10/28-23:54:50 交易结束==================================================
+2023/10/28-23:55:57 TrustPayClient Java V3.2.2 交易开始==========================
+2023/10/28-23:55:57 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxRequest":{"TrxType":"EntrustPay","OrderDate":"2023/10/28","OrderTime":"23:45:42","OrderNo":"202310282355","EntrustSignNo":"202310282309","CardNo":"4041178975262962","CurrencyCode":"156","Amount":"0.01","ReceiverAddress":"北京","PaymentLinkType":"1","BuyIP":"127.0.0.1","ReceiveAccount":"","ReceiveAccName":"","MerchantRemarks":"","IsBreakAccount":"0","BusinessCode":"110014","SplitAccInfoItems":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"W8sr7yPdlEHqV7GaQkbNZb+LkVV73p2QbhvYvRUGpfej7OuAVEG03RSRTeHQNxO9hEWrOkgS6Sbi76QHUR1ySXVl/Ws33YjFYQnpNkeZXoJVBC2TnDHo9LaUfP+kKIm9UU0p1EeZG4IX43ZDtyey7MF/RivSJHjjWWc0t2aWuM4="}
+2023/10/28-23:55:57 请求服务器地址:https://pay.abchina.com/ebus/ReceiveMerchantTrxReqServlet
+2023/10/28-23:55:57 发送请求报文：成功
+2023/10/28-23:55:57 解析返回报文成功，HTTP响应码:[200]，返回报文：
+                    {"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxResponse":{"ReturnCode":"0000","ErrorMessage":"交易成功","TrxType":"EntrustPay","OrderNo":"202310282355"}},"Signature-Algorithm":"SHA1withRSA","Signature":"Ctsehb5zBDLHdcu8YHozV6NexIbMC2PhhYrXSQ9KjnNP/DrwGxCRT2UKE6MQKmE1JpYVKQKorIb68URxmeCzrV/t+BG+ZyuZsF5WzO0sVozz3oPFug33b5UE6CxLzLUa5zAcVTUAAznZ2aKHmcFV1DdudT2/irR2YptEhCoiOog="}}
+2023/10/28-23:55:57 验证线上支付平台响应报文的签名：正确
+2023/10/28-23:55:57 交易结束==================================================
+2023/10/28-23:56:14 TrustPayClient Java V3.2.2 交易开始==========================
+2023/10/28-23:56:14 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxRequest":{"TrxType":"Refund","OrderDate":"2023/10/28","OrderTime":"23:54:06","OrderNo":"202310282355","NewOrderNo":"refund202310282355","CurrencyCode":"156","TrxAmount":"0.01","MerchantRemarks":"","MerRefundAccountNo":"","MerRefundAccountName":"","MerRefundAccountFlag":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"J/Wb+aCBjSgfVapbaDhXCoNDEhDSm2GCBlApTIgt0TacH/w+4jTjaDo/BU0uRZUeURrBDCeYDuQLEmySvyQbrU7W+fM/VyYKCLIMfD9t42n9pvVpS/BvnZcGeRBEOjwv8tu/mQRF2thyN62vPUXnfFVcxbZFkS+ABQ/YCdA8QXA="}
+2023/10/28-23:56:14 请求服务器地址:https://pay.abchina.com/ebus/ReceiveMerchantTrxReqServlet
+2023/10/28-23:56:14 发送请求报文：成功
+2023/10/28-23:56:14 解析返回报文成功，HTTP响应码:[200]，返回报文：
+                    {"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxResponse":{"ReturnCode":"0000","ErrorMessage":"交易成功","TrxType":"Refund","OrderNo":"202310282355","NewOrderNo":"refund202310282355","TrxAmount":"0.01","BatchNo":"000187","VoucherNo":"008933","HostDate":"2023/10/28","HostTime":"23:56:56","iRspRef":"ASECEP01221325592936"}},"Signature-Algorithm":"SHA1withRSA","Signature":"Q2QqWcxbiWhmaHLYF4sxhc6CJoHGPyCsHKCTeyb/Qihov0Pphg5w3DXQ7UO/0ETz15Lh4Xkrbqp2VqckAw/j2/hllg4QIq3Z+Z1xMzDW/wIGREuD3Tx7huvZeT/OZJEIeaYXCiCj+hPtWqahncBtKU0GDdjMEu9D2G95dN8pIS8="}}
+2023/10/28-23:56:14 验证线上支付平台响应报文的签名：正确
+2023/10/28-23:56:14 交易结束==================================================
+2023/10/28-23:58:24 TrustPayClient Java V3.2.2 交易开始==========================
+2023/10/28-23:58:24 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxRequest":{"TrxType":"EntrustUnSign","SignNo":"202310282309","OrderNo":"unsign202310282309"}},"Signature-Algorithm":"SHA1withRSA","Signature":"YLDFJZLzTTzcCKbxzCUYynA6DU2ltvx0ZUENjXje6ULJ8/Qf87wQTnVvUM/Z7HGgtLs9PjJurEykB/gI8uVx3ukncpI1rT9PgO4yJdijuC7KOX3wi705tV60qNkc/mazKIJX9YmSxaaIr/JcVx6ijuoReNtpUqt0bOAk5lfBlYs="}
+2023/10/28-23:58:24 请求服务器地址:https://pay.abchina.com/ebus/ReceiveMerchantTrxReqServlet
+2023/10/28-23:58:24 发送请求报文：成功
+2023/10/28-23:58:24 解析返回报文成功，HTTP响应码:[200]，返回报文：
+                    {"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxResponse":{"ReturnCode":"0000","ErrorMessage":"交易成功","TrxType":"EntrustUnSign","SignNo":"202310282309"}},"Signature-Algorithm":"SHA1withRSA","Signature":"z6OBNkXVXPq/JZvehSBJcH8bacoQj5qHSITTrq1zHiUM9QbiuarrjPF/ZeD1qQu58f5Kdr4I4kZUhDtXyRsibRbHLrRTDPNf7THtZXDwYrvl7UFuZ2fjMy4jrNDfTtbUNG9iqflF5Si3MMU3E1u94NskcHDfNGymHygnoMneQCA="}}
+2023/10/28-23:58:24 验证线上支付平台响应报文的签名：正确
+2023/10/28-23:58:24 交易结束==================================================
+2023/10/28-23:58:30 TrustPayClient Java V3.2.2 交易开始==========================
+2023/10/28-23:58:30 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxRequest":{"TrxType":"EntrustUnSign","SignNo":"202310282323","OrderNo":"unsign202310282309"}},"Signature-Algorithm":"SHA1withRSA","Signature":"oEv/1BTpBneEJfUWxItsbZaR8fNB91pgy2BJ5GwlZ3ps06LcS1zXF+Eaty333H/zJ0+UZWW8nI3InnN4+I0ptA+aO9z2+E7pmVQ5sxoUq6lg6g9nzNar6oopIkTuT+piP9FGv3kW7wNa2MDpLQDytuW95ow0r72BIIM/Wug3uBk="}
+2023/10/28-23:58:30 请求服务器地址:https://pay.abchina.com/ebus/ReceiveMerchantTrxReqServlet
+2023/10/28-23:58:30 发送请求报文：成功
+2023/10/28-23:58:30 解析返回报文成功，HTTP响应码:[200]，返回报文：
+                    {"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxResponse":{"ReturnCode":"0000","ErrorMessage":"交易成功","TrxType":"EntrustUnSign","SignNo":"202310282323"}},"Signature-Algorithm":"SHA1withRSA","Signature":"VJtCJisvmuEXmD7EW3Eq/cWuKUsA4kE3egdnZrTdWl8zn7ZONhzeCWK59n+COBBRzdFQrc3ZH5qbSoH/04PzKX0mNr5rbl2a6OTgfsqhj8fJ2l8P4b+QZZ0Ixsjm0DNJQsDL09CxBHix6QQhqpQS8TqTX1wgrd5zjLA2GiMJmNQ="}}
+2023/10/28-23:58:30 验证线上支付平台响应报文的签名：正确
+2023/10/28-23:58:30 交易结束==================================================
