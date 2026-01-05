@@ -1,0 +1,10 @@
+
+2023/10/09-14:54:35 TrustPayClient Java V3.2.2 交易开始==========================
+2023/10/09-14:54:35 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"TrxType":"EntrustSign","SignNo":"SignNo","BusinessCode":"110014","SignChannel":"MERC","SubMerchantID":"sub221027190710","SinglePaymentLimit":"1","InValidDate":"2024/10/09","PayUnit":"04","PayStep":"3","PayFrequency":"1","PaymentType":"401","CustomCertType":"I","CustomCertNo":"120111198309081581","NotifyType":"A","NotifyUrl":"NotifyUrl"}},"Signature-Algorithm":"SHA1withRSA","Signature":"hprrbNBWE0La+Zcgcwo7WZC5+aU6qQUVBOTZ0lgK+LX9vxoaC1h+r09AlB/L5EUU9RFVvzxnz4pa61/jbq2G+FO4eL3mhqzA6VY882jjVjqXrnwjXuoTRh2NAAxvW10dhmN3thbcDR2gp+eKJNIliltfVZ/nz8RYN0/3igPdPDA="}
+2023/10/09-14:54:35 请求服务器地址:http://10.230.202.238:9989/ebus/ReceiveMerchantTrxReqServlet
+2023/10/09-14:54:36 发送请求报文：成功
+2023/10/09-14:54:36 解析返回报文成功，HTTP响应码:[200]，返回报文：
+                    {"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxResponse":{"ReturnCode":"EP0002","ErrorMessage":"请求要素不合法，请检查请求报文，certNomust not be blank","SignNo":"","EntrustSignRequestURL":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"Br2nNvj5SfjPztlKP8KuTYR377SxQxdgwYl7F315Wn2bdBSnNEHg0bzlnsKhu6foTFZmwJpKaZkc/d2HXM8BDBp8UkP8IvTwOf5hovm2sx9DlijoXCGbUBngc3+/3b3pAh5ijzui/kkkSZbE2EjqpBf8IQkNvvjhbtptFA14mfk="}}
+2023/10/09-14:54:36 验证线上支付平台响应报文的签名：正确
+2023/10/09-14:54:36 交易结束==================================================
