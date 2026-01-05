@@ -1,0 +1,10 @@
+
+2023/05/12-11:22:06 TrustPayClient Java V3.2.2 交易开始==========================
+2023/05/12-11:22:06 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxRequest":{"PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","IsBreakAccount":"0","SplitAccTemplate":"","TrxType":"OLScanPayOrderReq","Order":{"PayTypeID":"OLScanPay","OrderDate":"2023/05/12","OrderTime":"11:21:20","orderTimeoutDate":"20231231000000","OrderNo":"No20230512112120102894","CurrencyCode":"156","OrderAmount":"1.00","SubsidyAmount":"1.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"127.0.0.1","ExpiredDate":"30","OrderItems":[{"ProductName":"中国移动IP卡"}],"SplitAccInfoItems":""}}},"Signature-Algorithm":"SHA1withRSA","Signature":"YwTKsxrwRBDQZigtap5fbfNkbc7jhOwrf0XeK06sZeiyCsRBHyepyYWgPXFrTDbIjQLX+SxkDJLGa8bGGyBAcvPPXVweFgEEA6+OnKbOqdhQKwfc+8qmOZhguo1BbkJdMluP8IpYCsqt1MT5HcW0VlocYaP/791nh/2Ny0tH37U="}
+2023/05/12-11:22:06 请求服务器地址:https://pay.abchina.com/ebus/ReceiveMerchantTrxReqServlet
+2023/05/12-11:22:06 发送请求报文：成功
+2023/05/12-11:22:06 解析返回报文成功，HTTP响应码:[200]，返回报文：
+                    {"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Common":{"Channel":""},"Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"ReturnCode":"0000","ErrorMessage":"交易成功","TrxType":"OLScanPayOrderReq","OrderNo":"No20230512112120102894","ScanPayQRURL":"https://mobile.abchina.com/mpay/mobileBank/zh_CN/EBusinessModule/BarcodeH5Act.aspx?token=16838617268713404063","OrderAmount":"1.00"},"Signature-Algorithm":"SHA1withRSA","Signature":"AtGK+9/Hl3VGqp13uCoyff1WiarZH0jLpjezzzrqcTDHllX+QVuJO6dWv4xLLiqgSOG9xkBfnafgADZDCTgdk/3fnkhlx3BpNKgK7Tp1t9OpHuxBWPGU1PoaZaX9b6NIXOWXeJmUv3Mh0Xe3qgeXBnAFo0/d/AvocvMsyejjayc="}}
+2023/05/12-11:22:06 验证线上支付平台响应报文的签名：正确
+2023/05/12-11:22:06 交易结束==================================================
