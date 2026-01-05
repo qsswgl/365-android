@@ -1,0 +1,70 @@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>农行线上支付平台-商户接口范例-内转出金对账单下载</title>
+    <link rel="stylesheet" type="text/css" href="../../css/semantic.css">
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/semantic.js"></script>
+    <script src="../../js/util.js"></script>
+</head>
+<body>
+<div class="main ui container" style="padding-top: 100px; padding-bottom: 100px">
+    <div>
+        <div class="ui horizontal divider" style="font-size: large;">内转出金对账单下载</div>
+        <div class="ui message hidden">
+            <i class="close icon"></i>
+            <div class="header">返回报文：</div>
+            <p style="word-break: break-all"></p>
+        </div>
+        <form class="ui form" action='MerchantTrxSettleTransfer.jsp' method="post">
+            <div class="five fields">
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="对账单日期，YYYY/MM/DD">对账单日期*</label>
+                    <input type="text" name="SettleDate" value="2021/02/22">
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="压缩标识 1：压缩，0：不压缩">压缩标识*</label>
+                    <select class="ui selection dropdown" name="ZIP">
+                        <option value="0" selected>不压缩</option>
+                        <option value="1">压缩</option>
+                    </select>
+                </div>
+            </div>
+            <button class="ui button" type="request" onclick="request(this); return false;">提交</button>
+        </form>
+    </div>
+</div>
+</body>
+<script language="javascript" type="text/javascript">
+    $(function () {
+        $('.ui.selection.dropdown').dropdown();
+    })
+    $('.message .close')
+        .on('click', function () {
+            $(this).closest('.message').transition('fade');
+        });
+    function request(object) {
+        let responseBoard = $(object).parent().prev();
+        let responseBoardMessag = responseBoard.children("p:last-child");
+        let form = $(object).parent();
+        let action = form.attr("action");
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: action,
+            data: form.serialize(),
+            success: function (result) {
+                console.log(result);
+                responseBoardMessag.html(JSON.stringify(result));
+                if (!responseBoard.hasClass('visible')) responseBoard.transition('fade');
+            },
+            error: function () {
+                console.log("请求农行网上支付平台失败");
+            }
+        });
+    }
+</script>
+</html>
