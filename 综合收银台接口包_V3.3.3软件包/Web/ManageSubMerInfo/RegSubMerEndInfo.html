@@ -1,0 +1,128 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>农行线上支付平台-商户接口范例-二级商户终端同步</title>
+    <link rel="stylesheet" type="text/css" href="../../css/semantic.css">
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/semantic.js"></script>
+    <script src="../../js/util.js"></script>
+</head>
+<body>
+<div class="main ui container" style="padding-top: 100px; padding-bottom: 100px">
+    <div>
+        <div class="ui horizontal divider" style="font-size: large;">二级商户终端同步</div>
+        <div class="ui message hidden">
+            <i class="close icon"></i>
+            <div class="header">返回报文：</div>
+            <p style="word-break: break-all"></p>
+        </div>
+        <form class="ui form" action='RegSubMerEndInfo.jsp' method="post">
+            <div class="five fields">
+                <div class="field">
+                    <label>二级商户编号*</label>
+                    <input type="text" name="SubMerchantNo" value="1038809076542i15">
+                </div>
+                <div class="field">
+                    <label>门店名称*</label>
+                    <input type="text" name="ShopName" value="测试门店">
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="终端来源，0：行内采购、1：商户自采">终端来源*</label>
+                    <select class="ui selection dropdown" name="DeviceSource">
+                        <option value="0" selected>行内采购</option>
+                        <option value="1">商户自采</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="终端类型，10：条码支付受理终端、11：辅助受理终端（不含静态条码展示介质）、21：静态条码展示介质">终端类型*</label>
+                    <select class="ui selection dropdown" name="DeviceType">
+                        <option value="10" selected>条码支付受理终端</option>
+                        <option value="11">辅助受理终端（不含静态条码展示介质）</option>
+                        <option value="21">静态条码展示介质</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>终端序列号（终端类型为10时，该字段必填）</label>
+                    <input type="text" name="DeviceSeqId" value="">
+                </div>
+            </div>
+            <div class="five fields">
+                <div class="field">
+                    <label>生产厂商（终端设备类型为10和11时，该字段必填）</label>
+                    <input type="text" name="DeviceManufacturer" value="">
+                </div>
+                <div class="field">
+                    <label>终端型号（终端设备类型为10和11时，该字段必填）</label>
+                    <input type="text" name="DeviceModel" value="">
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="终端是否具备定位功能, 1：是、0：否">终端是否具备定位功能（终端类型为10时，该字段必填）</label>
+                    <select class="ui selection dropdown" name="EnablePosition">
+                        <option value="0">否</option>
+                        <option value="1">是</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>终端布放地址*（省-市-区-详细地址）</label>
+                    <input type="text" name="DeviceAddress" value="北京市北京市东城区邮通街50号">
+                </div>
+                <div class="field">
+                    <label>终端位置经度*（经度格式：1-3位整数+1位小数点+6位小数）</label>
+                    <input type="text" name="DeviceLongitude" value="121.483521">
+                </div>
+            </div>
+            <div class="five fields">
+                <div class="field">
+                    <label>终端位置纬度*（纬度格式：1-2位整数+1位小数点+6位小数）</label>
+                    <input type="text" name="DeviceLatitude" value="31.221345">
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="终端状态，00：启用，01：注销">终端状态*</label>
+                    <select class="ui selection dropdown" name="DeviceState">
+                        <option value="00" selected>启用</option>
+                        <option value="01">注销</option>
+                    </select>
+                </div>
+            </div>
+            <button class="ui button" type="request" onclick="request(this); return false;">提交</button>
+        </form>
+    </div>
+</div>
+</body>
+<script language="javascript" type="text/javascript">
+    $(function () {
+        $('.ui.selection.dropdown').dropdown();
+    });
+    $('.message .close')
+        .on('click', function () {
+            $(this).closest('.message').transition('fade');
+        });
+
+    function request(object) {
+        let responseBoard = $(object).parent().prev();
+        let responseBoardMessag = responseBoard.children("p:last-child");
+        let form = $(object).parent();
+        let action = form.attr("action");
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: action,
+            data: form.serialize(),
+            success: function (result) {
+                console.log(result);
+                responseBoardMessag.html(JSON.stringify(result));
+                if (!responseBoard.hasClass('visible')) responseBoard.transition('fade');
+            },
+            error: function () {
+                console.log("请求农行网上支付平台失败");
+            }
+        });
+    }
+</script>
+</html>
