@@ -1,0 +1,127 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>农行线上支付平台-商户接口范例-退款</title>
+    <link rel="stylesheet" type="text/css" href="../../css/semantic.css">
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/semantic.js"></script>
+    <script src="../../js/util.js"></script>
+</head>
+<body>
+<div class="main ui container" style="padding-top: 100px; padding-bottom: 100px">
+    <div>
+        <div class="ui horizontal divider" style="font-size: large;">退款</div>
+        <div class="ui message hidden">
+            <i class="close icon"></i>
+            <div class="header">返回报文：</div>
+            <p style="word-break: break-all"></p>
+        </div>
+        <form class="ui form" action='PlatSubCustomRefund.jsp' method="post">
+            <div class="five fields">
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="YYYY/MM/DD">订单日期*</label>
+                    <input type="text" name="OrderDate">
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="HH:MM:SS">订单时间*</label>
+                    <input type="text" name="OrderTime">
+                </div>
+                <div class="field">
+                    <label>支付原订单号*</label>
+                    <input type="text" name="OrderNo" value="ON20170301001">
+                </div>
+                <div class="field" data-position="top left"
+                     data-tooltip="退款订单号，商户上送">
+                    <label>退款订单号*</label>
+                    <input type="text" name="NewOrderNo">
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="交易币种，请上送156人民币">交易币种*</label>
+                    <input type="text" name="CurrencyCode" value="156">
+                </div>
+            </div>
+            <div class="five fields">
+                <div class="field">
+                    <label>退款金额*</label>
+                    <input type="text" name="TrxAmount" value="1.00">
+                </div>
+                <div class="field">
+                    <label>退款附言</label>
+                    <input type="text" name="MerchantRemarks" value="">
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="指定商户退款账号，需要在综管中维护为付款账户">指定商户退款账号</label>
+                    <input type="text" name="MerRefundAccountNo" value="">
+                </div>
+                <div class="field">
+                    <label>指定商户退款户名</label>
+                    <input type="text" name="MerRefundAccountName" value="">
+                </div>
+            </div>
+            <button class="ui button" type="request" onclick="request(this); return false;">提交</button>
+            <br><br>
+        </form>
+    </div>
+</div>
+</body>
+<script language="javascript" type="text/javascript">
+    $(function () {
+        $('.ui.selection.dropdown').dropdown();
+        $("input[name='OrderDate']").val(getOrderDate());
+        $("input[name='OrderTime']").val(getOrderTime());
+        $("input[name='NewOrderNo']").val(getOrderNo());
+    });
+    $('.message .close')
+        .on('click', function () {
+            $(this).closest('.message').transition('fade');
+        });
+    function request(object) {
+        let responseBoard = $(object).parent().prev();
+        let responseBoardMessag = responseBoard.children("p:last-child");
+        let form = $(object).parent();
+        let action = form.attr("action");
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: action,
+            data: form.serialize(),
+            success: function (result) {
+                console.log(result);
+                responseBoardMessag.html(JSON.stringify(result));
+                if (!responseBoard.hasClass('visible')) responseBoard.transition('fade');
+            },
+            error: function () {
+                console.log("请求农行网上支付平台失败");
+            }
+        });
+    }
+    var splitMerInfo = new Array();
+    function addSubMerchantInfo() {
+        let splitMerchantID = $("input[name='SplitMerchantID']").val();
+        let splitAmount = $("input[name='SplitAmount']").val();
+        splitMerInfo.push({SplitMerchantID: splitMerchantID, SplitAmount: splitAmount});
+        $("input[name='SplitMerInfo']").val(JSON.stringify(splitMerInfo));
+    }
+    function clearSubMerchantInfo() {
+        splitMerInfo = [];
+        $("input[name='SplitMerInfo']").val("");
+    }
+    var templateSplitAccInfo = new Array();
+    function addSubAccInfo() {
+        let splitAcc = $("input[name='SplitAcc']").val();
+        let templateSplitAmount = $("input[name='TemplateSplitAmount']").val();
+        templateSplitAccInfo.push({SplitAcc: splitAcc, SplitAmount: templateSplitAmount});
+        $("input[name='TemplateSplitAccInfo']").val(JSON.stringify(templateSplitAccInfo));
+    }
+    function clearSubAccInfo() {
+        templateSplitAccInfo = [];
+        $("input[name='TemplateSplitAccInfo']").val("");
+    }
+</script>
+</html>
