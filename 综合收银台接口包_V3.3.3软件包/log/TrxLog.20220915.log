@@ -1,0 +1,10 @@
+
+2022/09/15-16:18:31 TrustPayClient Java V3.2.1 交易开始==========================
+2022/09/15-16:18:31 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","IsBreakAccount":"0","SplitAccTemplate":"","TrxType":"ScanPayOrderReq","Order":{"PayTypeID":"ImmediatePay","OrderDate":"2022/09/15","OrderTime":"16:18:27","orderTimeoutDate":"20171231000000","OrderNo":"No20220915161827461657","CurrencyCode":"156","OrderAmount":"1.00","SubsidyAmount":"1.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"127.0.0.1","ExpiredDate":"30","OrderItems":[{"ProductName":"中国移动IP卡"}],"SplitAccInfoItems":"","TerminalNo":""}}},"Signature-Algorithm":"SHA1withRSA","Signature":"RUwTmHoDf6EO1u8f174Hw7OgLLjqGyFY3wByETAuoLxIMvQNgcltDATDMtgzmEAdn2/b4QniWob5cK6Y5nP03IWljfREucmVbxNNtUHlBB75+Y6ykObZ7MsRSqkD2ahxVpm5G4MJC3SXWy9t4kOH4y3+Eui1CoK0nx7uGxrlHuo="}
+2022/09/15-16:18:31 请求服务器地址:http://127.0.0.1:9051/ebus/ReceiveMerchantTrxReqServlet
+2022/09/15-16:18:48 发送请求报文：成功
+2022/09/15-16:18:48 解析返回报文成功，HTTP响应码:[200]，返回报文：
+                    {"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Common":{"Channel":""},"Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"ReturnCode":"AP7745","ErrorMessage":"该终端号未在当前商户维护，请联系银行工作人员前往网络金融运营管理平台进行维护","TrxType":"ScanPayOrderReq","OrderNo":"No20220915161827461657","OrderAmount":"1.00","ScanPayQRURL":""},"Signature-Algorithm":"SHA1withRSA","Signature":"jrangAKcDt5BoOVmXhn2NESQQiUxccAItb9R69CQB58VGoG6pyq5D8xFtzJeVEyWXgMyyl8nSjOejKLL1A/Y7qvJxJBo4urJbN3/Fdsz/UOdphr6qKCn7LkKWz1FvnGzVZTxX8RpzJbkgONUPhRW7l7sPJyaC27pdsC+D3JjNDw="}}
+2022/09/15-16:18:48 验证线上支付平台响应报文的签名：正确
+2022/09/15-16:18:48 交易结束==================================================
