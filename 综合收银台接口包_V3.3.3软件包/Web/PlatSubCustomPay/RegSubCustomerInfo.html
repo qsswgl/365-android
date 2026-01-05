@@ -1,0 +1,183 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>农行线上支付平台-商户接口范例-客户信息同步</title>
+    <link rel="stylesheet" type="text/css" href="../../css/semantic.css">
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/semantic.js"></script>
+    <script src="../../js/util.js"></script>
+</head>
+<body>
+<div class="main ui container" style="padding-top: 100px; padding-bottom: 100px">
+    <div>
+        <div class="ui horizontal divider" style="font-size: large;">客户信息同步</div>
+        <div class="ui message hidden">
+            <i class="close icon"></i>
+            <div class="header">返回报文：</div>
+            <p style="word-break: break-all"></p>
+        </div>
+        <form class="ui form" action='RegSubCustomerInfo.jsp' method="post">
+            <div class="five fields">
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="二级客户编号和二级客户请求号必须输入且只能输入一个">二级客户请求号*</label>
+                    <input type="text" name="SerialNo" value="123448">
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="二级客户编号和二级客户请求号必须输入且只能输入一个">二级客户编号*</label>
+                    <input type="text" name="SubMerId" value="">
+                </div>
+                <div class="field">
+                    <label>二级客户名称*</label>
+                    <input type="text" name="SubMerName" value="新陆零测试">
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="二级客户类型，P：个人客户(固定)">二级客户类型*</label>
+                    <select class="ui selection dropdown" name="SubMerType">
+                        <option value="P" selected>个人客户</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="二级客户种类，5：普通类">二级客户种类*</label>
+                    <select class="ui selection dropdown" name="SubMerSort">
+                        <option value="5" selected>普通类</option>
+                    </select>
+                </div>
+            </div>
+            <div class="five fields">
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="法人/经营者姓名。其中， 二级客户类型为“个人客户”时，请填写个人身份证件上的姓名；">法人/经营者姓名*</label>
+                    <input type="text" name="ContactName" value="新陆零">
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="法人/经营者证件类型：I:身份证，P:护照，G:军官证，U:其他证件">法人/经营者证件类型*</label>
+                    <select class="ui selection dropdown" name="CertificateType">
+                        <option value="I" selected>身份证</option>
+                        <option value="P">护照</option>
+                        <option value="G">军官证</option>
+                        <option value="U">其他证件</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="法人/经营者证件编号。其中， 二级客户类型为“个人客户”时，请填写个人身份证号码；">法人/经营者证件编号*</label>
+                    <input type="text" name="CertificateNo" value="35010219920907625X">
+                </div>
+                <div class="field">
+                    <label>银行账号*</label>
+                    <input type="text" name="Account" value="6228270016020564175">
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="银行账户户名。账户类型为个人银行卡（401：借记卡、701：二类户，702：三类户）户名必须与法人/经营者姓名一致；">银行账户户名*</label>
+                    <input type="text" name="AccountName" value="新陆零">
+                </div>
+            </div>
+            <div class="five fields">
+                <div class="field">
+                    <label>开户银行名称*</label>
+                    <input type="text" name="BankName" value="中国农业银行股份有限公司">
+                </div>
+                <div class="field">
+                    <label>银行预留手机号*</label>
+                    <input type="text" name="MobilePhone" value="13819951105">
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="账户类型。其中，401：借记卡，701：二类户，702：三类户">账户类型*</label>
+                    <select class="ui selection dropdown" name="AccountType">
+                        <option value="401" selected>借记卡</option>
+                        <option value="701">二类户</option>
+                        <option value="702">三类户</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>地址*</label>
+                    <input type="text" name="Address" value="广州市白云区黄边北路时代玫瑰园">
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="声明已签署三方协议，1：已声明">声明已签署三方协议*</label>
+                    <select class="ui selection dropdown" name="Announce">
+                        <option value="1" selected>已声明</option>
+                    </select>
+                </div>
+            </div>
+            <div class="five fields">
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="暂不支持企业商户">企业商户名称</label>
+                    <input type="text" name="CompanyName" value="">
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="暂不支持企业商户">企业商户证件类型</label>
+                    <input type="text" name="CompanyCertType" value="">
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="暂不支持企业商户">企业商户证件号码</label>
+                    <input type="text" name="CompanyCertNo" value="">
+                </div>
+                <div class="field">
+                    <label>附言</label>
+                    <input type="text" name="Remark" value="">
+                </div>
+                <div class="field">
+                    <label>审核结果通知地址</label>
+                    <input type="text" name="NotifyUrl" value="http://10.72.213.117:8080">
+                </div>
+            </div>
+            <div class="five fields">
+                <div class="field">
+                    <label>客户负责人联系电话</label>
+                    <input type="text" name="MerMobilePhone" value="13819951105">
+                </div>
+                <div class="field">
+                    <label>要更改的二级客户账户账号</label>
+                    <input type="text" name="ReplacedAccount" value="">
+                </div>
+            </div>
+            <button class="ui button" type="request" onclick="request(this); return false;">提交</button>
+            <br><br>
+        </form>
+    </div>
+</div>
+</body>
+<script language="javascript" type="text/javascript">
+    $(function () {
+        $('.ui.selection.dropdown').dropdown();
+    });
+    $('.message .close')
+        .on('click', function () {
+            $(this).closest('.message').transition('fade');
+        });
+    function request(object) {
+        let responseBoard = $(object).parent().prev();
+        let responseBoardMessag = responseBoard.children("p:last-child");
+        let form = $(object).parent();
+        let action = form.attr("action");
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: action,
+            data: form.serialize(),
+            success: function (result) {
+                console.log(result);
+                responseBoardMessag.html(JSON.stringify(result));
+                if (!responseBoard.hasClass('visible')) responseBoard.transition('fade');
+            },
+            error: function () {
+                console.log("请求农行网上支付平台失败");
+            }
+        });
+    }
+</script>
+</html>
