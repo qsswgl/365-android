@@ -1,0 +1,483 @@
+
+2023/10/26-10:14:43 TrustPayClient Java V3.1.7 ??????==========================
+2023/10/26-10:14:43 ??齻?????????????
+2023/10/26-10:14:43 ???????[1101]    ?????????[?????????????????????0??????????÷??????]
+2023/10/26-10:14:43 ???????==================================================
+2023/10/26-10:40:31 TrustPayClient Java V3.1.7 ??????==========================
+2023/10/26-10:40:31 ??齻?????????????
+2023/10/26-10:40:31 ???
+2023/10/26-10:40:31 ????????
+2023/10/26-10:40:31 ????????????
+2023/10/26-10:40:31 ??????????
+2023/10/26-10:40:31 ???????????????????????
+2023/10/26-10:40:32 ?????????????????
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxRequest":{"TrxType":"PayReq","PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","ReceiveMark":"","ReceiveMerchantType":"","IsBreakAccount":"0","SplitAccTemplate":"","Order":{"PayTypeID":"ImmediatePay","OrderDate":"2014/09/23","OrderTime":"11:55:30","orderTimeoutDate":"20141019104901","OrderNo":"ON20140924003","CurrencyCode":"156","OrderAmount":"2.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"","ExpiredDate":"30","OrderItems":[{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国移动IP卡","UnitPrice":"1.00","Qty":"1","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"},{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国联通IP卡","UnitPrice":"1.00","Qty":"2","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"}]}}},"Signature-Algorithm":"SHA1withRSA","Signature":"AJ1Nl4W8saSDc3h/oY9Qts30bUTOSHryDfGi0YtKMxjuAYKNFXh8pWi4C7/Vdf2ZjMc4scFm0UdMbzA+D8a9tJNfi+O0cQ/GsAye2PyLMuZsLyM84wV0DwsHKm6TiSctDkIpQBeJpcj9wpjjikFwEvQ6DSiUtFaiz4SsHcsoxBk="}
+2023/10/26-10:40:32 ????????1599
+2023/10/26-10:40:32 ??????????????????
+2023/10/26-10:40:32 ?????????????
+2023/10/26-10:40:32 ???????????????????????
+2023/10/26-10:46:23 ???????[1202]    ?????????[?????ж?SocketException??]
+2023/10/26-10:46:25 ???????==================================================
+2023/10/26-10:56:00 TrustPayClient Java V3.1.7 交易开始==========================
+2023/10/26-10:56:00 检查交易请求是否合法：
+2023/10/26-10:56:00 正确
+2023/10/26-10:56:00 交易报文：
+2023/10/26-10:56:00 完整交易报文：
+2023/10/26-10:56:00 签名后的报文：
+2023/10/26-10:56:00 发送交易报文至网上支付平台：
+2023/10/26-10:56:02 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxRequest":{"TrxType":"PayReq","PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","ReceiveMark":"","ReceiveMerchantType":"","IsBreakAccount":"0","SplitAccTemplate":"","Order":{"PayTypeID":"ImmediatePay","OrderDate":"2014/09/23","OrderTime":"11:55:30","orderTimeoutDate":"20141019104901","OrderNo":"ON20140924003","CurrencyCode":"156","OrderAmount":"2.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"","ExpiredDate":"30","OrderItems":[{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国移动IP卡","UnitPrice":"1.00","Qty":"1","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"},{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国联通IP卡","UnitPrice":"1.00","Qty":"2","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"}]}}},"Signature-Algorithm":"SHA1withRSA","Signature":"AJ1Nl4W8saSDc3h/oY9Qts30bUTOSHryDfGi0YtKMxjuAYKNFXh8pWi4C7/Vdf2ZjMc4scFm0UdMbzA+D8a9tJNfi+O0cQ/GsAye2PyLMuZsLyM84wV0DwsHKm6TiSctDkIpQBeJpcj9wpjjikFwEvQ6DSiUtFaiz4SsHcsoxBk="}
+2023/10/26-10:56:02 报文长度：1599
+2023/10/26-10:56:02 连线网上支付平台：成功
+2023/10/26-11:19:10 提交交易报文：成功
+2023/10/26-11:19:10 等待网上支付平台返回交易结果：
+2023/10/26-11:19:10 错误代码：[1202]    错误信息：[连线中断IOException！]
+2023/10/26-11:19:10 交易结束==================================================
+2023/10/26-11:19:42 TrustPayClient Java V3.1.7 交易开始==========================
+2023/10/26-11:19:42 检查交易请求是否合法：
+2023/10/26-11:19:42 正确
+2023/10/26-11:19:42 交易报文：
+2023/10/26-11:19:42 完整交易报文：
+2023/10/26-11:19:42 签名后的报文：
+2023/10/26-11:19:42 发送交易报文至网上支付平台：
+2023/10/26-11:19:44 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxRequest":{"TrxType":"PayReq","PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","ReceiveMark":"","ReceiveMerchantType":"","IsBreakAccount":"0","SplitAccTemplate":"","Order":{"PayTypeID":"ImmediatePay","OrderDate":"2014/09/23","OrderTime":"11:55:30","orderTimeoutDate":"20141019104901","OrderNo":"ON202310261119","CurrencyCode":"156","OrderAmount":"2.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"","ExpiredDate":"30","OrderItems":[{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国移动IP卡","UnitPrice":"1.00","Qty":"1","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"},{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国联通IP卡","UnitPrice":"1.00","Qty":"2","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"}]}}},"Signature-Algorithm":"SHA1withRSA","Signature":"mIBXo401N0MN5KcKF5bZOqYGjLAi4GwKPUBMAweY0NMGAiwkRzqckcAkjkFdMPCSnQir8aRZA+u3VF/+8RKaPorAq+W6HIZ1JH99edZGX4cIATAuO7ymjd8SxVgSlD8PpAXz7fN/TVbLcyF8naiBT8wDmVPYvJcfpskUXEkLE+Y="}
+2023/10/26-11:19:44 报文长度：1600
+2023/10/26-11:19:44 连线网上支付平台：成功
+2023/10/26-11:19:52 提交交易报文：成功
+2023/10/26-11:19:55 等待网上支付平台返回交易结果：成功
+2023/10/26-11:20:12 返回报文：
+                    HTTP/1.1 200 Cache-Control: privateServer: Microsoft-IIS/10.0Set-Cookie: ASP.NET_SessionId=gx04tttrd3zj4cpu1omuea1o; path=/; HttpOnly; SameSite=Lax; SecureX-Powered-By: ASP.NETDate: Thu, 26 Oct 2023 03:19:54 GMTContent-Type: text/html;charset=GB18030Set-Cookie: BIGipServerpool_ebus_ebusrouter=!itHK2p0nB6kX/Ib2hvbE5S3yjrv903Gf2JnWRnKPg54PzU14pk6NVio772fD6El18v8QeZooZdTV; path=/; SecureConnection: closeVia: 1.1 ID-1716635742343634 uproxy-14{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"ReturnCode":"2302","ErrorMessage":"商户提交的交易请求报文签名验证失败","TrxType":"PayReq","OrderNo":"ON202310261119","PaymentURL":"","OrderAmount":"2.00","OneQRForAll":""},"Signature-Algorithm":"SHA1withRSA","Signature":"rRTCv8Jtj+9H5FL0KzqTFBC3+u2bAptYNFOaqcfbaFsl7MW3gxh3U6RBYAO3bTLh7x8S1K94RQkg18VmIlQAxs7HMs2gGcRgwOD7zLbNll1zJUfPdGukwUmZhFRy3zm8Nkz8IygUtHgqjATA3mMhMJc2GWeYhl5ulTkVbqLcXps="}}
+2023/10/26-11:20:20 接收报文：
+2023/10/26-11:20:20 HTTP/1.1 200 Cache-Control: privateServer: Microsoft-IIS/10.0Set-Cookie: ASP.NET_SessionId=gx04tttrd3zj4cpu1omuea1o; path=/; HttpOnly; SameSite=Lax; SecureX-Powered-By: ASP.NETDate: Thu, 26 Oct 2023 03:19:54 GMTContent-Type: text/html;charset=GB18030Set-Cookie: BIGipServerpool_ebus_ebusrouter=!itHK2p0nB6kX/Ib2hvbE5S3yjrv903Gf2JnWRnKPg54PzU14pk6NVio772fD6El18v8QeZooZdTV; path=/; SecureConnection: closeVia: 1.1 ID-1716635742343634 uproxy-14{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"ReturnCode":"2302","ErrorMessage":"商户提交的交易请求报文签名验证失败","TrxType":"PayReq","OrderNo":"ON202310261119","PaymentURL":"","OrderAmount":"2.00","OneQRForAll":""},"Signature-Algorithm":"SHA1withRSA","Signature":"rRTCv8Jtj+9H5FL0KzqTFBC3+u2bAptYNFOaqcfbaFsl7MW3gxh3U6RBYAO3bTLh7x8S1K94RQkg18VmIlQAxs7HMs2gGcRgwOD7zLbNll1zJUfPdGukwUmZhFRy3zm8Nkz8IygUtHgqjATA3mMhMJc2GWeYhl5ulTkVbqLcXps="}}
+2023/10/26-11:20:40 验证网上支付平台响应报文的签名：正确
+2023/10/26-11:20:40 生成交易响应对象：
+2023/10/26-11:20:40 交易结果：[2302]
+2023/10/26-11:20:40 错误信息：[商户提交的交易请求报文签名验证失败]
+2023/10/26-11:20:40 交易结束==================================================
+2023/10/26-11:23:08 TrustPayClient Java V3.1.7 交易开始==========================
+2023/10/26-11:23:08 检查交易请求是否合法：
+2023/10/26-11:23:08 正确
+2023/10/26-11:23:08 交易报文：
+2023/10/26-11:23:08 完整交易报文：
+2023/10/26-11:23:08 签名后的报文：
+2023/10/26-11:23:08 发送交易报文至网上支付平台：
+2023/10/26-11:23:09 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxRequest":{"TrxType":"PayReq","PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","ReceiveMark":"","ReceiveMerchantType":"","IsBreakAccount":"0","SplitAccTemplate":"","Order":{"PayTypeID":"ImmediatePay","OrderDate":"2014/09/23","OrderTime":"11:55:30","orderTimeoutDate":"20141019104901","OrderNo":"ON202310261119","CurrencyCode":"156","OrderAmount":"2.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"","ExpiredDate":"30","OrderItems":[{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国移动IP卡","UnitPrice":"1.00","Qty":"1","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"},{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国联通IP卡","UnitPrice":"1.00","Qty":"2","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"}]}}},"Signature-Algorithm":"SHA1withRSA","Signature":"mIBXo401N0MN5KcKF5bZOqYGjLAi4GwKPUBMAweY0NMGAiwkRzqckcAkjkFdMPCSnQir8aRZA+u3VF/+8RKaPorAq+W6HIZ1JH99edZGX4cIATAuO7ymjd8SxVgSlD8PpAXz7fN/TVbLcyF8naiBT8wDmVPYvJcfpskUXEkLE+Y="}
+2023/10/26-11:23:09 报文长度：1600
+2023/10/26-11:23:09 连线网上支付平台：成功
+2023/10/26-11:23:10 提交交易报文：成功
+2023/10/26-11:23:10 等待网上支付平台返回交易结果：成功
+2023/10/26-11:23:10 返回报文：
+                    HTTP/1.1 200 Cache-Control: privateServer: Microsoft-IIS/10.0Set-Cookie: ASP.NET_SessionId=a53l5zhdlmvwxbh5xxsukg2y; path=/; HttpOnly; SameSite=Lax; SecureX-Powered-By: ASP.NETDate: Thu, 26 Oct 2023 03:23:10 GMTContent-Type: text/html;charset=GB18030Set-Cookie: BIGipServerpool_ebus_ebusrouter=!7GmsWfUS0CXMD0L2hvbE5S3yjrv90xzwJqjjG9Q9/ydnZ/tKTQAtSssVp58ANj6GpqOFy9VfyAlA7g==; path=/; SecureConnection: closeVia: 1.1 ID-1716635742343634 uproxy-20{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"ReturnCode":"2302","ErrorMessage":"商户提交的交易请求报文签名验证失败","TrxType":"PayReq","OrderNo":"ON202310261119","PaymentURL":"","OrderAmount":"2.00","OneQRForAll":""},"Signature-Algorithm":"SHA1withRSA","Signature":"rRTCv8Jtj+9H5FL0KzqTFBC3+u2bAptYNFOaqcfbaFsl7MW3gxh3U6RBYAO3bTLh7x8S1K94RQkg18VmIlQAxs7HMs2gGcRgwOD7zLbNll1zJUfPdGukwUmZhFRy3zm8Nkz8IygUtHgqjATA3mMhMJc2GWeYhl5ulTkVbqLcXps="}}
+2023/10/26-11:23:11 接收报文：
+2023/10/26-11:23:11 HTTP/1.1 200 Cache-Control: privateServer: Microsoft-IIS/10.0Set-Cookie: ASP.NET_SessionId=a53l5zhdlmvwxbh5xxsukg2y; path=/; HttpOnly; SameSite=Lax; SecureX-Powered-By: ASP.NETDate: Thu, 26 Oct 2023 03:23:10 GMTContent-Type: text/html;charset=GB18030Set-Cookie: BIGipServerpool_ebus_ebusrouter=!7GmsWfUS0CXMD0L2hvbE5S3yjrv90xzwJqjjG9Q9/ydnZ/tKTQAtSssVp58ANj6GpqOFy9VfyAlA7g==; path=/; SecureConnection: closeVia: 1.1 ID-1716635742343634 uproxy-20{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"ReturnCode":"2302","ErrorMessage":"商户提交的交易请求报文签名验证失败","TrxType":"PayReq","OrderNo":"ON202310261119","PaymentURL":"","OrderAmount":"2.00","OneQRForAll":""},"Signature-Algorithm":"SHA1withRSA","Signature":"rRTCv8Jtj+9H5FL0KzqTFBC3+u2bAptYNFOaqcfbaFsl7MW3gxh3U6RBYAO3bTLh7x8S1K94RQkg18VmIlQAxs7HMs2gGcRgwOD7zLbNll1zJUfPdGukwUmZhFRy3zm8Nkz8IygUtHgqjATA3mMhMJc2GWeYhl5ulTkVbqLcXps="}}
+2023/10/26-11:23:11 验证网上支付平台响应报文的签名：正确
+2023/10/26-11:23:11 生成交易响应对象：
+2023/10/26-11:23:11 交易结果：[2302]
+2023/10/26-11:23:11 错误信息：[商户提交的交易请求报文签名验证失败]
+2023/10/26-11:23:11 交易结束==================================================
+2023/10/26-11:23:52 TrustPayClient Java V3.1.7 交易开始==========================
+2023/10/26-11:23:52 检查交易请求是否合法：
+2023/10/26-11:23:52 正确
+2023/10/26-11:23:53 交易报文：
+2023/10/26-11:23:53 完整交易报文：
+2023/10/26-11:23:54 签名后的报文：
+2023/10/26-11:23:57 发送交易报文至网上支付平台：
+2023/10/26-11:24:02 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxRequest":{"TrxType":"AgentPay","OrderDate":"2009/05/07","OrderTime":"09:10:10","OrderNo":"ON202310261119","AgentSignNo":"No200905150001","CardNo":"5359100000001000","CurrencyCode":"156","Amount":"0.01","ReceiverAddress":"北京","Fee":"","CertificateNo":"340121198403084619","InstallmentMark":"0","CommodityType":"0101","PaymentLinkType":"1","BuyIP":"","ExpiredDate":"30","ReceiveAccount":"","ReceiveAccName":"","MerchantRemarks":"","IsBreakAccount":"0","SplitAccTemplate":"","OrderItems":[{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国移动IP卡","UnitPrice":"1.00","Qty":"1","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"},{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国联通IP卡","UnitPrice":"1.00","Qty":"2","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"}]}},"Signature-Algorithm":"SHA1withRSA","Signature":"lEeBgyJjljdrLpOrIomVthZCDmTxXwx51ncbIMPua+np13qF0IZZqBthiQ2BsFFWmRcxbMnrY15IWX8IyUVFVQjMNUMqd+gKlPIf+a8s0meB7YgVHV6Z6U9nMFozeNWFpDEcVqB0/wurUM7vrUV1ANs8stgl6L7C5vOtn537hKw="}
+2023/10/26-11:24:02 报文长度：1433
+2023/10/26-11:24:02 连线网上支付平台：成功
+2023/10/26-11:24:06 提交交易报文：成功
+2023/10/26-11:24:06 等待网上支付平台返回交易结果：
+2023/10/26-12:02:39 错误代码：[1202]    错误信息：[连线中断SocketException！]
+2023/10/26-12:02:39 交易结束==================================================
+2023/10/26-12:09:08 TrustPayClient Java V3.1.7 交易开始==========================
+2023/10/26-12:09:08 检查交易请求是否合法：
+2023/10/26-12:09:08 正确
+2023/10/26-12:09:08 交易报文：
+2023/10/26-12:09:08 完整交易报文：
+2023/10/26-12:09:08 签名后的报文：
+2023/10/26-12:09:08 发送交易报文至网上支付平台：
+2023/10/26-12:09:12 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxRequest":{"TrxType":"AgentPay","OrderDate":"2009/05/07","OrderTime":"09:10:10","OrderNo":"ON202310261119","AgentSignNo":"No200905150001","CardNo":"5359100000001000","CurrencyCode":"156","Amount":"0.01","ReceiverAddress":"北京","Fee":"","CertificateNo":"340121198403084619","InstallmentMark":"0","CommodityType":"0101","PaymentLinkType":"1","BuyIP":"","ExpiredDate":"30","ReceiveAccount":"","ReceiveAccName":"","MerchantRemarks":"","IsBreakAccount":"0","SplitAccTemplate":"","OrderItems":[{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国移动IP卡","UnitPrice":"1.00","Qty":"1","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"},{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国联通IP卡","UnitPrice":"1.00","Qty":"2","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"}]}},"Signature-Algorithm":"SHA1withRSA","Signature":"lEeBgyJjljdrLpOrIomVthZCDmTxXwx51ncbIMPua+np13qF0IZZqBthiQ2BsFFWmRcxbMnrY15IWX8IyUVFVQjMNUMqd+gKlPIf+a8s0meB7YgVHV6Z6U9nMFozeNWFpDEcVqB0/wurUM7vrUV1ANs8stgl6L7C5vOtn537hKw="}
+2023/10/26-12:09:12 报文长度：1433
+2023/10/26-12:09:12 连线网上支付平台：成功
+2023/10/26-12:09:21 提交交易报文：成功
+2023/10/26-12:09:21 等待网上支付平台返回交易结果：
+2023/10/26-12:17:24 错误代码：[1202]    错误信息：[连线中断IOException！]
+2023/10/26-12:17:24 交易结束==================================================
+2023/10/26-12:17:59 TrustPayClient Java V3.1.7 交易开始==========================
+2023/10/26-12:17:59 检查交易请求是否合法：
+2023/10/26-12:18:01 正确
+2023/10/26-12:18:01 交易报文：
+2023/10/26-12:18:02 完整交易报文：
+2023/10/26-12:18:03 签名后的报文：
+2023/10/26-12:18:03 发送交易报文至网上支付平台：
+2023/10/26-12:18:04 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxRequest":{"TrxType":"AgentPay","OrderDate":"2009/05/07","OrderTime":"09:10:10","OrderNo":"ON202310261119123","AgentSignNo":"No200905150001","CardNo":"5359100000001000","CurrencyCode":"156","Amount":"0.01","ReceiverAddress":"北京","Fee":"","CertificateNo":"340121198403084619","InstallmentMark":"0","CommodityType":"0101","PaymentLinkType":"1","BuyIP":"","ExpiredDate":"30","ReceiveAccount":"","ReceiveAccName":"","MerchantRemarks":"","IsBreakAccount":"0","SplitAccTemplate":"","OrderItems":[{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国移动IP卡","UnitPrice":"1.00","Qty":"1","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"},{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国联通IP卡","UnitPrice":"1.00","Qty":"2","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"}]}},"Signature-Algorithm":"SHA1withRSA","Signature":"v+sZzPlBYmvNMeyYX+/YuhBLKvMdtS34npnH8TEgmDRDbbCYr7ufD5IpWaXxnRzsjMJIMQ/zO4auc1uqhzGLvZzb2EkQTrYp1lB0wJCFN8YChurJkqDpcBKbk62v3atsE9WgPKrGwyeAAtMSF5/Cf/d9APRz0S0IgJLGksU8T90="}
+2023/10/26-12:18:06 报文长度：1436
+2023/10/26-12:18:06 连线网上支付平台：成功
+2023/10/26-12:18:08 提交交易报文：成功
+2023/10/26-12:18:08 等待网上支付平台返回交易结果：成功
+2023/10/26-12:19:35 返回报文：
+                    HTTP/1.1 200 Cache-Control: privateServer: Microsoft-IIS/10.0Set-Cookie: ASP.NET_SessionId=njtar55zgv2jzjkzsjofckqb; path=/; HttpOnly; SameSite=Lax; SecureX-Powered-By: ASP.NETDate: Thu, 26 Oct 2023 04:18:08 GMTContent-Type: text/html;charset=GB18030Set-Cookie: BIGipServerpool_ebus_ebusrouter=!65cguq9+pkcnmwH2hvbE5S3yjrv90/TVBYPgcmDH+iliWgAXVZDaKRrSHM9InF9B3hD21mlOecIbZg==; path=/; SecureConnection: closeVia: 1.1 ID-1716635742343024 uproxy-22{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxResponse":{"ReturnCode":"2302","ErrorMessage":"商户提交的交易请求报文签名验证失败","TrxType":"AgentPay","OrderNo":"ON202310261119123"}},"Signature-Algorithm":"SHA1withRSA","Signature":"vsLgMWnQUAxOCgGb0LBaNy/iiNx4qx1Enzk8oGt6zx5vIhc43mBHJdEg9TS2/QqKeSxboGz1F2l/Gh65MIZE0mGon09na2VIIR+oUKyZdvi9mCrWVd5+8ZvtRUf5j/BVwDFrCJ/wXUzBpybaYNhzJ/LBRNS8Bx3TRSV7UITeAgw="}}
+2023/10/26-12:19:35 接收报文：
+2023/10/26-12:19:35 HTTP/1.1 200 Cache-Control: privateServer: Microsoft-IIS/10.0Set-Cookie: ASP.NET_SessionId=njtar55zgv2jzjkzsjofckqb; path=/; HttpOnly; SameSite=Lax; SecureX-Powered-By: ASP.NETDate: Thu, 26 Oct 2023 04:18:08 GMTContent-Type: text/html;charset=GB18030Set-Cookie: BIGipServerpool_ebus_ebusrouter=!65cguq9+pkcnmwH2hvbE5S3yjrv90/TVBYPgcmDH+iliWgAXVZDaKRrSHM9InF9B3hD21mlOecIbZg==; path=/; SecureConnection: closeVia: 1.1 ID-1716635742343024 uproxy-22{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxResponse":{"ReturnCode":"2302","ErrorMessage":"商户提交的交易请求报文签名验证失败","TrxType":"AgentPay","OrderNo":"ON202310261119123"}},"Signature-Algorithm":"SHA1withRSA","Signature":"vsLgMWnQUAxOCgGb0LBaNy/iiNx4qx1Enzk8oGt6zx5vIhc43mBHJdEg9TS2/QqKeSxboGz1F2l/Gh65MIZE0mGon09na2VIIR+oUKyZdvi9mCrWVd5+8ZvtRUf5j/BVwDFrCJ/wXUzBpybaYNhzJ/LBRNS8Bx3TRSV7UITeAgw="}}
+2023/10/26-12:19:35 验证网上支付平台响应报文的签名：正确
+2023/10/26-12:19:36 生成交易响应对象：
+2023/10/26-12:19:36 交易结果：[2302]
+2023/10/26-12:19:36 错误信息：[商户提交的交易请求报文签名验证失败]
+2023/10/26-12:19:36 交易结束==================================================
+2023/10/26-12:26:30 TrustPayClient Java V3.1.7 交易开始==========================
+2023/10/26-12:26:30 检查交易请求是否合法：
+2023/10/26-12:26:30 正确
+2023/10/26-12:26:30 交易报文：
+2023/10/26-12:26:30 完整交易报文：
+2023/10/26-12:26:30 签名后的报文：
+2023/10/26-12:26:30 发送交易报文至网上支付平台：
+2023/10/26-12:26:42 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"TrxType":"PayReq","PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","ReceiveMark":"","ReceiveMerchantType":"","IsBreakAccount":"0","SplitAccTemplate":"","Order":{"PayTypeID":"ImmediatePay","OrderDate":"2014/09/23","OrderTime":"11:55:30","orderTimeoutDate":"20141019104901","OrderNo":"ON20140924003","CurrencyCode":"156","OrderAmount":"2.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"","ExpiredDate":"30","OrderItems":[{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国移动IP卡","UnitPrice":"1.00","Qty":"1","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"},{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国联通IP卡","UnitPrice":"1.00","Qty":"2","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"}]}}},"Signature-Algorithm":"SHA1withRSA","Signature":"HNnrnyFpbY3WqPgqIPeKqvcQ1cYk2T+nC49UoAfE9ChNWx1osS4pJVEMn92nsgqJgs4Tq/O/U5YeerIx7N9PrBQNr0bw0+dt0Za77Vhlfp65gxexnTB513LlLmxjqmXBkk1WcgFB+Sdl2aGx6Yds6l5BmUKM4hfZVAscUYVv35A="}
+2023/10/26-12:26:42 报文长度：1599
+2023/10/26-12:26:42 连线网上支付平台：成功
+2023/10/26-12:26:42 提交交易报文：成功
+2023/10/26-12:26:42 等待网上支付平台返回交易结果：成功
+2023/10/26-12:26:49 返回报文：
+                    HTTP/1.1 200 Date: Thu, 26 Oct 2023 04:26:43 GMTConnection: closeContent-Type: text/html;charset=GBKContent-Length: 551{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"ReturnCode":"PR0007","ErrorMessage":"订单号或者退款订单号已使用，不允许切换订单交易模式，请更换订单号或者退款订单号重试","TrxType":"PayReq","OrderNo":"","PaymentURL":"","OrderAmount":"","OneQRForAll":""},"Signature-Algorithm":"SHA1withRSA","Signature":"oCKNNNcO0m11Hpp71rEBpZD+FOeRslIVj7+lygj8lXeX0n0hz/ZY1ZZ5ryoyRxYdQEqM3c0wCI16Qe0WlX1dKd4HHvODa0vSLK+2PySTDIsdGLTSWVeREFW9V01kmVSQhu3TCVarRn5PX1359Nd9WoRH5tARuIRpAxE5Hp1HsWk="}}
+2023/10/26-12:26:50 接收报文：
+2023/10/26-12:26:50 HTTP/1.1 200 Date: Thu, 26 Oct 2023 04:26:43 GMTConnection: closeContent-Type: text/html;charset=GBKContent-Length: 551{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"ReturnCode":"PR0007","ErrorMessage":"订单号或者退款订单号已使用，不允许切换订单交易模式，请更换订单号或者退款订单号重试","TrxType":"PayReq","OrderNo":"","PaymentURL":"","OrderAmount":"","OneQRForAll":""},"Signature-Algorithm":"SHA1withRSA","Signature":"oCKNNNcO0m11Hpp71rEBpZD+FOeRslIVj7+lygj8lXeX0n0hz/ZY1ZZ5ryoyRxYdQEqM3c0wCI16Qe0WlX1dKd4HHvODa0vSLK+2PySTDIsdGLTSWVeREFW9V01kmVSQhu3TCVarRn5PX1359Nd9WoRH5tARuIRpAxE5Hp1HsWk="}}
+2023/10/26-12:26:50 验证网上支付平台响应报文的签名：正确
+2023/10/26-12:26:50 生成交易响应对象：
+2023/10/26-12:26:50 交易结果：[PR0007]
+2023/10/26-12:26:50 错误信息：[订单号或者退款订单号已使用，不允许切换订单交易模式，请更换订单号或者退款订单号重试]
+2023/10/26-12:26:50 交易结束==================================================
+2023/10/26-12:27:45 TrustPayClient Java V3.1.7 交易开始==========================
+2023/10/26-12:27:45 检查交易请求是否合法：
+2023/10/26-12:27:46 正确
+2023/10/26-12:27:47 交易报文：
+2023/10/26-12:27:48 完整交易报文：
+2023/10/26-12:27:48 签名后的报文：
+2023/10/26-12:27:49 发送交易报文至网上支付平台：
+2023/10/26-12:27:52 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"TrxType":"PayReq","PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","ReceiveMark":"","ReceiveMerchantType":"","IsBreakAccount":"0","SplitAccTemplate":"","Order":{"PayTypeID":"ImmediatePay","OrderDate":"2014/09/23","OrderTime":"11:55:30","orderTimeoutDate":"20141019104901","OrderNo":"ON20140924003","CurrencyCode":"156","OrderAmount":"2.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"","ExpiredDate":"30","OrderItems":[{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国移动IP卡","UnitPrice":"1.00","Qty":"1","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"},{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国联通IP卡","UnitPrice":"1.00","Qty":"2","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"}]}}},"Signature-Algorithm":"SHA1withRSA","Signature":"HNnrnyFpbY3WqPgqIPeKqvcQ1cYk2T+nC49UoAfE9ChNWx1osS4pJVEMn92nsgqJgs4Tq/O/U5YeerIx7N9PrBQNr0bw0+dt0Za77Vhlfp65gxexnTB513LlLmxjqmXBkk1WcgFB+Sdl2aGx6Yds6l5BmUKM4hfZVAscUYVv35A="}
+2023/10/26-12:27:54 报文长度：1599
+2023/10/26-12:27:54 连线网上支付平台：成功
+2023/10/26-12:27:54 提交交易报文：成功
+2023/10/26-12:27:54 等待网上支付平台返回交易结果：成功
+2023/10/26-12:27:55 返回报文：
+                    HTTP/1.1 200 Date: Thu, 26 Oct 2023 04:27:55 GMTConnection: closeContent-Type: text/html;charset=GBKContent-Length: 551{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"ReturnCode":"PR0007","ErrorMessage":"订单号或者退款订单号已使用，不允许切换订单交易模式，请更换订单号或者退款订单号重试","TrxType":"PayReq","OrderNo":"","PaymentURL":"","OrderAmount":"","OneQRForAll":""},"Signature-Algorithm":"SHA1withRSA","Signature":"oCKNNNcO0m11Hpp71rEBpZD+FOeRslIVj7+lygj8lXeX0n0hz/ZY1ZZ5ryoyRxYdQEqM3c0wCI16Qe0WlX1dKd4HHvODa0vSLK+2PySTDIsdGLTSWVeREFW9V01kmVSQhu3TCVarRn5PX1359Nd9WoRH5tARuIRpAxE5Hp1HsWk="}}
+2023/10/26-12:28:02 接收报文：
+2023/10/26-12:28:02 HTTP/1.1 200 Date: Thu, 26 Oct 2023 04:27:55 GMTConnection: closeContent-Type: text/html;charset=GBKContent-Length: 551{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"ReturnCode":"PR0007","ErrorMessage":"订单号或者退款订单号已使用，不允许切换订单交易模式，请更换订单号或者退款订单号重试","TrxType":"PayReq","OrderNo":"","PaymentURL":"","OrderAmount":"","OneQRForAll":""},"Signature-Algorithm":"SHA1withRSA","Signature":"oCKNNNcO0m11Hpp71rEBpZD+FOeRslIVj7+lygj8lXeX0n0hz/ZY1ZZ5ryoyRxYdQEqM3c0wCI16Qe0WlX1dKd4HHvODa0vSLK+2PySTDIsdGLTSWVeREFW9V01kmVSQhu3TCVarRn5PX1359Nd9WoRH5tARuIRpAxE5Hp1HsWk="}}
+2023/10/26-12:28:02 验证网上支付平台响应报文的签名：正确
+2023/10/26-12:28:02 生成交易响应对象：
+2023/10/26-12:28:02 交易结果：[PR0007]
+2023/10/26-12:28:02 错误信息：[订单号或者退款订单号已使用，不允许切换订单交易模式，请更换订单号或者退款订单号重试]
+2023/10/26-12:28:02 交易结束==================================================
+2023/10/26-12:28:07 TrustPayClient Java V3.1.7 交易开始==========================
+2023/10/26-12:28:07 检查交易请求是否合法：
+2023/10/26-12:28:07 正确
+2023/10/26-12:28:07 交易报文：
+2023/10/26-12:28:07 完整交易报文：
+2023/10/26-12:28:07 签名后的报文：
+2023/10/26-12:28:07 发送交易报文至网上支付平台：
+2023/10/26-12:28:09 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"TrxType":"PayReq","PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","ReceiveMark":"","ReceiveMerchantType":"","IsBreakAccount":"0","SplitAccTemplate":"","Order":{"PayTypeID":"ImmediatePay","OrderDate":"2014/09/23","OrderTime":"11:55:30","orderTimeoutDate":"20141019104901","OrderNo":"ON20140924003","CurrencyCode":"156","OrderAmount":"2.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"","ExpiredDate":"30","OrderItems":[{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国移动IP卡","UnitPrice":"1.00","Qty":"1","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"},{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国联通IP卡","UnitPrice":"1.00","Qty":"2","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"}]}}},"Signature-Algorithm":"SHA1withRSA","Signature":"HNnrnyFpbY3WqPgqIPeKqvcQ1cYk2T+nC49UoAfE9ChNWx1osS4pJVEMn92nsgqJgs4Tq/O/U5YeerIx7N9PrBQNr0bw0+dt0Za77Vhlfp65gxexnTB513LlLmxjqmXBkk1WcgFB+Sdl2aGx6Yds6l5BmUKM4hfZVAscUYVv35A="}
+2023/10/26-12:28:09 报文长度：1599
+2023/10/26-12:28:09 连线网上支付平台：成功
+2023/10/26-12:28:09 提交交易报文：成功
+2023/10/26-12:28:09 等待网上支付平台返回交易结果：成功
+2023/10/26-12:28:59 返回报文：
+                    HTTP/1.1 200 Date: Thu, 26 Oct 2023 04:28:09 GMTConnection: closeContent-Type: text/html;charset=GBKContent-Length: 551{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"ReturnCode":"PR0007","ErrorMessage":"订单号或者退款订单号已使用，不允许切换订单交易模式，请更换订单号或者退款订单号重试","TrxType":"PayReq","OrderNo":"","PaymentURL":"","OrderAmount":"","OneQRForAll":""},"Signature-Algorithm":"SHA1withRSA","Signature":"oCKNNNcO0m11Hpp71rEBpZD+FOeRslIVj7+lygj8lXeX0n0hz/ZY1ZZ5ryoyRxYdQEqM3c0wCI16Qe0WlX1dKd4HHvODa0vSLK+2PySTDIsdGLTSWVeREFW9V01kmVSQhu3TCVarRn5PX1359Nd9WoRH5tARuIRpAxE5Hp1HsWk="}}
+2023/10/26-12:28:59 接收报文：
+2023/10/26-12:28:59 HTTP/1.1 200 Date: Thu, 26 Oct 2023 04:28:09 GMTConnection: closeContent-Type: text/html;charset=GBKContent-Length: 551{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"ReturnCode":"PR0007","ErrorMessage":"订单号或者退款订单号已使用，不允许切换订单交易模式，请更换订单号或者退款订单号重试","TrxType":"PayReq","OrderNo":"","PaymentURL":"","OrderAmount":"","OneQRForAll":""},"Signature-Algorithm":"SHA1withRSA","Signature":"oCKNNNcO0m11Hpp71rEBpZD+FOeRslIVj7+lygj8lXeX0n0hz/ZY1ZZ5ryoyRxYdQEqM3c0wCI16Qe0WlX1dKd4HHvODa0vSLK+2PySTDIsdGLTSWVeREFW9V01kmVSQhu3TCVarRn5PX1359Nd9WoRH5tARuIRpAxE5Hp1HsWk="}}
+2023/10/26-12:28:59 验证网上支付平台响应报文的签名：正确
+2023/10/26-12:28:59 生成交易响应对象：
+2023/10/26-12:28:59 交易结果：[PR0007]
+2023/10/26-12:28:59 错误信息：[订单号或者退款订单号已使用，不允许切换订单交易模式，请更换订单号或者退款订单号重试]
+2023/10/26-12:28:59 交易结束==================================================
+2023/10/26-12:32:09 TrustPayClient Java V3.1.7 交易开始==========================
+2023/10/26-12:32:09 检查交易请求是否合法：
+2023/10/26-12:32:09 正确
+2023/10/26-12:32:09 交易报文：
+2023/10/26-12:32:09 完整交易报文：
+2023/10/26-12:32:09 签名后的报文：
+2023/10/26-12:32:09 发送交易报文至网上支付平台：
+2023/10/26-12:32:10 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxRequest":{"TrxType":"PayReq","PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","ReceiveMark":"","ReceiveMerchantType":"","IsBreakAccount":"0","SplitAccTemplate":"","Order":{"PayTypeID":"ImmediatePay","OrderDate":"2014/09/23","OrderTime":"11:55:30","orderTimeoutDate":"20141019104901","OrderNo":"ON20140924003","CurrencyCode":"156","OrderAmount":"2.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"","ExpiredDate":"30","OrderItems":[{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国移动IP卡","UnitPrice":"1.00","Qty":"1","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"},{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国联通IP卡","UnitPrice":"1.00","Qty":"2","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"}]}}},"Signature-Algorithm":"SHA1withRSA","Signature":"AJ1Nl4W8saSDc3h/oY9Qts30bUTOSHryDfGi0YtKMxjuAYKNFXh8pWi4C7/Vdf2ZjMc4scFm0UdMbzA+D8a9tJNfi+O0cQ/GsAye2PyLMuZsLyM84wV0DwsHKm6TiSctDkIpQBeJpcj9wpjjikFwEvQ6DSiUtFaiz4SsHcsoxBk="}
+2023/10/26-12:32:10 报文长度：1599
+2023/10/26-12:32:10 连线网上支付平台：成功
+2023/10/26-12:32:10 提交交易报文：成功
+2023/10/26-12:32:10 等待网上支付平台返回交易结果：成功
+2023/10/26-12:32:40 返回报文：
+                    HTTP/1.1 200 Content-Type: text/html;charset=GBKContent-Length: 462Date: Thu, 26 Oct 2023 04:32:10 GMTSet-Cookie: BIGipServerpool_ebus_ebusrouter=!e9hOPjagu9fV2DT2hvbE5S3yjrv9096wLr5Y5Y0xD9RpxNJqdXCTxopY71jXTn2OSNUIuhWOjj2CSw==; path=/; SecureConnection: closeVia: 1.1 ID-1716635742342450 uproxy-26{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxResponse":{"ReturnCode":"PR0059","ErrorMessage":"订单号已使用，请更换订单号后重新发起交易","TrxType":"PayReq"}},"Signature-Algorithm":"SHA1withRSA","Signature":"0+zOaFmGefIXL1wg+mhHkXXp868XZfHPkGgr3IWZVzpJSaI0qETOnB5GPAEiDP/7W2dtkaJKg7u/fQ8hW6jccXDhmD5O0ZqO7zYLZi00SvUXOCQGFo58+VgSvVph1gzCHeCaeZ0t0erR0lfYVHpaFpBleEQQTOWzEMWWTB1FcgA="}}
+2023/10/26-12:32:40 接收报文：
+2023/10/26-12:32:40 HTTP/1.1 200 Content-Type: text/html;charset=GBKContent-Length: 462Date: Thu, 26 Oct 2023 04:32:10 GMTSet-Cookie: BIGipServerpool_ebus_ebusrouter=!e9hOPjagu9fV2DT2hvbE5S3yjrv9096wLr5Y5Y0xD9RpxNJqdXCTxopY71jXTn2OSNUIuhWOjj2CSw==; path=/; SecureConnection: closeVia: 1.1 ID-1716635742342450 uproxy-26{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxResponse":{"ReturnCode":"PR0059","ErrorMessage":"订单号已使用，请更换订单号后重新发起交易","TrxType":"PayReq"}},"Signature-Algorithm":"SHA1withRSA","Signature":"0+zOaFmGefIXL1wg+mhHkXXp868XZfHPkGgr3IWZVzpJSaI0qETOnB5GPAEiDP/7W2dtkaJKg7u/fQ8hW6jccXDhmD5O0ZqO7zYLZi00SvUXOCQGFo58+VgSvVph1gzCHeCaeZ0t0erR0lfYVHpaFpBleEQQTOWzEMWWTB1FcgA="}}
+2023/10/26-12:32:40 验证网上支付平台响应报文的签名：正确
+2023/10/26-12:32:40 生成交易响应对象：
+2023/10/26-12:32:40 交易结果：[PR0059]
+2023/10/26-12:32:40 错误信息：[订单号已使用，请更换订单号后重新发起交易]
+2023/10/26-12:32:40 交易结束==================================================
+2023/10/26-12:33:49 TrustPayClient Java V3.1.7 交易开始==========================
+2023/10/26-12:33:49 检查交易请求是否合法：
+2023/10/26-12:33:49 正确
+2023/10/26-12:33:49 交易报文：
+2023/10/26-12:33:49 完整交易报文：
+2023/10/26-12:33:49 签名后的报文：
+2023/10/26-12:33:49 发送交易报文至网上支付平台：
+2023/10/26-12:33:50 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxRequest":{"TrxType":"AgentPay","OrderDate":"2009/05/07","OrderTime":"09:10:10","OrderNo":"ON20140924003","AgentSignNo":"No200905150001","CardNo":"5359100000001000","CurrencyCode":"156","Amount":"0.01","ReceiverAddress":"北京","Fee":"","CertificateNo":"340121198403084619","InstallmentMark":"0","CommodityType":"0101","PaymentLinkType":"1","BuyIP":"","ExpiredDate":"30","ReceiveAccount":"","ReceiveAccName":"","MerchantRemarks":"","IsBreakAccount":"0","SplitAccTemplate":"","OrderItems":[{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国移动IP卡","UnitPrice":"1.00","Qty":"1","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"},{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国联通IP卡","UnitPrice":"1.00","Qty":"2","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"}]}},"Signature-Algorithm":"SHA1withRSA","Signature":"v/3r3IwI2ZNnd3osbkwunSTIvzmIoJVyajH9CxxkCoKwj8n3MtPKEL/M7acL7SGbNpuOk5BPOEgjU8Y5urdorPP5L/SbpmMy04k41bnn+MhyNZFZSLsaiz+Vbt3/mnWYFiNnvpEcbS+Mnkm2cEIEukzGx6mpBPEvReRHC1W1U8Q="}
+2023/10/26-12:33:50 报文长度：1432
+2023/10/26-12:33:50 连线网上支付平台：成功
+2023/10/26-12:33:50 提交交易报文：成功
+2023/10/26-12:33:50 等待网上支付平台返回交易结果：成功
+2023/10/26-12:33:59 返回报文：
+                    HTTP/1.1 200 Content-Type: text/html;charset=GBKContent-Length: 464Date: Thu, 26 Oct 2023 04:33:49 GMTSet-Cookie: BIGipServerpool_ebus_ebusrouter=!PidfKkJdUEVNE7/2hvbE5S3yjrv90x6wN56ACZGPCXmMmdf8HrJEp3sfBhWy9O4T6cmiwCIM8zV0VA==; path=/; SecureConnection: closeVia: 1.1 ID-1716635742343634 uproxy-27{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxResponse":{"ReturnCode":"PR0059","ErrorMessage":"订单号已使用，请更换订单号后重新发起交易","TrxType":"AgentPay"}},"Signature-Algorithm":"SHA1withRSA","Signature":"a3JLJ0LlAtfG60lWzOI30vbbGH5BzZ7H/Uk8mw+hE8rZK7/Vg5Ax4c2puhUtxzTPDpJWnyjaXuBB8z07ChgHEHW++v+iufyeLd+GWdZU6RG2GhdPqqFBwF38W7bd8o9316oit6Xwhy9QH0pm2USkm6RJThwEzDhH82MVoYNWY0c="}}
+2023/10/26-12:34:00 接收报文：
+2023/10/26-12:34:00 HTTP/1.1 200 Content-Type: text/html;charset=GBKContent-Length: 464Date: Thu, 26 Oct 2023 04:33:49 GMTSet-Cookie: BIGipServerpool_ebus_ebusrouter=!PidfKkJdUEVNE7/2hvbE5S3yjrv90x6wN56ACZGPCXmMmdf8HrJEp3sfBhWy9O4T6cmiwCIM8zV0VA==; path=/; SecureConnection: closeVia: 1.1 ID-1716635742343634 uproxy-27{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxResponse":{"ReturnCode":"PR0059","ErrorMessage":"订单号已使用，请更换订单号后重新发起交易","TrxType":"AgentPay"}},"Signature-Algorithm":"SHA1withRSA","Signature":"a3JLJ0LlAtfG60lWzOI30vbbGH5BzZ7H/Uk8mw+hE8rZK7/Vg5Ax4c2puhUtxzTPDpJWnyjaXuBB8z07ChgHEHW++v+iufyeLd+GWdZU6RG2GhdPqqFBwF38W7bd8o9316oit6Xwhy9QH0pm2USkm6RJThwEzDhH82MVoYNWY0c="}}
+2023/10/26-12:34:00 验证网上支付平台响应报文的签名：正确
+2023/10/26-12:34:00 生成交易响应对象：
+2023/10/26-12:34:00 交易结果：[PR0059]
+2023/10/26-12:34:00 错误信息：[订单号已使用，请更换订单号后重新发起交易]
+2023/10/26-12:34:00 交易结束==================================================
+2023/10/26-12:35:57 TrustPayClient Java V3.1.7 交易开始==========================
+2023/10/26-12:35:57 检查交易请求是否合法：
+2023/10/26-12:35:57 正确
+2023/10/26-12:35:57 交易报文：
+2023/10/26-12:35:57 完整交易报文：
+2023/10/26-12:35:57 签名后的报文：
+2023/10/26-12:35:57 发送交易报文至网上支付平台：
+2023/10/26-12:36:05 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxRequest":{"TrxType":"AgentPay","OrderDate":"2009/05/07","OrderTime":"09:10:10","OrderNo":"ON202310261119","AgentSignNo":"No200905150001","CardNo":"5359100000001000","CurrencyCode":"156","Amount":"0.01","ReceiverAddress":"北京","Fee":"","CertificateNo":"340121198403084619","InstallmentMark":"0","CommodityType":"0101","PaymentLinkType":"1","BuyIP":"","ExpiredDate":"30","ReceiveAccount":"","ReceiveAccName":"","MerchantRemarks":"","IsBreakAccount":"0","SplitAccTemplate":"","OrderItems":[{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国移动IP卡","UnitPrice":"1.00","Qty":"1","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"},{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国联通IP卡","UnitPrice":"1.00","Qty":"2","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"}]}},"Signature-Algorithm":"SHA1withRSA","Signature":"lEeBgyJjljdrLpOrIomVthZCDmTxXwx51ncbIMPua+np13qF0IZZqBthiQ2BsFFWmRcxbMnrY15IWX8IyUVFVQjMNUMqd+gKlPIf+a8s0meB7YgVHV6Z6U9nMFozeNWFpDEcVqB0/wurUM7vrUV1ANs8stgl6L7C5vOtn537hKw="}
+2023/10/26-12:36:05 报文长度：1433
+2023/10/26-12:36:05 连线网上支付平台：成功
+2023/10/26-12:36:14 url:https://pay.abchina.com/ebus/ReceiveMerchantTrxReqServlet
+2023/10/26-12:36:15 HTTPClient发送交易请求报文开始.
+2023/10/26-12:36:15 HTTPClient请求报文发送成功
+2023/10/26-12:36:15 HTTPClient等待网上支付平台返回交易结果开始
+2023/10/26-12:36:15 HTTPClient取网上支付平台返回交易结果完成:[200]
+2023/10/26-12:36:16 接收报文：
+2023/10/26-12:36:16 {"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxResponse":{"ReturnCode":"PR0007","ErrorMessage":"订单号或者退款订单号已使用，不允许切换订单交易模式，请更换订单号或者退款订单号重试","TrxType":"AgentPay"}},"Signature-Algorithm":"SHA1withRSA","Signature":"MtPZhGAl0wugEGGRfhZh2q6gawgu4fFm3NvMpzcMiOgngndWFGA4h53LKCwxxF8VgoWG93dNgah5S39M0RdbPFhjMJABnjvLFyTNxeOXvgbFpYb2y+Nz3OvLwWsdOePcGma2UXxHrCaEU1nyqbO7CBLoWeBTxNIbP4CoQC5S4wc="}}
+2023/10/26-12:36:16 验证网上支付平台响应报文的签名：正确
+2023/10/26-12:36:16 生成交易响应对象：
+2023/10/26-12:36:16 交易结果：[PR0007]
+2023/10/26-12:36:16 错误信息：[订单号或者退款订单号已使用，不允许切换订单交易模式，请更换订单号或者退款订单号重试]
+2023/10/26-12:36:16 交易结束==================================================
+2023/10/26-14:15:31 TrustPayClient Java V3.1.7 交易开始==========================
+2023/10/26-14:15:31 检查交易请求是否合法：
+2023/10/26-14:15:31 正确
+2023/10/26-14:15:31 交易报文：
+2023/10/26-14:15:31 完整交易报文：
+2023/10/26-14:15:31 签名后的报文：
+2023/10/26-14:15:31 发送交易报文至网上支付平台：
+2023/10/26-14:15:31 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"TrxType":"PayReq","PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","ReceiveMark":"","ReceiveMerchantType":"","IsBreakAccount":"0","SplitAccTemplate":"","Order":{"PayTypeID":"ImmediatePay","OrderDate":"2014/09/23","OrderTime":"11:55:30","orderTimeoutDate":"20141019104901","OrderNo":"ON20140924003121","CurrencyCode":"156","OrderAmount":"2.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"","ExpiredDate":"30","OrderItems":[{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国移动IP卡","UnitPrice":"1.00","Qty":"1","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"},{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国联通IP卡","UnitPrice":"1.00","Qty":"2","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"}]}}},"Signature-Algorithm":"SHA1withRSA","Signature":"d/99MNjjXc9lDroNcP2ScpZjwxHD2qZ5O3UKgxAeYgEIHyzYQ7/1oOTv7NcUZywEBe2oSR8j29A6T5qlhFtk+aIiTsovbpF2PUyBmqDbyTku9zGr6e8U8tNTVgWeRzyWg3F1ZpOvf+VbnV6ktstPVONn9OlZatVaTcoGH1yhnWg="}
+2023/10/26-14:15:31 报文长度：1602
+2023/10/26-14:15:31 连线网上支付平台：
+2023/10/26-14:15:31 Connection reset
+2023/10/26-14:15:31 错误代码：[1201]    错误信息：[无法建立socket连接]
+2023/10/26-14:15:31 交易结束==================================================
+2023/10/26-14:15:56 TrustPayClient Java V3.1.7 交易开始==========================
+2023/10/26-14:15:56 检查交易请求是否合法：
+2023/10/26-14:15:56 正确
+2023/10/26-14:15:56 交易报文：
+2023/10/26-14:15:56 完整交易报文：
+2023/10/26-14:15:56 签名后的报文：
+2023/10/26-14:15:56 发送交易报文至网上支付平台：
+2023/10/26-14:15:56 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"TrxType":"PayReq","PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","ReceiveMark":"","ReceiveMerchantType":"","IsBreakAccount":"0","SplitAccTemplate":"","Order":{"PayTypeID":"ImmediatePay","OrderDate":"2014/09/23","OrderTime":"11:55:30","orderTimeoutDate":"20141019104901","OrderNo":"ON20140924003121121","CurrencyCode":"156","OrderAmount":"2.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"","ExpiredDate":"30","OrderItems":[{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国移动IP卡","UnitPrice":"1.00","Qty":"1","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"},{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国联通IP卡","UnitPrice":"1.00","Qty":"2","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"}]}}},"Signature-Algorithm":"SHA1withRSA","Signature":"rznnJrdj2aKv5f+hgnQ0nN+h1NLcB35YkwtUZ5Glyk4/d3ug+Z6nqbAWIuwTkzSO8mK0jA7aHoM7FnmX4bK+KDjbAeXVbWIP6mmxIVFZ4bHuRyEi9EWWLOK/5VF1QOAtSo67pPUFxnuyrTZJDhh1eCari6WEUle8M8SFmJ8SBFc="}
+2023/10/26-14:15:56 报文长度：1605
+2023/10/26-14:15:56 连线网上支付平台：
+2023/10/26-14:15:56 Connection reset
+2023/10/26-14:15:56 错误代码：[1201]    错误信息：[无法建立socket连接]
+2023/10/26-14:15:56 交易结束==================================================
+2023/10/26-14:16:28 TrustPayClient Java V3.1.7 交易开始==========================
+2023/10/26-14:16:28 检查交易请求是否合法：
+2023/10/26-14:16:28 正确
+2023/10/26-14:16:28 交易报文：
+2023/10/26-14:16:28 完整交易报文：
+2023/10/26-14:16:28 签名后的报文：
+2023/10/26-14:16:28 发送交易报文至网上支付平台：
+2023/10/26-14:16:30 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"TrxType":"PayReq","PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","ReceiveMark":"","ReceiveMerchantType":"","IsBreakAccount":"0","SplitAccTemplate":"","Order":{"PayTypeID":"ImmediatePay","OrderDate":"2014/09/23","OrderTime":"11:55:30","orderTimeoutDate":"20141019104901","OrderNo":"ON20140924003121121","CurrencyCode":"156","OrderAmount":"2.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"","ExpiredDate":"30","OrderItems":[{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国移动IP卡","UnitPrice":"1.00","Qty":"1","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"},{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国联通IP卡","UnitPrice":"1.00","Qty":"2","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"}]}}},"Signature-Algorithm":"SHA1withRSA","Signature":"rznnJrdj2aKv5f+hgnQ0nN+h1NLcB35YkwtUZ5Glyk4/d3ug+Z6nqbAWIuwTkzSO8mK0jA7aHoM7FnmX4bK+KDjbAeXVbWIP6mmxIVFZ4bHuRyEi9EWWLOK/5VF1QOAtSo67pPUFxnuyrTZJDhh1eCari6WEUle8M8SFmJ8SBFc="}
+2023/10/26-14:16:31 报文长度：1605
+2023/10/26-14:16:42 连线网上支付平台：
+2023/10/26-14:16:56 Connection reset
+2023/10/26-14:16:56 错误代码：[1201]    错误信息：[无法建立socket连接]
+2023/10/26-14:16:56 交易结束==================================================
+2023/10/26-14:23:45 TrustPayClient Java V3.1.7 交易开始==========================
+2023/10/26-14:23:45 检查交易请求是否合法：
+2023/10/26-14:23:45 正确
+2023/10/26-14:23:45 交易报文：
+2023/10/26-14:23:45 完整交易报文：
+2023/10/26-14:23:45 签名后的报文：
+2023/10/26-14:23:45 发送交易报文至网上支付平台：
+2023/10/26-14:23:46 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"TrxType":"PayReq","PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","ReceiveMark":"","ReceiveMerchantType":"","IsBreakAccount":"0","SplitAccTemplate":"","Order":{"PayTypeID":"ImmediatePay","OrderDate":"2014/09/23","OrderTime":"11:55:30","orderTimeoutDate":"20141019104901","OrderNo":"ON20140924003asdasdaasdassaddwqe1","CurrencyCode":"156","OrderAmount":"2.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"","ExpiredDate":"30","OrderItems":[{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国移动IP卡","UnitPrice":"1.00","Qty":"1","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"},{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国联通IP卡","UnitPrice":"1.00","Qty":"2","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"}]}}},"Signature-Algorithm":"SHA1withRSA","Signature":"fMNpS4gwKs0zWYyJHz2BlSXSD04eM6wL5nSNYXTFq7/PqPoLkBiG3+hUo6VVmTa9sc4NSfq4gOyj0UfDxSi4WYBFzMPU4evzSY6k64/LCAc+1rQyqw4TDyiz63oDnMgr3nF+VZdZlIDL7pSzCsAHSCmGbaWlZBxroIQdxSnpw8I="}
+2023/10/26-14:23:46 报文长度：1619
+2023/10/26-14:23:46 连线网上支付平台：
+2023/10/26-14:23:49 java.security.cert.CertificateException: Untrusted Server Certificate Chain
+2023/10/26-14:23:49 错误代码：[1201]    错误信息：[无法建立socket连接]
+2023/10/26-14:23:49 交易结束==================================================
+2023/10/26-14:24:02 TrustPayClient Java V3.1.7 交易开始==========================
+2023/10/26-14:24:02 检查交易请求是否合法：
+2023/10/26-14:24:03 正确
+2023/10/26-14:24:03 交易报文：
+2023/10/26-14:24:03 完整交易报文：
+2023/10/26-14:24:03 签名后的报文：
+2023/10/26-14:24:03 发送交易报文至网上支付平台：
+2023/10/26-14:24:04 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"TrxType":"PayReq","PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","ReceiveMark":"","ReceiveMerchantType":"","IsBreakAccount":"0","SplitAccTemplate":"","Order":{"PayTypeID":"ImmediatePay","OrderDate":"2014/09/23","OrderTime":"11:55:30","orderTimeoutDate":"20141019104901","OrderNo":"ON20140924003asdasdaasdassaddwqe1","CurrencyCode":"156","OrderAmount":"2.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"","ExpiredDate":"30","OrderItems":[{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国移动IP卡","UnitPrice":"1.00","Qty":"1","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"},{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国联通IP卡","UnitPrice":"1.00","Qty":"2","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"}]}}},"Signature-Algorithm":"SHA1withRSA","Signature":"fMNpS4gwKs0zWYyJHz2BlSXSD04eM6wL5nSNYXTFq7/PqPoLkBiG3+hUo6VVmTa9sc4NSfq4gOyj0UfDxSi4WYBFzMPU4evzSY6k64/LCAc+1rQyqw4TDyiz63oDnMgr3nF+VZdZlIDL7pSzCsAHSCmGbaWlZBxroIQdxSnpw8I="}
+2023/10/26-14:24:04 报文长度：1619
+2023/10/26-14:24:04 连线网上支付平台：成功
+2023/10/26-14:24:08 提交交易报文：成功
+2023/10/26-14:24:11 等待网上支付平台返回交易结果：成功
+2023/10/26-14:24:40 返回报文：
+                    HTTP/1.1 200 Cache-Control: privateServer: Microsoft-IIS/10.0Set-Cookie: ASP.NET_SessionId=n1og1xjjr251nuqegfem2dx0; path=/; HttpOnly; SameSite=Lax; SecureX-Powered-By: ASP.NETDate: Thu, 26 Oct 2023 06:24:10 GMTContent-Type: text/html;charset=GB18030Set-Cookie: BIGipServerpool-ebus-ism-02-ebus=3609624401.1319.0000; path=/; Httponly; SecureConnection: closeVia: 1.1 ID-1716635745612146 uproxy-18{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"ReturnCode":"2314","ErrorMessage":"商户服务器证书状态不允许交易","TrxType":"PayReq","OrderNo":"ON20140924003asdasdaasdassaddwqe1","PaymentURL":"","OrderAmount":"2.00","OneQRForAll":""},"Signature-Algorithm":"SHA1withRSA","Signature":"GRy7R90Oh6JLEwSpgzPuiPjY+t0V071qC6JBeQ6g5MOe9yChcC758vpGM43ygCgJ/O0H+VWTTXobCLVDtd0fBSHCl+SertFFTq1dLObovGPo81a2RbXCd+lPaLcuG5FSoWf22ufI/k1W5qxqVEKPgT1dqpMEYIbNkJwBjyoTM74="}}
+2023/10/26-14:24:41 接收报文：
+2023/10/26-14:24:41 HTTP/1.1 200 Cache-Control: privateServer: Microsoft-IIS/10.0Set-Cookie: ASP.NET_SessionId=n1og1xjjr251nuqegfem2dx0; path=/; HttpOnly; SameSite=Lax; SecureX-Powered-By: ASP.NETDate: Thu, 26 Oct 2023 06:24:10 GMTContent-Type: text/html;charset=GB18030Set-Cookie: BIGipServerpool-ebus-ism-02-ebus=3609624401.1319.0000; path=/; Httponly; SecureConnection: closeVia: 1.1 ID-1716635745612146 uproxy-18{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"ReturnCode":"2314","ErrorMessage":"商户服务器证书状态不允许交易","TrxType":"PayReq","OrderNo":"ON20140924003asdasdaasdassaddwqe1","PaymentURL":"","OrderAmount":"2.00","OneQRForAll":""},"Signature-Algorithm":"SHA1withRSA","Signature":"GRy7R90Oh6JLEwSpgzPuiPjY+t0V071qC6JBeQ6g5MOe9yChcC758vpGM43ygCgJ/O0H+VWTTXobCLVDtd0fBSHCl+SertFFTq1dLObovGPo81a2RbXCd+lPaLcuG5FSoWf22ufI/k1W5qxqVEKPgT1dqpMEYIbNkJwBjyoTM74="}}
+2023/10/26-14:24:41 验证网上支付平台响应报文的签名：正确
+2023/10/26-14:24:41 生成交易响应对象：
+2023/10/26-14:24:41 交易结果：[2314]
+2023/10/26-14:24:41 错误信息：[商户服务器证书状态不允许交易]
+2023/10/26-14:24:41 交易结束==================================================
+2023/10/26-14:42:58 TrustPayClient Java V3.1.7 交易开始==========================
+2023/10/26-14:42:58 检查交易请求是否合法：
+2023/10/26-14:42:58 正确
+2023/10/26-14:42:58 交易报文：
+2023/10/26-14:42:58 完整交易报文：
+2023/10/26-14:42:58 签名后的报文：
+2023/10/26-14:42:58 发送交易报文至网上支付平台：
+2023/10/26-14:42:58 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"TrxType":"PayReq","PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","ReceiveMark":"","ReceiveMerchantType":"","IsBreakAccount":"0","SplitAccTemplate":"","Order":{"PayTypeID":"ImmediatePay","OrderDate":"2014/09/23","OrderTime":"11:55:30","orderTimeoutDate":"20141019104901","OrderNo":"ON20140924003","CurrencyCode":"156","OrderAmount":"2.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"","ExpiredDate":"30","OrderItems":[{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国移动IP卡","UnitPrice":"1.00","Qty":"1","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"},{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国联通IP卡","UnitPrice":"1.00","Qty":"2","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"}]}}},"Signature-Algorithm":"SHA1withRSA","Signature":"HNnrnyFpbY3WqPgqIPeKqvcQ1cYk2T+nC49UoAfE9ChNWx1osS4pJVEMn92nsgqJgs4Tq/O/U5YeerIx7N9PrBQNr0bw0+dt0Za77Vhlfp65gxexnTB513LlLmxjqmXBkk1WcgFB+Sdl2aGx6Yds6l5BmUKM4hfZVAscUYVv35A="}
+2023/10/26-14:42:58 报文长度：1599
+2023/10/26-14:42:58 连线网上支付平台：
+2023/10/26-14:42:58 java.security.cert.CertificateException: Untrusted Server Certificate Chain
+2023/10/26-14:42:58 错误代码：[1201]    错误信息：[无法建立socket连接]
+2023/10/26-14:42:58 交易结束==================================================
+2023/10/26-15:19:40 TrustPayClient Java V3.1.7 交易开始==========================
+2023/10/26-15:19:40 检查交易请求是否合法：
+2023/10/26-15:19:40 正确
+2023/10/26-15:19:40 交易报文：
+2023/10/26-15:19:40 完整交易报文：
+2023/10/26-15:19:40 签名后的报文：
+2023/10/26-15:19:40 发送交易报文至网上支付平台：
+2023/10/26-15:19:40 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"TrxType":"PayReq","PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","ReceiveMark":"","ReceiveMerchantType":"","IsBreakAccount":"0","SplitAccTemplate":"","Order":{"PayTypeID":"ImmediatePay","OrderDate":"2014/09/23","OrderTime":"11:55:30","orderTimeoutDate":"20141019104901","OrderNo":"ON20140924003","CurrencyCode":"156","OrderAmount":"2.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"","ExpiredDate":"30","OrderItems":[{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国移动IP卡","UnitPrice":"1.00","Qty":"1","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"},{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国联通IP卡","UnitPrice":"1.00","Qty":"2","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"}]}}},"Signature-Algorithm":"SHA1withRSA","Signature":"HNnrnyFpbY3WqPgqIPeKqvcQ1cYk2T+nC49UoAfE9ChNWx1osS4pJVEMn92nsgqJgs4Tq/O/U5YeerIx7N9PrBQNr0bw0+dt0Za77Vhlfp65gxexnTB513LlLmxjqmXBkk1WcgFB+Sdl2aGx6Yds6l5BmUKM4hfZVAscUYVv35A="}
+2023/10/26-15:19:40 报文长度：1599
+2023/10/26-15:19:40 连线网上支付平台：
+2023/10/26-15:19:40 java.security.cert.CertificateException: Untrusted Server Certificate Chain
+2023/10/26-15:19:40 错误代码：[1201]    错误信息：[无法建立socket连接]
+2023/10/26-15:19:40 交易结束==================================================
+2023/10/26-15:20:32 TrustPayClient Java V3.1.7 交易开始==========================
+2023/10/26-15:20:32 检查交易请求是否合法：
+2023/10/26-15:20:32 正确
+2023/10/26-15:20:32 交易报文：
+2023/10/26-15:20:32 完整交易报文：
+2023/10/26-15:20:32 签名后的报文：
+2023/10/26-15:20:32 发送交易报文至网上支付平台：
+2023/10/26-15:20:32 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"TrxType":"PayReq","PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","ReceiveMark":"","ReceiveMerchantType":"","IsBreakAccount":"0","SplitAccTemplate":"","Order":{"PayTypeID":"ImmediatePay","OrderDate":"2014/09/23","OrderTime":"11:55:30","orderTimeoutDate":"20141019104901","OrderNo":"ON20140924003","CurrencyCode":"156","OrderAmount":"2.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"","ExpiredDate":"30","OrderItems":[{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国移动IP卡","UnitPrice":"1.00","Qty":"1","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"},{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国联通IP卡","UnitPrice":"1.00","Qty":"2","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"}]}}},"Signature-Algorithm":"SHA1withRSA","Signature":"HNnrnyFpbY3WqPgqIPeKqvcQ1cYk2T+nC49UoAfE9ChNWx1osS4pJVEMn92nsgqJgs4Tq/O/U5YeerIx7N9PrBQNr0bw0+dt0Za77Vhlfp65gxexnTB513LlLmxjqmXBkk1WcgFB+Sdl2aGx6Yds6l5BmUKM4hfZVAscUYVv35A="}
+2023/10/26-15:20:32 报文长度：1599
+2023/10/26-15:20:32 连线网上支付平台：
+2023/10/26-15:20:32 java.security.cert.CertificateException: Untrusted Server Certificate Chain
+2023/10/26-15:20:32 错误代码：[1201]    错误信息：[无法建立socket连接]
+2023/10/26-15:20:32 交易结束==================================================
+2023/10/26-15:21:15 TrustPayClient Java V3.1.7 交易开始==========================
+2023/10/26-15:21:15 检查交易请求是否合法：
+2023/10/26-15:21:15 正确
+2023/10/26-15:21:15 交易报文：
+2023/10/26-15:21:15 完整交易报文：
+2023/10/26-15:21:15 签名后的报文：
+2023/10/26-15:21:15 发送交易报文至网上支付平台：
+2023/10/26-15:21:18 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"TrxType":"PayReq","PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","ReceiveMark":"","ReceiveMerchantType":"","IsBreakAccount":"0","SplitAccTemplate":"","Order":{"PayTypeID":"ImmediatePay","OrderDate":"2014/09/23","OrderTime":"11:55:30","orderTimeoutDate":"20141019104901","OrderNo":"ON20140924003","CurrencyCode":"156","OrderAmount":"2.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"","ExpiredDate":"30","OrderItems":[{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国移动IP卡","UnitPrice":"1.00","Qty":"1","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"},{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国联通IP卡","UnitPrice":"1.00","Qty":"2","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"}]}}},"Signature-Algorithm":"SHA1withRSA","Signature":"HNnrnyFpbY3WqPgqIPeKqvcQ1cYk2T+nC49UoAfE9ChNWx1osS4pJVEMn92nsgqJgs4Tq/O/U5YeerIx7N9PrBQNr0bw0+dt0Za77Vhlfp65gxexnTB513LlLmxjqmXBkk1WcgFB+Sdl2aGx6Yds6l5BmUKM4hfZVAscUYVv35A="}
+2023/10/26-15:21:18 报文长度：1599
+2023/10/26-15:21:18 连线网上支付平台：
+2023/10/26-15:21:18 java.security.cert.CertificateException: Untrusted Server Certificate Chain
+2023/10/26-15:21:18 错误代码：[1201]    错误信息：[无法建立socket连接]
+2023/10/26-15:21:18 交易结束==================================================
+2023/10/26-15:23:03 TrustPayClient Java V3.1.7 交易开始==========================
+2023/10/26-15:23:03 检查交易请求是否合法：
+2023/10/26-15:23:03 正确
+2023/10/26-15:23:03 交易报文：
+2023/10/26-15:23:03 完整交易报文：
+2023/10/26-15:23:03 签名后的报文：
+2023/10/26-15:23:03 发送交易报文至网上支付平台：
+2023/10/26-15:23:04 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"TrxType":"PayReq","PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","ReceiveMark":"","ReceiveMerchantType":"","IsBreakAccount":"0","SplitAccTemplate":"","Order":{"PayTypeID":"ImmediatePay","OrderDate":"2014/09/23","OrderTime":"11:55:30","orderTimeoutDate":"20141019104901","OrderNo":"ON20140924003","CurrencyCode":"156","OrderAmount":"2.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"","ExpiredDate":"30","OrderItems":[{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国移动IP卡","UnitPrice":"1.00","Qty":"1","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"},{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国联通IP卡","UnitPrice":"1.00","Qty":"2","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"}]}}},"Signature-Algorithm":"SHA1withRSA","Signature":"HNnrnyFpbY3WqPgqIPeKqvcQ1cYk2T+nC49UoAfE9ChNWx1osS4pJVEMn92nsgqJgs4Tq/O/U5YeerIx7N9PrBQNr0bw0+dt0Za77Vhlfp65gxexnTB513LlLmxjqmXBkk1WcgFB+Sdl2aGx6Yds6l5BmUKM4hfZVAscUYVv35A="}
+2023/10/26-15:23:04 报文长度：1599
+2023/10/26-15:23:04 连线网上支付平台：
+2023/10/26-15:23:11 java.security.cert.CertificateException: Untrusted Server Certificate Chain
+2023/10/26-15:23:11 错误代码：[1201]    错误信息：[无法建立socket连接]
+2023/10/26-15:23:11 交易结束==================================================
+2023/10/26-15:23:17 TrustPayClient Java V3.1.7 交易开始==========================
+2023/10/26-15:23:17 检查交易请求是否合法：
+2023/10/26-15:23:17 正确
+2023/10/26-15:23:17 交易报文：
+2023/10/26-15:23:17 完整交易报文：
+2023/10/26-15:23:17 签名后的报文：
+2023/10/26-15:23:17 发送交易报文至网上支付平台：
+2023/10/26-15:23:17 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"TrxType":"PayReq","PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","ReceiveMark":"","ReceiveMerchantType":"","IsBreakAccount":"0","SplitAccTemplate":"","Order":{"PayTypeID":"ImmediatePay","OrderDate":"2014/09/23","OrderTime":"11:55:30","orderTimeoutDate":"20141019104901","OrderNo":"ON20140924003","CurrencyCode":"156","OrderAmount":"2.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"","ExpiredDate":"30","OrderItems":[{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国移动IP卡","UnitPrice":"1.00","Qty":"1","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"},{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国联通IP卡","UnitPrice":"1.00","Qty":"2","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"}]}}},"Signature-Algorithm":"SHA1withRSA","Signature":"HNnrnyFpbY3WqPgqIPeKqvcQ1cYk2T+nC49UoAfE9ChNWx1osS4pJVEMn92nsgqJgs4Tq/O/U5YeerIx7N9PrBQNr0bw0+dt0Za77Vhlfp65gxexnTB513LlLmxjqmXBkk1WcgFB+Sdl2aGx6Yds6l5BmUKM4hfZVAscUYVv35A="}
+2023/10/26-15:23:17 报文长度：1599
+2023/10/26-15:23:17 连线网上支付平台：
+2023/10/26-15:23:18 java.security.cert.CertificateException: Untrusted Server Certificate Chain
+2023/10/26-15:23:18 错误代码：[1201]    错误信息：[无法建立socket连接]
+2023/10/26-15:23:18 交易结束==================================================
+2023/10/26-15:23:23 TrustPayClient Java V3.1.7 交易开始==========================
+2023/10/26-15:23:23 检查交易请求是否合法：
+2023/10/26-15:23:23 正确
+2023/10/26-15:23:23 交易报文：
+2023/10/26-15:23:23 完整交易报文：
+2023/10/26-15:23:23 签名后的报文：
+2023/10/26-15:23:23 发送交易报文至网上支付平台：
+2023/10/26-15:23:23 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"TrxType":"PayReq","PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","ReceiveMark":"","ReceiveMerchantType":"","IsBreakAccount":"0","SplitAccTemplate":"","Order":{"PayTypeID":"ImmediatePay","OrderDate":"2014/09/23","OrderTime":"11:55:30","orderTimeoutDate":"20141019104901","OrderNo":"ON20140924003","CurrencyCode":"156","OrderAmount":"2.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"","ExpiredDate":"30","OrderItems":[{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国移动IP卡","UnitPrice":"1.00","Qty":"1","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"},{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国联通IP卡","UnitPrice":"1.00","Qty":"2","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"}]}}},"Signature-Algorithm":"SHA1withRSA","Signature":"HNnrnyFpbY3WqPgqIPeKqvcQ1cYk2T+nC49UoAfE9ChNWx1osS4pJVEMn92nsgqJgs4Tq/O/U5YeerIx7N9PrBQNr0bw0+dt0Za77Vhlfp65gxexnTB513LlLmxjqmXBkk1WcgFB+Sdl2aGx6Yds6l5BmUKM4hfZVAscUYVv35A="}
+2023/10/26-15:23:23 报文长度：1599
+2023/10/26-15:23:23 连线网上支付平台：
+2023/10/26-15:23:36 java.security.cert.CertificateException: Untrusted Server Certificate Chain
+2023/10/26-15:23:36 错误代码：[1201]    错误信息：[无法建立socket连接]
+2023/10/26-15:23:36 交易结束==================================================
+2023/10/26-15:32:47 TrustPayClient Java V3.1.7 交易开始==========================
+2023/10/26-15:32:47 检查交易请求是否合法：
+2023/10/26-15:32:47 正确
+2023/10/26-15:32:47 交易报文：
+2023/10/26-15:32:47 完整交易报文：
+2023/10/26-15:32:47 签名后的报文：
+2023/10/26-15:32:47 发送交易报文至网上支付平台：
+2023/10/26-15:32:50 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"TrxType":"PayReq","PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","ReceiveMark":"","ReceiveMerchantType":"","IsBreakAccount":"0","SplitAccTemplate":"","Order":{"PayTypeID":"ImmediatePay","OrderDate":"2014/09/23","OrderTime":"11:55:30","orderTimeoutDate":"20141019104901","OrderNo":"ON20140924003","CurrencyCode":"156","OrderAmount":"2.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"","ExpiredDate":"30","OrderItems":[{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国移动IP卡","UnitPrice":"1.00","Qty":"1","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"},{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国联通IP卡","UnitPrice":"1.00","Qty":"2","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"}]}}},"Signature-Algorithm":"SHA1withRSA","Signature":"HNnrnyFpbY3WqPgqIPeKqvcQ1cYk2T+nC49UoAfE9ChNWx1osS4pJVEMn92nsgqJgs4Tq/O/U5YeerIx7N9PrBQNr0bw0+dt0Za77Vhlfp65gxexnTB513LlLmxjqmXBkk1WcgFB+Sdl2aGx6Yds6l5BmUKM4hfZVAscUYVv35A="}
+2023/10/26-15:32:50 报文长度：1599
+2023/10/26-15:32:50 连线网上支付平台：
+2023/10/26-15:32:52 java.security.cert.CertificateException: Untrusted Server Certificate Chain
+2023/10/26-15:32:52 错误代码：[1201]    错误信息：[无法建立socket连接]
+2023/10/26-15:32:52 交易结束==================================================
+2023/10/26-15:33:02 TrustPayClient Java V3.1.7 交易开始==========================
+2023/10/26-15:33:02 检查交易请求是否合法：
+2023/10/26-15:33:02 正确
+2023/10/26-15:33:02 交易报文：
+2023/10/26-15:33:02 完整交易报文：
+2023/10/26-15:33:02 签名后的报文：
+2023/10/26-15:33:02 发送交易报文至网上支付平台：
+2023/10/26-15:33:05 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"TrxType":"PayReq","PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","ReceiveMark":"","ReceiveMerchantType":"","IsBreakAccount":"0","SplitAccTemplate":"","Order":{"PayTypeID":"ImmediatePay","OrderDate":"2014/09/23","OrderTime":"11:55:30","orderTimeoutDate":"20141019104901","OrderNo":"ON20140924003","CurrencyCode":"156","OrderAmount":"2.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"","ExpiredDate":"30","OrderItems":[{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国移动IP卡","UnitPrice":"1.00","Qty":"1","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"},{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国联通IP卡","UnitPrice":"1.00","Qty":"2","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"}]}}},"Signature-Algorithm":"SHA1withRSA","Signature":"HNnrnyFpbY3WqPgqIPeKqvcQ1cYk2T+nC49UoAfE9ChNWx1osS4pJVEMn92nsgqJgs4Tq/O/U5YeerIx7N9PrBQNr0bw0+dt0Za77Vhlfp65gxexnTB513LlLmxjqmXBkk1WcgFB+Sdl2aGx6Yds6l5BmUKM4hfZVAscUYVv35A="}
+2023/10/26-15:33:05 报文长度：1599
+2023/10/26-15:33:05 连线网上支付平台：
+2023/10/26-15:33:11 java.security.cert.CertificateException: Untrusted Server Certificate Chain
+2023/10/26-15:33:14 错误代码：[1201]    错误信息：[无法建立socket连接]
+2023/10/26-15:33:16 交易结束==================================================
+2023/10/26-15:33:20 TrustPayClient Java V3.1.7 交易开始==========================
+2023/10/26-15:33:20 检查交易请求是否合法：
+2023/10/26-15:33:20 正确
+2023/10/26-15:33:20 交易报文：
+2023/10/26-15:33:20 完整交易报文：
+2023/10/26-15:33:20 签名后的报文：
+2023/10/26-15:33:20 发送交易报文至网上支付平台：
+2023/10/26-15:33:22 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"TrxType":"PayReq","PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","ReceiveMark":"","ReceiveMerchantType":"","IsBreakAccount":"0","SplitAccTemplate":"","Order":{"PayTypeID":"ImmediatePay","OrderDate":"2014/09/23","OrderTime":"11:55:30","orderTimeoutDate":"20141019104901","OrderNo":"ON20140924003","CurrencyCode":"156","OrderAmount":"2.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"","ExpiredDate":"30","OrderItems":[{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国移动IP卡","UnitPrice":"1.00","Qty":"1","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"},{"SubMerName":"测试二级商户1","SubMerId":"12345","SubMerMCC":"0000","SubMerchantRemarks":"测试","ProductID":"IP000001","ProductName":"中国联通IP卡","UnitPrice":"1.00","Qty":"2","ProductRemarks":"测试商品","ProductType":"充值类","ProductDiscount":"0.9","ProductExpiredDate":"10"}]}}},"Signature-Algorithm":"SHA1withRSA","Signature":"HNnrnyFpbY3WqPgqIPeKqvcQ1cYk2T+nC49UoAfE9ChNWx1osS4pJVEMn92nsgqJgs4Tq/O/U5YeerIx7N9PrBQNr0bw0+dt0Za77Vhlfp65gxexnTB513LlLmxjqmXBkk1WcgFB+Sdl2aGx6Yds6l5BmUKM4hfZVAscUYVv35A="}
+2023/10/26-15:33:22 报文长度：1599
+2023/10/26-15:33:22 连线网上支付平台：成功
+2023/10/26-15:33:29 提交交易报文：成功
+2023/10/26-15:33:35 等待网上支付平台返回交易结果：
+2023/10/26-17:49:43 错误代码：[1202]    错误信息：[连线中断SocketException！]
+2023/10/26-17:49:43 交易结束==================================================
