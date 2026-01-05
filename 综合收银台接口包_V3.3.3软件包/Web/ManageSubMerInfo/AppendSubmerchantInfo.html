@@ -1,0 +1,195 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>农行线上支付平台-商户接口范例-二级商户迁移补录</title>
+    <link rel="stylesheet" type="text/css" href="../../css/semantic.css">
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/semantic.js"></script>
+    <script src="../../js/util.js"></script>
+</head>
+<body>
+<div class="main ui container" style="padding-top: 100px; padding-bottom: 100px">
+    <div>
+        <div class="ui horizontal divider" style="font-size: large;">二级商户迁移补录</div>
+        <div class="ui message hidden">
+            <i class="close icon"></i>
+            <div class="header">返回报文：</div>
+            <p style="word-break: break-all"></p>
+        </div>
+        <form class="ui form" action='AppendSubmerchantInfo.jsp' method="post">
+            <div class="five fields">
+                <div class="field">
+                    <label>原二级商户号*</label>
+                    <input type="text" name="OriSubMerNo" value="123456789">
+                </div>
+                <div class="field">
+                    <label>商户联系人姓名*</label>
+                    <input type="text" name="SubMerContactName" value="张海华">
+                </div>
+                <div class="field">
+                    <label>商户联系人证件号码*</label>
+                    <input type="text" name="SubMerContactCert" value="370112199408017435">
+                </div>
+                <div class="field">
+                    <label>商户联系人联系电话*</label>
+                    <input type="text" name="MerMobilePhone" value="13811246202">
+                </div>
+                <div class="field">
+                    <label>商户联系人邮箱</label>
+                    <input type="text" name="SubMerContactMail" value="">
+                </div>
+            </div>
+            <div class="five fields">
+                <div class="field">
+                    <label>商户联系人业务标识*</label>
+                    <input type="text" name="SubMerContactType" value="01">
+                </div>
+                <div class="field">
+                    <label>二级商户客服电话*</label>
+                    <input type="text" name="ServicePhone" value="13811246202">
+                </div>
+                <div class="field">
+                    <label>二级商户所属行业*</label>
+                    <input type="text" name="Industry" value="0002">
+                </div>
+                <div class="field">
+                    <label>二级商户经营范围</label>
+                    <input type="text" name="BusinessRange" value="">
+                </div>
+                <div class="field">
+                    <label>地址</label>
+                    <input type="text" name="Address" value="北京市海淀区">
+                </div>
+            </div>
+            <div class="five fields">
+                <div class="field">
+                    <label>法人/经营者证件有效期开始时间*</label>
+                    <input type="text" name="CertificateBegDate" value="20201225">
+                </div>
+                <div class="field">
+                    <label>法人/经营者证件有效期结束时间*</label>
+                    <input type="text" name="FrCertEndDate" value="20231231">
+                </div>
+                <div class="field">
+                    <label>法人/经营者证件居住地址*</label>
+                    <input type="text" name="FrResidence" value="北京市海淀区">
+                </div>
+                <div class="field">
+                    <label>法人/经营者是否为控股股东名称或者实际控制人*</label>
+                    <input type="text" name="FrIsController" value="1">
+                </div>
+                <div class="field">
+                    <label>法人/经营者是否为实际办理业务人员*</label>
+                    <input type="text" name="FrIsAgent" value="1">
+                </div>
+            </div>
+            <div class="five fields">
+                <div class="field">
+                    <label>控股股东名称或者实际控制人姓名</label>
+                    <input type="text" name="ControllerName" value="">
+                </div>
+                <div class="field">
+                    <label>控股股东名称或者实际控制人证件类型</label>
+                    <input type="text" name="ControllerCertType" value="">
+                </div>
+                <div class="field">
+                    <label>控股股东名称或者实际控制人证件号码</label>
+                    <input type="text" name="ControllerCertNo" value="">
+                </div>
+                <div class="field">
+                    <label>控股股东名称或者实际控制人证件有效期开始时间</label>
+                    <input type="text" name="ControllerCertBegDate" value="">
+                </div>
+                <div class="field">
+                    <label>控股股东名称或者实际控制人证件有效期结束时间</label>
+                    <input type="text" name="ControllerCertEndDate" value="">
+                </div>
+            </div>
+            <div class="five fields">
+                <div class="field">
+                    <label>控股股东证件居住地址</label>
+                    <input type="text" name="ControllerResidence" value="">
+                </div>
+                <div class="field">
+                    <label>授权办理业务人员姓名</label>
+                    <input type="text" name="AgentName" value="">
+                </div>
+                <div class="field">
+                    <label>授权办理业务人员证件类型</label>
+                    <input type="text" name="AgentCertType" value="">
+                </div>
+                <div class="field">
+                    <label>授权办理业务人员证件号码</label>
+                    <input type="text" name="AgentCertNo" value="">
+                </div>
+                <div class="field">
+                    <label>授权办理业务人员证件有效期开始时间</label>
+                    <input type="text" name="AgentCertBegDate" value="">
+                </div>
+            </div>
+            <div class="five fields">
+                <div class="field">
+                    <label>授权办理业务人员证件有效期结束时间</label>
+                    <input type="text" name="AgentCertEndDate" value="">
+                </div>
+                <div class="field">
+                    <label>授权办理业务人员证件居住地址</label>
+                    <input type="text" name="AgentResidence" value="">
+                </div>
+                <div class="field">
+                    <label>申请服务*</label>
+                    <input type="text" name="ApplyService" value="111111">
+                </div>
+                <div class="field">
+                    <label>个人商户类别*</label>
+                    <input type="text" name="SubMerClass" value="1">
+                </div>
+                <div class="field">
+                    <label>二级商户经营名称*</label>
+                    <input type="text" name="SubMerchantShortName" value="成都瑞峰商业管理">
+                </div>
+            </div>
+            <div class="five fields">
+                <div class="field">
+                    <label>二级商户证件有效期结束时间</label>
+                    <input type="text" name="EndCertificateValidity" value="">
+                </div>
+            </div>
+            <button class="ui button" type="request" onclick="request(this); return false;">提交</button>
+        </form>
+    </div>
+</div>
+</body>
+<script language="javascript" type="text/javascript">
+    $(function () {
+        $('.ui.selection.dropdown').dropdown();
+    });
+    $('.message .close')
+        .on('click', function () {
+            $(this).closest('.message').transition('fade');
+        });
+
+    function request(object) {
+        let responseBoard = $(object).parent().prev();
+        let responseBoardMessag = responseBoard.children("p:last-child");
+        let form = $(object).parent();
+        let action = form.attr("action");
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: action,
+            data: form.serialize(),
+            success: function (result) {
+                console.log(result);
+                responseBoardMessag.html(JSON.stringify(result));
+                if (!responseBoard.hasClass('visible')) responseBoard.transition('fade');
+            },
+            error: function () {
+                console.log("请求农行网上支付平台失败");
+            }
+        });
+    }
+</script>
+</html>
