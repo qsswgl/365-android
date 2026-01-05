@@ -1,0 +1,203 @@
+
+2023/10/25-10:52:36 TrustPayClient Java V3.2.2 交易开始==========================
+2023/10/25-10:52:36 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","IsBreakAccount":"0","SplitAccTemplate":"","TrxType":"PayReq","Order":{"PayTypeID":"ImmediatePay","OrderDate":"2023/10/25","OrderTime":"10:52:34","orderTimeoutDate":"20171231000000","OrderNo":"No2154588486","CurrencyCode":"156","OrderAmount":"1.00","SubsidyAmount":"1.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"127.0.0.1","ExpiredDate":"30","OrderItems":[{"ProductName":"中国移动IP卡"}],"SplitAccInfoItems":""}}},"Signature-Algorithm":"SHA1withRSA","Signature":"iVVf0ErM0IW2+mDHY0nyuWNW4FC26QGqFmLM41SDzmFjiMzORN1r7uPFAkNYdmCumUXJrZTB0NhGlh2B1+Br7U4k/sz98AGXOKDCWDZda49S+ubuzYh36foAqCyGjhGoNmffakw9zpp5/9NHaYejGwSTvYaZ9SyWxt2Cq5gsTdY="}
+2023/10/25-10:52:36 请求服务器地址:http://10.230.202.238:9989/ebus/ReceiveMerchantTrxReqServlet
+2023/10/25-10:52:36 发送请求报文：成功
+2023/10/25-10:52:36 解析返回报文成功，HTTP响应码:[200]，返回报文：
+                    {"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"ReturnCode":"0000","ErrorMessage":"交易成功","TrxType":"PayReq","OrderNo":"No2154588486","PaymentURL":"http://81.127.39.117:9051/perbankold/PaymentModeNewAct.ebf?TOKEN=16982023564918379661","OrderAmount":"1.00","OneQRForAll":"https://wx.test.abchina.com/mpay1/mobileBank/zh_CN/EBusinessModule/BarcodeH5Act.aspx?token=16982023564918379661"},"Signature-Algorithm":"SHA1withRSA","Signature":"fB11DgFs9NWR8Vq79+md1afIrOOZvE6tzhbRmpLjpprJf7uWHh5gCIMlVDxzfCVxqzrHuhYoNVwqXEb8ShHfAanJrdvgWQr3Wt6eA5F5Hb28yhZyxUO0ZtDwIPQ+vaoDgTjYbuxRzYCDpzympxpiC0ivvAtS0fMGmpXfEIn+BRg="}}
+2023/10/25-10:52:36 验证线上支付平台响应报文的签名：正确
+2023/10/25-10:52:36 交易结束==================================================
+2023/10/25-10:52:45 TrustPayClient Java V3.2.2 交易开始==========================
+2023/10/25-10:52:45 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","IsBreakAccount":"0","SplitAccTemplate":"","TrxType":"PayReq","Order":{"PayTypeID":"ImmediatePay","OrderDate":"2023/10/25","OrderTime":"10:52:34","orderTimeoutDate":"20171231000000","OrderNo":"No2154588486","CurrencyCode":"156","OrderAmount":"1.00","SubsidyAmount":"1.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"127.0.0.1","ExpiredDate":"30","OrderItems":[{"ProductName":"中国移动IP卡"}],"SplitAccInfoItems":""}}},"Signature-Algorithm":"SHA1withRSA","Signature":"iVVf0ErM0IW2+mDHY0nyuWNW4FC26QGqFmLM41SDzmFjiMzORN1r7uPFAkNYdmCumUXJrZTB0NhGlh2B1+Br7U4k/sz98AGXOKDCWDZda49S+ubuzYh36foAqCyGjhGoNmffakw9zpp5/9NHaYejGwSTvYaZ9SyWxt2Cq5gsTdY="}
+2023/10/25-10:52:45 请求服务器地址:http://10.230.202.238:9989/ebus/ReceiveMerchantTrxReqServlet
+2023/10/25-10:52:46 发送请求报文：成功
+2023/10/25-10:52:46 解析返回报文成功，HTTP响应码:[200]，返回报文：
+                    {"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"ReturnCode":"0000","ErrorMessage":"交易成功","TrxType":"PayReq","OrderNo":"No2154588486","PaymentURL":"http://81.127.39.117:9051/perbankold/PaymentModeNewAct.ebf?TOKEN=16982023564918379661","OrderAmount":"1.00","OneQRForAll":"https://wx.test.abchina.com/mpay1/mobileBank/zh_CN/EBusinessModule/BarcodeH5Act.aspx?token=16982023564918379661"},"Signature-Algorithm":"SHA1withRSA","Signature":"fB11DgFs9NWR8Vq79+md1afIrOOZvE6tzhbRmpLjpprJf7uWHh5gCIMlVDxzfCVxqzrHuhYoNVwqXEb8ShHfAanJrdvgWQr3Wt6eA5F5Hb28yhZyxUO0ZtDwIPQ+vaoDgTjYbuxRzYCDpzympxpiC0ivvAtS0fMGmpXfEIn+BRg="}}
+2023/10/25-10:52:46 验证线上支付平台响应报文的签名：正确
+2023/10/25-10:52:46 交易结束==================================================
+2023/10/25-15:56:38 TrustPayClient Java V3.2.2 交易开始==========================
+2023/10/25-15:56:38 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","IsBreakAccount":"0","SplitAccTemplate":"","TrxType":"PayReq","Order":{"PayTypeID":"ImmediatePay","OrderDate":"2023/10/25","OrderTime":"15:56:26","orderTimeoutDate":"20171231000000","OrderNo":"No2155679873","CurrencyCode":"156","OrderAmount":"1.00","SubsidyAmount":"1.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"127.0.0.1","ExpiredDate":"30","OrderItems":[{"ProductName":"中国移动IP卡"}],"SplitAccInfoItems":""}}},"Signature-Algorithm":"SHA1withRSA","Signature":"j5xgJQX7MEy7Gitv44AxDc+pPAg4yEIVmifCqXBZP7IhcgRvyLLwLV8DHa5eWKYk8zAv0fmozbL23/wf7suwFJc+5HZbxrVrXz8rYrfq3b3NUvD6MPtUNTaCb72n8wNMUGTC+mISit8iwZgObI3chVcAlokTYc+UXlvxKWu4py8="}
+2023/10/25-15:56:38 报文长度：1049
+2023/10/25-15:56:38 尝试与线上支付平台建立SSL连接：与线上支付平台建立SSL连接成功
+2023/10/25-15:56:38 准备提交线上支付平台请求报文：成功
+2023/10/25-15:56:38 等待线上支付平台返回交易结果：成功
+2023/10/25-15:56:39 返回响应报文：
+                    HTTP/1.1 200 Cache-Control: privateServer: Microsoft-IIS/10.0Set-Cookie: ASP.NET_SessionId=3w4uqr44qofdpzj1j4bvk11b; path=/; HttpOnly; SameSite=LaxX-Powered-By: ASP.NETDate: Wed, 25 Oct 2023 07:56:39 GMTConnection: closeContent-Type: text/html;charset=GB18030{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"ReturnCode":"0000","ErrorMessage":"交易成功","TrxType":"PayReq","OrderNo":"No2155679873","PaymentURL":"http://81.127.39.117:9051/perbankold/PaymentModeNewAct.ebf?TOKEN=16982205990265477495","OrderAmount":"1.00","OneQRForAll":"https://wx.test.abchina.com/mpay1/mobileBank/zh_CN/EBusinessModule/BarcodeH5Act.aspx?token=16982205990265477495"},"Signature-Algorithm":"SHA1withRSA","Signature":"SsJo5vtFsTrRDPNXyPsx3yycLbHU9xfXqJcd5vtqLJMd4vdwDFyTSqRO4bZH4SV745meLIJcC1urhhWFHus6FDW4dZzW4K3870mVaiMYrR3AKxTLT9mi2zsS3Sidig7S7fWwEdTaQeNuu9Oy6yS24sl113ItS2SAIdVvUBy0fYA="}}
+2023/10/25-15:56:39 验证线上支付平台响应报文的签名：正确
+2023/10/25-15:56:39 交易结束==================================================
+2023/10/25-15:56:58 TrustPayClient Java V3.2.2 交易开始==========================
+2023/10/25-15:56:58 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","IsBreakAccount":"0","SplitAccTemplate":"","TrxType":"PayReq","Order":{"PayTypeID":"ImmediatePay","OrderDate":"2023/10/25","OrderTime":"15:56:26","orderTimeoutDate":"20171231000000","OrderNo":"No2155679873","CurrencyCode":"156","OrderAmount":"1.00","SubsidyAmount":"1.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"127.0.0.1","ExpiredDate":"30","OrderItems":[{"ProductName":"中国移动IP卡"}],"SplitAccInfoItems":""}}},"Signature-Algorithm":"SHA1withRSA","Signature":"j5xgJQX7MEy7Gitv44AxDc+pPAg4yEIVmifCqXBZP7IhcgRvyLLwLV8DHa5eWKYk8zAv0fmozbL23/wf7suwFJc+5HZbxrVrXz8rYrfq3b3NUvD6MPtUNTaCb72n8wNMUGTC+mISit8iwZgObI3chVcAlokTYc+UXlvxKWu4py8="}
+2023/10/25-15:56:58 报文长度：1049
+2023/10/25-15:57:10 尝试与线上支付平台建立SSL连接：与线上支付平台建立SSL连接成功
+2023/10/25-15:57:11 准备提交线上支付平台请求报文：成功
+2023/10/25-15:57:13 等待线上支付平台返回交易结果：成功
+2023/10/25-15:57:13 返回响应报文：
+                    HTTP/1.1 200 Cache-Control: privateServer: Microsoft-IIS/10.0Set-Cookie: ASP.NET_SessionId=2iykqvgrcjs4fop4s4040f5g; path=/; HttpOnly; SameSite=LaxX-Powered-By: ASP.NETDate: Wed, 25 Oct 2023 07:57:12 GMTConnection: closeContent-Type: text/html;charset=GB18030{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"ReturnCode":"0000","ErrorMessage":"交易成功","TrxType":"PayReq","OrderNo":"No2155679873","PaymentURL":"http://81.127.39.117:9051/perbankold/PaymentModeNewAct.ebf?TOKEN=16982205990265477495","OrderAmount":"1.00","OneQRForAll":"https://wx.test.abchina.com/mpay1/mobileBank/zh_CN/EBusinessModule/BarcodeH5Act.aspx?token=16982205990265477495"},"Signature-Algorithm":"SHA1withRSA","Signature":"SsJo5vtFsTrRDPNXyPsx3yycLbHU9xfXqJcd5vtqLJMd4vdwDFyTSqRO4bZH4SV745meLIJcC1urhhWFHus6FDW4dZzW4K3870mVaiMYrR3AKxTLT9mi2zsS3Sidig7S7fWwEdTaQeNuu9Oy6yS24sl113ItS2SAIdVvUBy0fYA="}}
+2023/10/25-15:57:13 验证线上支付平台响应报文的签名：正确
+2023/10/25-15:57:13 交易结束==================================================
+2023/10/25-15:58:19 TrustPayClient Java V3.2.2 交易开始==========================
+2023/10/25-15:58:19 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"TrxType":"UnifiedOrderReq","CommodityType":"0101","PaymentType":"8","PaymentLinkType":"1","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","MerModelFlag":"0","SubMerchantID":"","SubMerNo":"","IsBreakAccount":"0","SplitAccTemplate":"","Order":{"PayTypeID":"MICROPAY","OrderDate":"2023/10/25","OrderTime":"15:58:09","orderTimeoutDate":"20171231000000","OrderNo":"No213109457501","CurrencyCode":"156","OrderAmount":"1.00","SubsidyAmount":"1.00","ExpiredDate":"30","AccountNo":"","OpenID":"","OrderDesc":"订单描述","ReceiverAddress":"北京","BuyIP":"","TerminalNo":"","LimitPay":"no_credit","SplitAccInfoItems":""}}},"Signature-Algorithm":"SHA1withRSA","Signature":"bUMvC0rRtzOqWQlFtATRgwypL0OVaRfcanVSIcWHkhr4WGUvr2OmSe7qWav59EOAHcv9/FnV0J+yMQQ8uJGAr8LY4S1bnE51/mPI0B83D3XdMCxnUbZNL7YZKyiECLyy+I7q5LTJP+limtxe0/8a+YNp27HQjOG4K/S23CgaST8="}
+2023/10/25-15:58:19 报文长度：1026
+2023/10/25-15:58:25 尝试与线上支付平台建立SSL连接：与线上支付平台建立SSL连接成功
+2023/10/25-15:58:25 准备提交线上支付平台请求报文：成功
+2023/10/25-15:58:25 等待线上支付平台返回交易结果：成功
+2023/10/25-15:58:35 返回响应报文：
+                    HTTP/1.1 200 Cache-Control: privateServer: Microsoft-IIS/10.0Set-Cookie: ASP.NET_SessionId=z3fxyax3rlefvjiijcdmmq3p; path=/; HttpOnly; SameSite=LaxX-Powered-By: ASP.NETDate: Wed, 25 Oct 2023 07:58:35 GMTConnection: closeContent-Type: text/html;charset=gb2312{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"ReturnCode":"AP6875","ErrorMessage":"刷卡支付时授权码不能为空","TrxType":"UnifiedOrderReq","OrderNo":"No213109457501","PaymentURL":"","QRURL":"","PrePayID":"","ThirdOrderNo":"","OrderAmount":"1.00","OpenID":"","BankType":"","APP":{"sub_appid":"","partnerid":"","prepayid":"","package":"","noncestr":"","timestamp":"","sign":""},"JSAPI":{"sub_appId":"","timeStamp":"","nonceStr":"","package":"","signType":"MD5","timestamp":"","paySign":""},"HostDate":"","HostTime":""},"Signature-Algorithm":"SHA1withRSA","Signature":"aaJ5RrAEyrY9n1mf41mWVnP0IJ5TRmejWLv0Y9f1xLJlX7rOuUsqnqx9nTZFD3lbiMabFYMjmbvfbuiICK5b8M/OMaEDT7nBi+ht90dWUuDRwz62ss3u3orXiK2sXQOTRVtliQbpaPgu9jaXKc1iBVUgw00r0MbQNy+8xh2LsQM="}}
+2023/10/25-15:58:35 验证线上支付平台响应报文的签名：正确
+2023/10/25-15:58:35 交易结束==================================================
+2023/10/25-15:58:55 TrustPayClient Java V3.2.2 交易开始==========================
+2023/10/25-15:58:55 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","IsBreakAccount":"0","SplitAccTemplate":"","TrxType":"PayReq","Order":{"PayTypeID":"ImmediatePay","OrderDate":"2023/10/25","OrderTime":"15:58:52","orderTimeoutDate":"20171231000000","OrderNo":"No213109457501","CurrencyCode":"156","OrderAmount":"1.00","SubsidyAmount":"1.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"127.0.0.1","ExpiredDate":"30","OrderItems":[{"ProductName":"中国移动IP卡"}],"SplitAccInfoItems":""}}},"Signature-Algorithm":"SHA1withRSA","Signature":"mjXm7Gu3iSb0jeg+OGyJp+lGCl/Q+EhnYQ2+99qYiI/i2ZAcaL4iVvTsO2VsNdZzHv0Rg1zFfb0NY5z3WS/k4uJ4Um2wUTLB+ZbYjDXMnZ4M4j+b4+r3kAL9zWUChCtpd3oCkMeotEGd2f9MfLHBWhAMzs8ivSykT+GfdzQZDkM="}
+2023/10/25-15:58:55 报文长度：1051
+2023/10/25-15:59:00 尝试与线上支付平台建立SSL连接：与线上支付平台建立SSL连接成功
+2023/10/25-15:59:00 准备提交线上支付平台请求报文：成功
+2023/10/25-15:59:00 等待线上支付平台返回交易结果：成功
+2023/10/25-15:59:00 返回响应报文：
+                    HTTP/1.1 200 Date: Wed, 25 Oct 2023 07:59:00 GMTConnection: closeContent-Type: text/html;charset=GBKContent-Length: 551{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"ReturnCode":"PR0007","ErrorMessage":"订单号或者退款订单号已使用，不允许切换订单交易模式，请更换订单号或者退款订单号重试","TrxType":"PayReq","OrderNo":"","PaymentURL":"","OrderAmount":"","OneQRForAll":""},"Signature-Algorithm":"SHA1withRSA","Signature":"oCKNNNcO0m11Hpp71rEBpZD+FOeRslIVj7+lygj8lXeX0n0hz/ZY1ZZ5ryoyRxYdQEqM3c0wCI16Qe0WlX1dKd4HHvODa0vSLK+2PySTDIsdGLTSWVeREFW9V01kmVSQhu3TCVarRn5PX1359Nd9WoRH5tARuIRpAxE5Hp1HsWk="}}
+2023/10/25-15:59:00 验证线上支付平台响应报文的签名：正确
+2023/10/25-15:59:00 交易结束==================================================
+2023/10/25-15:59:31 TrustPayClient Java V3.2.2 交易开始==========================
+2023/10/25-15:59:31 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","IsBreakAccount":"0","SplitAccTemplate":"","TrxType":"PayReq","Order":{"PayTypeID":"ImmediatePay","OrderDate":"2023/10/25","OrderTime":"15:58:52","orderTimeoutDate":"20171231000000","OrderNo":"No213109457501","CurrencyCode":"156","OrderAmount":"1.00","SubsidyAmount":"1.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"127.0.0.1","ExpiredDate":"30","OrderItems":[{"ProductName":"中国移动IP卡"}],"SplitAccInfoItems":""}}},"Signature-Algorithm":"SHA1withRSA","Signature":"mjXm7Gu3iSb0jeg+OGyJp+lGCl/Q+EhnYQ2+99qYiI/i2ZAcaL4iVvTsO2VsNdZzHv0Rg1zFfb0NY5z3WS/k4uJ4Um2wUTLB+ZbYjDXMnZ4M4j+b4+r3kAL9zWUChCtpd3oCkMeotEGd2f9MfLHBWhAMzs8ivSykT+GfdzQZDkM="}
+2023/10/25-15:59:31 报文长度：1051
+2023/10/25-15:59:37 尝试与线上支付平台建立SSL连接：与线上支付平台建立SSL连接成功
+2023/10/25-15:59:46 准备提交线上支付平台请求报文：成功
+2023/10/25-15:59:50 等待线上支付平台返回交易结果：成功
+2023/10/25-15:59:50 返回响应报文：
+                    HTTP/1.1 200 Date: Wed, 25 Oct 2023 07:59:50 GMTConnection: closeContent-Type: text/html;charset=GBKContent-Length: 551{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"ReturnCode":"PR0007","ErrorMessage":"订单号或者退款订单号已使用，不允许切换订单交易模式，请更换订单号或者退款订单号重试","TrxType":"PayReq","OrderNo":"","PaymentURL":"","OrderAmount":"","OneQRForAll":""},"Signature-Algorithm":"SHA1withRSA","Signature":"oCKNNNcO0m11Hpp71rEBpZD+FOeRslIVj7+lygj8lXeX0n0hz/ZY1ZZ5ryoyRxYdQEqM3c0wCI16Qe0WlX1dKd4HHvODa0vSLK+2PySTDIsdGLTSWVeREFW9V01kmVSQhu3TCVarRn5PX1359Nd9WoRH5tARuIRpAxE5Hp1HsWk="}}
+2023/10/25-15:59:50 验证线上支付平台响应报文的签名：正确
+2023/10/25-15:59:50 交易结束==================================================
+2023/10/25-16:04:00 TrustPayClient Java V3.2.2 交易开始==========================
+2023/10/25-16:04:00 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxRequest":{"TrxType":"UnifiedOrderReq","CommodityType":"0101","PaymentType":"8","PaymentLinkType":"1","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","MerModelFlag":"0","SubMerchantID":"","SubMerNo":"","IsBreakAccount":"0","SplitAccTemplate":"","Order":{"PayTypeID":"MICROPAY","OrderDate":"2023/10/25","OrderTime":"16:03:40","orderTimeoutDate":"20171231000000","OrderNo":"No20740340565786","CurrencyCode":"156","OrderAmount":"1.00","SubsidyAmount":"1.00","ExpiredDate":"30","AccountNo":"","OpenID":"","OrderDesc":"订单描述","ReceiverAddress":"北京","BuyIP":"","TerminalNo":"","LimitPay":"no_credit","SplitAccInfoItems":""}}},"Signature-Algorithm":"SHA1withRSA","Signature":"TpK4veOJ1wGfeMMikm2fanHIOjypu+zo63uT92r9gF2d8QpexIwcsEfnoFZW4bTy5fygYAS1Bk0XhQgjhSYPm5jK8pP5u+qc1ls4qMnAm7Q8Cy9STCHwZ2FUp4VneCrkMbad8ZZSqiMK2h4sZUeFopjNFdKAno90UaRDHWQKmMY="}
+2023/10/25-16:04:00 报文长度：1028
+2023/10/25-16:04:01 尝试与线上支付平台建立SSL连接：
+2023/10/25-16:04:01 java.lang.NullPointerException
+                    	at com.abc.pay.client.TrxRequest.sendMessage(TrxRequest.java:383)
+                    	at com.abc.pay.client.TrxRequest.extendPostRequest(TrxRequest.java:131)
+                    	at com.abc.pay.client.TrxRequest.postRequest(TrxRequest.java:94)
+                    	at org.apache.jsp.Web.Order.WeiXinOrderRequest_jsp._jspService(WeiXinOrderRequest_jsp.java:95)
+                    	at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:94)
+                    	at javax.servlet.http.HttpServlet.service(HttpServlet.java:802)
+                    	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:324)
+                    	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:292)
+                    	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:236)
+                    	at javax.servlet.http.HttpServlet.service(HttpServlet.java:802)
+                    	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:237)
+                    	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:157)
+                    	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:214)
+                    	at org.apache.catalina.core.StandardValveContext.invokeNext(StandardValveContext.java:104)
+                    	at org.apache.catalina.core.StandardPipeline.invoke(StandardPipeline.java:520)
+                    	at org.apache.catalina.core.StandardContextValve.invokeInternal(StandardContextValve.java:198)
+                    	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:152)
+                    	at org.apache.catalina.core.StandardValveContext.invokeNext(StandardValveContext.java:104)
+                    	at org.apache.catalina.core.StandardPipeline.invoke(StandardPipeline.java:520)
+                    	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:137)
+                    	at org.apache.catalina.core.StandardValveContext.invokeNext(StandardValveContext.java:104)
+                    	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:118)
+                    	at org.apache.catalina.core.StandardValveContext.invokeNext(StandardValveContext.java:102)
+                    	at org.apache.catalina.core.StandardPipeline.invoke(StandardPipeline.java:520)
+                    	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+                    	at org.apache.catalina.core.StandardValveContext.invokeNext(StandardValveContext.java:104)
+                    	at org.apache.catalina.core.StandardPipeline.invoke(StandardPipeline.java:520)
+                    	at org.apache.catalina.core.ContainerBase.invoke(ContainerBase.java:929)
+                    	at org.apache.coyote.tomcat5.CoyoteAdapter.service(CoyoteAdapter.java:160)
+                    	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:799)
+                    	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.processConnection(Http11Protocol.java:705)
+                    	at org.apache.tomcat.util.net.TcpWorkerThread.runIt(PoolTcpEndpoint.java:577)
+                    	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:683)
+                    	at java.lang.Thread.run(Thread.java:745)
+                    
+2023/10/25-16:04:01 错误代码：[1201], 错误信息：[无法连线线上支付平台,与线上支付平台建立SSL连接失败]
+2023/10/25-16:04:01 交易结束==================================================
+2023/10/25-16:05:27 TrustPayClient Java V3.2.2 交易开始==========================
+2023/10/25-16:05:27 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxRequest":{"TrxType":"UnifiedOrderReq","CommodityType":"0101","PaymentType":"8","PaymentLinkType":"1","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","MerModelFlag":"0","SubMerchantID":"","SubMerNo":"","IsBreakAccount":"0","SplitAccTemplate":"","Order":{"PayTypeID":"MICROPAY","OrderDate":"2023/10/25","OrderTime":"16:03:40","orderTimeoutDate":"20171231000000","OrderNo":"No20740340565786","CurrencyCode":"156","OrderAmount":"1.00","SubsidyAmount":"1.00","ExpiredDate":"30","AccountNo":"","OpenID":"","OrderDesc":"订单描述","ReceiverAddress":"北京","BuyIP":"","TerminalNo":"","LimitPay":"no_credit","SplitAccInfoItems":""}}},"Signature-Algorithm":"SHA1withRSA","Signature":"TpK4veOJ1wGfeMMikm2fanHIOjypu+zo63uT92r9gF2d8QpexIwcsEfnoFZW4bTy5fygYAS1Bk0XhQgjhSYPm5jK8pP5u+qc1ls4qMnAm7Q8Cy9STCHwZ2FUp4VneCrkMbad8ZZSqiMK2h4sZUeFopjNFdKAno90UaRDHWQKmMY="}
+2023/10/25-16:05:27 报文长度：1028
+2023/10/25-16:05:33 尝试与线上支付平台建立SSL连接：
+2023/10/25-16:05:33 java.lang.NullPointerException
+                    	at com.abc.pay.client.TrxRequest.sendMessage(TrxRequest.java:383)
+                    	at com.abc.pay.client.TrxRequest.extendPostRequest(TrxRequest.java:131)
+                    	at com.abc.pay.client.TrxRequest.postRequest(TrxRequest.java:94)
+                    	at org.apache.jsp.Web.Order.WeiXinOrderRequest_jsp._jspService(WeiXinOrderRequest_jsp.java:95)
+                    	at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:94)
+                    	at javax.servlet.http.HttpServlet.service(HttpServlet.java:802)
+                    	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:324)
+                    	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:292)
+                    	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:236)
+                    	at javax.servlet.http.HttpServlet.service(HttpServlet.java:802)
+                    	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:237)
+                    	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:157)
+                    	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:214)
+                    	at org.apache.catalina.core.StandardValveContext.invokeNext(StandardValveContext.java:104)
+                    	at org.apache.catalina.core.StandardPipeline.invoke(StandardPipeline.java:520)
+                    	at org.apache.catalina.core.StandardContextValve.invokeInternal(StandardContextValve.java:198)
+                    	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:152)
+                    	at org.apache.catalina.core.StandardValveContext.invokeNext(StandardValveContext.java:104)
+                    	at org.apache.catalina.core.StandardPipeline.invoke(StandardPipeline.java:520)
+                    	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:137)
+                    	at org.apache.catalina.core.StandardValveContext.invokeNext(StandardValveContext.java:104)
+                    	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:118)
+                    	at org.apache.catalina.core.StandardValveContext.invokeNext(StandardValveContext.java:102)
+                    	at org.apache.catalina.core.StandardPipeline.invoke(StandardPipeline.java:520)
+                    	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+                    	at org.apache.catalina.core.StandardValveContext.invokeNext(StandardValveContext.java:104)
+                    	at org.apache.catalina.core.StandardPipeline.invoke(StandardPipeline.java:520)
+                    	at org.apache.catalina.core.ContainerBase.invoke(ContainerBase.java:929)
+                    	at org.apache.coyote.tomcat5.CoyoteAdapter.service(CoyoteAdapter.java:160)
+                    	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:799)
+                    	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.processConnection(Http11Protocol.java:705)
+                    	at org.apache.tomcat.util.net.TcpWorkerThread.runIt(PoolTcpEndpoint.java:577)
+                    	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:683)
+                    	at java.lang.Thread.run(Thread.java:745)
+                    
+2023/10/25-16:05:33 错误代码：[1201], 错误信息：[无法连线线上支付平台,与线上支付平台建立SSL连接失败]
+2023/10/25-16:05:33 交易结束==================================================
+2023/10/25-16:07:45 TrustPayClient Java V3.2.2 交易开始==========================
+2023/10/25-16:07:45 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881909990705"},"TrxRequest":{"TrxType":"UnifiedOrderReq","CommodityType":"0101","PaymentType":"8","PaymentLinkType":"1","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","MerModelFlag":"0","SubMerchantID":"","SubMerNo":"","IsBreakAccount":"0","SplitAccTemplate":"","Order":{"PayTypeID":"MICROPAY","OrderDate":"2023/10/25","OrderTime":"16:03:40","orderTimeoutDate":"20171231000000","OrderNo":"No20740340565786","CurrencyCode":"156","OrderAmount":"1.00","SubsidyAmount":"1.00","ExpiredDate":"30","AccountNo":"","OpenID":"","OrderDesc":"订单描述","ReceiverAddress":"北京","BuyIP":"","TerminalNo":"","LimitPay":"no_credit","SplitAccInfoItems":""}}},"Signature-Algorithm":"SHA1withRSA","Signature":"TpK4veOJ1wGfeMMikm2fanHIOjypu+zo63uT92r9gF2d8QpexIwcsEfnoFZW4bTy5fygYAS1Bk0XhQgjhSYPm5jK8pP5u+qc1ls4qMnAm7Q8Cy9STCHwZ2FUp4VneCrkMbad8ZZSqiMK2h4sZUeFopjNFdKAno90UaRDHWQKmMY="}
+2023/10/25-16:07:45 报文长度：1028
+2023/10/25-16:07:54 尝试与线上支付平台建立SSL连接：
+2023/10/25-16:12:17 java.lang.NullPointerException
+                    	at com.abc.pay.client.TrxRequest.sendMessage(TrxRequest.java:383)
+                    	at com.abc.pay.client.TrxRequest.extendPostRequest(TrxRequest.java:131)
+                    	at com.abc.pay.client.TrxRequest.postRequest(TrxRequest.java:94)
+                    	at org.apache.jsp.Web.Order.WeiXinOrderRequest_jsp._jspService(WeiXinOrderRequest_jsp.java:95)
+                    	at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:94)
+                    	at javax.servlet.http.HttpServlet.service(HttpServlet.java:802)
+                    	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:324)
+                    	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:292)
+                    	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:236)
+                    	at javax.servlet.http.HttpServlet.service(HttpServlet.java:802)
+                    	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:237)
+                    	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:157)
+                    	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:214)
+                    	at org.apache.catalina.core.StandardValveContext.invokeNext(StandardValveContext.java:104)
+                    	at org.apache.catalina.core.StandardPipeline.invoke(StandardPipeline.java:520)
+                    	at org.apache.catalina.core.StandardContextValve.invokeInternal(StandardContextValve.java:198)
+                    	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:152)
+                    	at org.apache.catalina.core.StandardValveContext.invokeNext(StandardValveContext.java:104)
+                    	at org.apache.catalina.core.StandardPipeline.invoke(StandardPipeline.java:520)
+                    	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:137)
+                    	at org.apache.catalina.core.StandardValveContext.invokeNext(StandardValveContext.java:104)
+                    	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:118)
+                    	at org.apache.catalina.core.StandardValveContext.invokeNext(StandardValveContext.java:102)
+                    	at org.apache.catalina.core.StandardPipeline.invoke(StandardPipeline.java:520)
+                    	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+                    	at org.apache.catalina.core.StandardValveContext.invokeNext(StandardValveContext.java:104)
+                    	at org.apache.catalina.core.StandardPipeline.invoke(StandardPipeline.java:520)
+                    	at org.apache.catalina.core.ContainerBase.invoke(ContainerBase.java:929)
+                    	at org.apache.coyote.tomcat5.CoyoteAdapter.service(CoyoteAdapter.java:160)
+                    	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:799)
+                    	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.processConnection(Http11Protocol.java:705)
+                    	at org.apache.tomcat.util.net.TcpWorkerThread.runIt(PoolTcpEndpoint.java:577)
+                    	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:683)
+                    	at java.lang.Thread.run(Thread.java:745)
+                    
+2023/10/25-16:12:17 错误代码：[1201], 错误信息：[无法连线线上支付平台,与线上支付平台建立SSL连接失败]
+2023/10/25-16:12:17 交易结束==================================================
