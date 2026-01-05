@@ -1,0 +1,10 @@
+
+2023/03/14-16:02:28 TrustPayClient Java V3.2.2 交易开始==========================
+2023/03/14-16:02:28 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","IsBreakAccount":"0","SplitAccTemplate":"","TrxType":"OLScanPayOrderReq","Order":{"PayTypeID":"OLScanPay","OrderDate":"2023/03/14","OrderTime":"15:59:47","orderTimeoutDate":"20231231000000","OrderNo":"No20230314155947812525","CurrencyCode":"156","OrderAmount":"1.00","SubsidyAmount":"1.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"127.0.0.1","ExpiredDate":"30","OrderItems":[{"ProductName":"中国移动IP卡"}],"SplitAccInfoItems":""}}},"Signature-Algorithm":"SHA1withRSA","Signature":"msSmydkL38PmKVblWcdZbj6fatAkHhdzTqhxwqduMtKN8B1aR/RKKle+8tKCzaqXX5x/A6A0N9+BzIV0Mo1edxxhXAFnQ2fcvdtoSawBFCQk165qd17G8LDGKpX7+wSwq/+sYAlH4MkDhCn/ppCW+/cv1vdVwTrf7aadvMgPYu4="}
+2023/03/14-16:02:28 请求服务器地址:http://10.230.202.238:9989/ebus/ReceiveMerchantTrxReqServlet
+2023/03/14-16:02:29 发送请求报文：成功
+2023/03/14-16:02:29 解析返回报文成功，HTTP响应码:[200]，返回报文：
+                    {"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Common":{"Channel":""},"Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"ReturnCode":"0000","ErrorMessage":"交易成功","TrxType":"OLScanPayOrderReq","OrderNo":"No20230314155947812525","ScanPayQRURL":"https://wx.test.abchina.com/mpay1/mobileBank/zh_CN/EBusinessModule/BarcodeH5Act.aspx?token=16787809494223552875","OrderAmount":"1.00"},"Signature-Algorithm":"SHA1withRSA","Signature":"WAPb2MF8peItbRNuDj+dM9ZICiqp2MN9+jynZAJp78Kl2zGLUduYWYmsRfWxxlRoiQUZLFYfR2zTnUQQ3eTeDFMlBOYXS/QxLn5nCkOlSPGQfwuQ8iRKGSC2y6iGA6G1ozt/WBPNYFyp8GuVmFvzzydh3rA/hl91HEwz3DnfSaE="}}
+2023/03/14-16:02:29 验证线上支付平台响应报文的签名：正确
+2023/03/14-16:02:29 交易结束==================================================
