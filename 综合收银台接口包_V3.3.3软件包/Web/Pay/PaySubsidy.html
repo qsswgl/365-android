@@ -1,0 +1,129 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>农行线上支付平台-营销补贴服务</title>
+    <link rel="stylesheet" type="text/css" href="../../css/semantic.css">
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/semantic.js"></script>
+    <script src="../../js/util.js"></script>
+</head>
+<body>
+<div class="main ui container" style="padding-top: 100px; padding-bottom: 100px">
+    <div>
+        <div class="ui horizontal divider" style="font-size: large;">补贴支付</div>
+        <div class="ui message hidden">
+            <i class="close icon"></i>
+            <div class="header">返回报文：</div>
+            <p style="word-break: break-all"></p>
+        </div>
+        <form class="ui form" action="SubsidyTransfer.jsp" method="post">
+            <div class="five fields">
+                <div class="field">
+                    <label>订单号</label>
+                    <input type="text" name="OrderNo" value="No123123123">
+                </div>
+                <div class="field">
+                    <label>内转号</label>
+                    <input type="text" name="InternalTransferNo">
+                </div>
+                <div class="field">
+                    <label>出金账子户</label>
+                    <input type="text" name="RemitterSubMerchantNo" value="001">
+                </div>
+                <div class="field">
+                    <label>入金子账户</label>
+                    <input type="text" name="RemitteeSubMerchantNo" value="002">
+                </div>
+                <div class="field">
+                    <label>补贴金额</label>
+                    <input type="text" name="Amount" value="0.01">
+                </div>
+            </div>
+            <button class="ui button" type="request" onclick="request(this); return false;">提交</button>
+        </form>
+    </div>
+    <div>
+        <div class="ui horizontal divider" style="font-size: large;">补贴退款</div>
+        <div class="ui message hidden">
+            <i class="close icon"></i>
+            <div class="header">返回报文：</div>
+            <p style="word-break: break-all"></p>
+        </div>
+        <form class="ui form" action="SubsidyRefund.jsp" method="post">
+            <div class="five fields">
+                <div class="field">
+                    <label>订单号</label>
+                    <input type="text" name="OrderNo" value="No123123123">
+                </div>
+                <div class="field">
+                    <label>内转号</label>
+                    <input type="text" name="InternalTransferNo">
+                </div>
+                <div class="field">
+                    <label>出金账子户</label>
+                    <input type="text" name="RemitterSubMerchantNo" value="001">
+                </div>
+                <div class="field">
+                    <label>入金子账户</label>
+                    <input type="text" name="RemitteeSubMerchantNo" value="002">
+                </div>
+                <div class="field">
+                    <label>退款金额</label>
+                    <input type="text" name="Amount" value="0.01">
+                </div>
+            </div>
+            <button class="ui button" type="request" onclick="request(this); return false;">提交</button>
+        </form>
+    </div>
+    <div>
+        <div class="ui horizontal divider" style="font-size: large;">交易查询</div>
+        <div class="ui message hidden">
+            <i class="close icon"></i>
+            <div class="header">返回报文：</div>
+            <p style="word-break: break-all"></p>
+        </div>
+        <form class="ui form" action="QuerySubsidy.jsp" method="post">
+            <div class="five fields">
+                <div class="field">
+                    <label>内转号</label>
+                    <input type="text" name="txtInternalTransferNo" value="TransferNo123123123">
+                </div>
+            </div>
+            <button class="ui button" type="request" onclick="request(this); return false;">提交</button>
+        </form>
+    </div>
+</div>
+<script>
+    $(function () {
+        $("input[name='InternalTransferNo']").val("Transfer" + getOrderNo());
+    });
+    $('.message .close')
+        .on('click', function () {
+            $(this).closest('.message').transition('fade');
+        });
+
+    function request(object) {
+        let responseBoard = $(object).parent().prev();
+        let responseBoardMessag = responseBoard.children("p:last-child");
+        let form = $(object).parent();
+        let action = $(object).parent().attr("action");
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: action,
+            data: form.serialize(),
+            success: function (result) {
+                console.log(result)
+                responseBoardMessag.html(JSON.stringify(result));
+                if (!responseBoard.hasClass('visible')) responseBoard.transition('fade');
+            },
+            error: function () {
+                console.log("请求农行网上支付平台失败");
+            }
+        });
+    }
+</script>
+</body>
+</html>
