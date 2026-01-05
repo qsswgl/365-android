@@ -1,0 +1,119 @@
+
+2022/10/10-09:40:39 TrustPayClient Java V3.2.2 交易开始==========================
+2022/10/10-09:40:39 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","IsBreakAccount":"0","SplitAccTemplate":"","TrxType":"ScanPayOrderReq","Order":{"PayTypeID":"ImmediatePay","OrderDate":"2022/10/10","OrderTime":"09:40:37","orderTimeoutDate":"20171231000000","OrderNo":"No2042094037465441","CurrencyCode":"156","OrderAmount":"1.00","SubsidyAmount":"1.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"127.0.0.1","ExpiredDate":"30","OrderItems":[{"ProductName":"中国移动IP卡"}],"SplitAccInfoItems":"","TerminalNo":""}}},"Signature-Algorithm":"SHA1withRSA","Signature":"hqEaYncibHsOoyOPTylGxrt4IuMnFODhkd6O96nof1YPUNef8YsnSSqnz2WylUjDYlvk483G3BWxbFVtXw/04UQJwyQfVJBnr2zsirzCzcV/Iqk/pUW4PA81oOd++IKl1nmODRbNY81EBABJgrx0Dmtvn462CcUbSQlj/OQBbug="}
+2022/10/10-09:40:39 请求服务器地址:http://127.0.0.1:9051/ebus/ReceiveMerchantTrxReqServlet
+2022/10/10-09:40:50 发送请求报文：成功
+2022/10/10-09:40:50 解析返回报文成功，HTTP响应码:[200]，返回报文：
+                    {"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Common":{"Channel":""},"Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"ReturnCode":"0000","ErrorMessage":"交易成功","TrxType":"ScanPayOrderReq","OrderNo":"No2042094037465441","OrderAmount":"1.00","ScanPayQRURL":"https://wx.test.abchina.com/mpay1/mobileBank/zh_CN/EBusinessModule/BarcodeH5Act.aspx?token=16653660493361560801"},"Signature-Algorithm":"SHA1withRSA","Signature":"SJH67LeT33Um0HIpWQ69HyUnLaBpQCviBt0S2ew86fXsXDD1t/QiorZhGuKitlnDxSIAtJYzbMvlMhj53b6byV05TIBJcjbwGriMYoLjH3VvieNbycBAt2YBtmEWEWXZb5/iQtL1WpkcDNxC+FXG1345nXbMqvwzZ3L1GlZxb0Q="}}
+2022/10/10-09:40:50 验证线上支付平台响应报文的签名：正确
+2022/10/10-09:40:50 交易结束==================================================
+2022/10/10-09:41:17 TrustPayClient Java V3.2.2 交易开始==========================
+2022/10/10-09:41:17 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","IsBreakAccount":"0","SplitAccTemplate":"","TrxType":"OLScanPayOrderReq","Order":{"PayTypeID":"OnlineScanPay","OrderDate":"2022/10/10","OrderTime":"09:41:15","orderTimeoutDate":"20171231000000","OrderNo":"No2042094115856117","CurrencyCode":"156","OrderAmount":"1.00","SubsidyAmount":"1.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"127.0.0.1","ExpiredDate":"30","OrderItems":[{"ProductName":"中国移动IP卡"}],"SplitAccInfoItems":""}}},"Signature-Algorithm":"SHA1withRSA","Signature":"jP5L8tbrIRGSvq/Ob1vSRRT1C42IS1v7pYm60xYHm8/lI8khnF9UNeCmLRdPWUqpeyUI6Jyrwef4wkAjGj8D+kw3OtLzkU/vF+Zz9XOtDPu6tcZMb/D/QjvWENPIMYHmJIMkHm5oa/ijhE7y05nifla523qZVRzxFS/w+MQBBwM="}
+2022/10/10-09:41:17 请求服务器地址:http://127.0.0.1:9051/ebus/ReceiveMerchantTrxReqServlet
+2022/10/10-09:41:17 发送请求报文：成功
+2022/10/10-09:41:17 解析返回报文成功，HTTP响应码:[200]，返回报文：
+                    
+2022/10/10-09:41:17 com.abc.pay.client.TrxException: 无法辨识线上支付平台的响应报文
+                    	at com.abc.pay.client.TrxRequest.sendMessage(TrxRequest.java:300)
+                    	at com.abc.pay.client.TrxRequest.extendPostRequest(TrxRequest.java:126)
+                    	at com.abc.pay.client.TrxRequest.postRequest(TrxRequest.java:89)
+                    	at org.apache.jsp.Web.Order.OLScanPayOrderReq_jsp._jspService(OLScanPayOrderReq_jsp.java:92)
+                    	at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:94)
+                    	at javax.servlet.http.HttpServlet.service(HttpServlet.java:802)
+                    	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:324)
+                    	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:292)
+                    	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:236)
+                    	at javax.servlet.http.HttpServlet.service(HttpServlet.java:802)
+                    	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:237)
+                    	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:157)
+                    	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:214)
+                    	at org.apache.catalina.core.StandardValveContext.invokeNext(StandardValveContext.java:104)
+                    	at org.apache.catalina.core.StandardPipeline.invoke(StandardPipeline.java:520)
+                    	at org.apache.catalina.core.StandardContextValve.invokeInternal(StandardContextValve.java:198)
+                    	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:152)
+                    	at org.apache.catalina.core.StandardValveContext.invokeNext(StandardValveContext.java:104)
+                    	at org.apache.catalina.core.StandardPipeline.invoke(StandardPipeline.java:520)
+                    	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:137)
+                    	at org.apache.catalina.core.StandardValveContext.invokeNext(StandardValveContext.java:104)
+                    	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:118)
+                    	at org.apache.catalina.core.StandardValveContext.invokeNext(StandardValveContext.java:102)
+                    	at org.apache.catalina.core.StandardPipeline.invoke(StandardPipeline.java:520)
+                    	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+                    	at org.apache.catalina.core.StandardValveContext.invokeNext(StandardValveContext.java:104)
+                    	at org.apache.catalina.core.StandardPipeline.invoke(StandardPipeline.java:520)
+                    	at org.apache.catalina.core.ContainerBase.invoke(ContainerBase.java:929)
+                    	at org.apache.coyote.tomcat5.CoyoteAdapter.service(CoyoteAdapter.java:160)
+                    	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:799)
+                    	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.processConnection(Http11Protocol.java:705)
+                    	at org.apache.tomcat.util.net.TcpWorkerThread.runIt(PoolTcpEndpoint.java:577)
+                    	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:683)
+                    	at java.lang.Thread.run(Thread.java:745)
+                    
+2022/10/10-09:41:17 [HTTPClient] - 发送交易报文失败:无法辨识线上支付平台的响应报文
+2022/10/10-09:41:17 错误代码：[1205], 错误信息：[无法辨识线上支付平台的响应报文,无法辨识线上支付平台的响应报文]
+2022/10/10-09:41:17 交易结束==================================================
+2022/10/10-09:42:12 TrustPayClient Java V3.2.2 交易开始==========================
+2022/10/10-09:42:12 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","IsBreakAccount":"0","SplitAccTemplate":"","TrxType":"OLScanPayOrderReq","Order":{"PayTypeID":"OnlineScanPay","OrderDate":"2022/10/10","OrderTime":"09:41:15","orderTimeoutDate":"20171231000000","OrderNo":"No2042094115856117","CurrencyCode":"156","OrderAmount":"1.00","SubsidyAmount":"1.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"127.0.0.1","ExpiredDate":"30","OrderItems":[{"ProductName":"中国移动IP卡"}],"SplitAccInfoItems":""}}},"Signature-Algorithm":"SHA1withRSA","Signature":"jP5L8tbrIRGSvq/Ob1vSRRT1C42IS1v7pYm60xYHm8/lI8khnF9UNeCmLRdPWUqpeyUI6Jyrwef4wkAjGj8D+kw3OtLzkU/vF+Zz9XOtDPu6tcZMb/D/QjvWENPIMYHmJIMkHm5oa/ijhE7y05nifla523qZVRzxFS/w+MQBBwM="}
+2022/10/10-09:42:12 请求服务器地址:http://127.0.0.1:9051/ebus/ReceiveMerchantTrxReqServlet
+2022/10/10-09:42:16 发送请求报文：成功
+2022/10/10-09:42:16 解析返回报文成功，HTTP响应码:[200]，返回报文：
+                    {"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Common":{"Channel":""},"Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"ReturnCode":"0000","ErrorMessage":"交易成功","TrxType":"OLScanPayOrderReq","OrderNo":"No2042094115856117","OneQRForAll":"https://wx.test.abchina.com/mpay1/mobileBank/zh_CN/EBusinessModule/BarcodeH5Act.aspx?token=16653661359760853015","OrderAmount":"1.00","PaymentURL":"http://10.230.204.198:9053/perbankold/PaymentModeNewAct.ebf?TOKEN=16653661359760853015"},"Signature-Algorithm":"SHA1withRSA","Signature":"PnSLyVBzP+9S++ohYiDhRJqrp7JiI4Z2uo2eRnaevT270Yw9vjUOQ3kxGVXSgp1dxVC4CiqNS1Y+Eqzsu4ikb9S1zVd5wxTD1y8/BnqvROGvlqPvl/6cFreOU/TFnkq9UwbtZtV7tBiS9DyxF8p2bcRJaPXVeOd2i2uI7SepRrQ="}}
+2022/10/10-09:42:16 验证线上支付平台响应报文的签名：正确
+2022/10/10-09:42:16 交易结束==================================================
+2022/10/10-10:05:10 TrustPayClient Java V3.2.2 交易开始==========================
+2022/10/10-10:05:10 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","IsBreakAccount":"0","SplitAccTemplate":"","TrxType":"OLScanPayOrderReq","Order":{"PayTypeID":"OnlineScanPay","OrderDate":"2022/10/10","OrderTime":"09:51:42","orderTimeoutDate":"20221231000000","OrderNo":"No2042095142682286","CurrencyCode":"156","OrderAmount":"1.00","SubsidyAmount":"1.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"127.0.0.1","ExpiredDate":"30","OrderItems":[{"ProductName":"中国移动IP卡"}],"SplitAccInfoItems":""}}},"Signature-Algorithm":"SHA1withRSA","Signature":"bd5JGYaMG/R6thcBWSIchZqwnvlUt90miGE16mlscQxFTgXlq7i+FWSyjKrtDqo7iKar11h/TT/6/6Mh69FN2nHcglsOm/Al06o2k+6ivYj6JBQBOyahQzgPqGDp0/6xpGsU+TCStg58uWpvIRidKJOrqeuKANmoO3IKHaiKLXQ="}
+2022/10/10-10:05:10 请求服务器地址:http://127.0.0.1:9051/ebus/ReceiveMerchantTrxReqServlet
+2022/10/10-10:05:17 发送请求报文：成功
+2022/10/10-10:05:17 解析返回报文成功，HTTP响应码:[200]，返回报文：
+                    {"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Common":{"Channel":""},"Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"ReturnCode":"0000","ErrorMessage":"交易成功","TrxType":"OLScanPayOrderReq","OrderNo":"No2042095142682286","OneQRForAll":"https://wx.test.abchina.com/mpay1/mobileBank/zh_CN/EBusinessModule/BarcodeH5Act.aspx?token=16653675165889807140","OrderAmount":"1.00","PaymentURL":"http://10.230.204.198:9053/perbankold/PaymentModeNewAct.ebf?TOKEN=16653675165889807140"},"Signature-Algorithm":"SHA1withRSA","Signature":"JfsVx1JSscWX4WqafxDdntlkplCMd4nHGKin5fJ0/Lzjh7iEYqveRaz+JdBzBDdrLGUltCflF/VRCGD6bb0Yq7vNfhKwBmdGHwJZIcn3u5g6w6eIpP0NG/rSjfMT8/3EJ3u4BYZbgNIA+2ZnkrN6b7SOg5dEH5GQCSrL6zSUo1g="}}
+2022/10/10-10:05:17 验证线上支付平台响应报文的签名：正确
+2022/10/10-10:05:17 交易结束==================================================
+2022/10/10-10:13:53 TrustPayClient Java V3.2.2 交易开始==========================
+2022/10/10-10:13:53 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","IsBreakAccount":"0","SplitAccTemplate":"","TrxType":"OLScanPayOrderReq","Order":{"PayTypeID":"OnlineScanPay","OrderDate":"2022/10/10","OrderTime":"09:51:42","orderTimeoutDate":"20221231000000","OrderNo":"No2042095142682286","CurrencyCode":"156","OrderAmount":"1.00","SubsidyAmount":"1.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"127.0.0.1","ExpiredDate":"30","OrderItems":[{"ProductName":"中国移动IP卡"}],"SplitAccInfoItems":""}}},"Signature-Algorithm":"SHA1withRSA","Signature":"bd5JGYaMG/R6thcBWSIchZqwnvlUt90miGE16mlscQxFTgXlq7i+FWSyjKrtDqo7iKar11h/TT/6/6Mh69FN2nHcglsOm/Al06o2k+6ivYj6JBQBOyahQzgPqGDp0/6xpGsU+TCStg58uWpvIRidKJOrqeuKANmoO3IKHaiKLXQ="}
+2022/10/10-10:13:53 请求服务器地址:http://127.0.0.1:9051/ebus/ReceiveMerchantTrxReqServlet
+2022/10/10-10:13:53 发送请求报文：成功
+2022/10/10-10:13:53 解析返回报文成功，HTTP响应码:[200]，返回报文：
+                    {"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Common":{"Channel":""},"Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"ReturnCode":"2306","ErrorMessage":"此账单编号已存在","TrxType":"OLScanPayOrderReq","OrderNo":"No2042095142682286","OneQRForAll":"","OrderAmount":"1.00","PaymentURL":""},"Signature-Algorithm":"SHA1withRSA","Signature":"n5fdr0yYUfqcazUOC9IsrpkU248OGCiw/SgSXLaVB0me6ZuJ8LkVosrDl3cr6XhGO2UtLoEIIY9Bg+MohCr4o+Zl3fo1np3+4o5vB8aktfMg+3yG4vUh49YhRzLyL0iymgAw24SQaNCCBuoDlc1VkxmeHkFO9/tlEONtTnA/G1k="}}
+2022/10/10-10:13:53 验证线上支付平台响应报文的签名：正确
+2022/10/10-10:13:53 交易结束==================================================
+2022/10/10-10:14:04 TrustPayClient Java V3.2.2 交易开始==========================
+2022/10/10-10:14:04 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","IsBreakAccount":"0","SplitAccTemplate":"","TrxType":"OLScanPayOrderReq","Order":{"PayTypeID":"OnlineScanPay","OrderDate":"2022/10/10","OrderTime":"09:51:42","orderTimeoutDate":"20221231000000","OrderNo":"No2042095142682222","CurrencyCode":"156","OrderAmount":"1.00","SubsidyAmount":"1.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"127.0.0.1","ExpiredDate":"30","OrderItems":[{"ProductName":"中国移动IP卡"}],"SplitAccInfoItems":""}}},"Signature-Algorithm":"SHA1withRSA","Signature":"INOvPo4tBGhJrTz1z4Rpzyah//sT/mnG/JR6i1ZPsUZ82fzAgGRG5eW9uEmm2KxH1XmDZlqkacUNzGokXSzPgkxNc6wIYJwjAQBzjKmFC8EKbs1+iGLOWZjiLfMDGg8jZy81xfG0Ibiu9JrK0qr//ATe2NeAiYSLLwPuE+kLd/4="}
+2022/10/10-10:14:04 请求服务器地址:http://127.0.0.1:9051/ebus/ReceiveMerchantTrxReqServlet
+2022/10/10-10:14:04 发送请求报文：成功
+2022/10/10-10:14:04 解析返回报文成功，HTTP响应码:[200]，返回报文：
+                    {"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Common":{"Channel":""},"Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"ReturnCode":"0000","ErrorMessage":"交易成功","TrxType":"OLScanPayOrderReq","OrderNo":"No2042095142682222","OneQRForAll":"https://wx.test.abchina.com/mpay1/mobileBank/zh_CN/EBusinessModule/BarcodeH5Act.aspx?token=16653680444739308772","OrderAmount":"1.00","PaymentURL":"http://10.230.204.198:9053/perbankold/PaymentModeNewAct.ebf?TOKEN=16653680444739308772"},"Signature-Algorithm":"SHA1withRSA","Signature":"KTACh3lI/KKjmIVHJBkEuCSjkhhjr8nRUG6UtiTf/aWpRKV0feHixnwIRD0vSu5FwuWErz1JENdvs0dHBWu/8IAjbUNr7h+ZeOobTUASs98YQzn5lt3wMTbXLWmvHTSrIWOQ2VDJu7VPwqVM1wr5LIyKiZqcvtKG3ceSg4zFA70="}}
+2022/10/10-10:14:04 验证线上支付平台响应报文的签名：正确
+2022/10/10-10:14:04 交易结束==================================================
+2022/10/10-10:20:55 TrustPayClient Java V3.2.2 交易开始==========================
+2022/10/10-10:20:55 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","IsBreakAccount":"0","SplitAccTemplate":"","TrxType":"OLScanPayOrderReq","Order":{"PayTypeID":"OnlineScanPay","OrderDate":"2022/10/10","OrderTime":"09:41:15","orderTimeoutDate":"20171231000000","OrderNo":"1665368384","CurrencyCode":"156","OrderAmount":"1.00","SubsidyAmount":"1.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"127.0.0.1","ExpiredDate":"30","OrderItems":[{"ProductName":"中国移动IP卡"}],"SplitAccInfoItems":""}}},"Signature-Algorithm":"SHA1withRSA","Signature":"cR29snY36XP/YBhfHtESKuCdI4ZHWCi23/iNtgZ9J1cluI62OO/LnI75FsAOuECgeiJBF3bALYwd6ul/61+B1/ob58OAfAheGzcWN+nTqwfOuQHV9B8bqNCDUljRTp6EDuCgrsfoKL0IjV1MV+JV9pQ3OhsjA8VqDfS3BDXklg8="}
+2022/10/10-10:20:55 请求服务器地址:http://127.0.0.1:9051/ebus/ReceiveMerchantTrxReqServlet
+2022/10/10-10:20:56 发送请求报文：成功
+2022/10/10-10:20:56 解析返回报文成功，HTTP响应码:[200]，返回报文：
+                    {"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Common":{"Channel":""},"Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"ReturnCode":"0000","ErrorMessage":"交易成功","TrxType":"OLScanPayOrderReq","OrderNo":"1665368384","OneQRForAll":"https://wx.test.abchina.com/mpay1/mobileBank/zh_CN/EBusinessModule/BarcodeH5Act.aspx?token=16653684560613225418","OrderAmount":"1.00","PaymentURL":"http://10.230.204.198:9053/perbankold/PaymentModeNewAct.ebf?TOKEN=16653684560613225418"},"Signature-Algorithm":"SHA1withRSA","Signature":"BGFq+S1oukPpIl/QycGYLPiHWAmzG7fQ+tBdivKV+5282t1Qy0j2fuxkEHGMwDEj4TQBAnIipNQkO+5xSAT8evnLnq7dBdix8xfpSMPbOC1kExDIt7SXyl6TjesmePFjQ9oweoDXjNMP3WFF7D6u3cS4iqKfq2ci+rLEDYfMYnI="}}
+2022/10/10-10:20:56 验证线上支付平台响应报文的签名：正确
+2022/10/10-10:20:56 交易结束==================================================
+2022/10/10-10:21:31 TrustPayClient Java V3.2.2 交易开始==========================
+2022/10/10-10:21:31 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","IsBreakAccount":"0","SplitAccTemplate":"","TrxType":"OLScanPayOrderReq","Order":{"PayTypeID":"OnlineScanPay","OrderDate":"2022/10/10","OrderTime":"09:41:15","orderTimeoutDate":"20221231000000","OrderNo":"1665368384","CurrencyCode":"156","OrderAmount":"1.00","SubsidyAmount":"1.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"127.0.0.1","ExpiredDate":"30","OrderItems":[{"ProductName":"中国移动IP卡"}],"SplitAccInfoItems":""}}},"Signature-Algorithm":"SHA1withRSA","Signature":"ByQ9tb07CpwTGZSmpMzNe0YkoEoR34WVSbPuxhbeDp7LMVGIpX/0BX2lr/sd+6FgcO5wxJS5Gs8wouVijJ27AsMhcU/yrD8Gx+kzWlOkDe9VZh+t2XvRVohsC2py+7rz/mkTTjJNr3r7KEXJQC8ueE2np3Ni7xSI8tFVaPNaWoE="}
+2022/10/10-10:21:31 请求服务器地址:http://127.0.0.1:9051/ebus/ReceiveMerchantTrxReqServlet
+2022/10/10-10:21:31 发送请求报文：成功
+2022/10/10-10:21:31 解析返回报文成功，HTTP响应码:[200]，返回报文：
+                    {"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Common":{"Channel":""},"Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"ReturnCode":"0000","ErrorMessage":"交易成功","TrxType":"OLScanPayOrderReq","OrderNo":"1665368384","OneQRForAll":"https://wx.test.abchina.com/mpay1/mobileBank/zh_CN/EBusinessModule/BarcodeH5Act.aspx?token=16653684914046099607","OrderAmount":"1.00","PaymentURL":"http://10.230.204.198:9053/perbankold/PaymentModeNewAct.ebf?TOKEN=16653684914046099607"},"Signature-Algorithm":"SHA1withRSA","Signature":"kkg7rWPoS4lZLoV87RBpHv59voUpg66cQMB+HWJuigFcf+JHbWTOgC7WipfdcEWvkyryaBJR1khNVE1488+T/5ytN80bVyLcoqGG9ckdv1B3rgf51DZfGeZcAaehWxVueNRCIKZn6m5evT6JMBSmZTjPJQQax8ksLX7Yze2aMKM="}}
+2022/10/10-10:21:31 验证线上支付平台响应报文的签名：正确
+2022/10/10-10:21:31 交易结束==================================================
+2022/10/10-13:51:24 TrustPayClient Java V3.2.2 交易开始==========================
+2022/10/10-13:51:24 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"PaymentType":"A","PaymentLinkType":"1","ReceiveAccount":"","ReceiveAccName":"","NotifyType":"0","ResultNotifyURL":"http://yourwebsite/appname/MerchantResult.jsp","MerchantRemarks":"","IsBreakAccount":"0","SplitAccTemplate":"","TrxType":"OLScanPayOrderReq","Order":{"PayTypeID":"OnlineScanPay","OrderDate":"2022/10/10","OrderTime":"09:41:15","orderTimeoutDate":"20221231000000","OrderNo":"1665381064","CurrencyCode":"156","OrderAmount":"1.00","SubsidyAmount":"1.00","Fee":"","AccountNo":"","OrderDesc":"","OrderURL":"","ReceiverAddress":"北京","InstallmentMark":"0","CommodityType":"0101","BuyIP":"127.0.0.1","ExpiredDate":"30","OrderItems":[{"ProductName":"中国移动IP卡"}],"SplitAccInfoItems":""}}},"Signature-Algorithm":"SHA1withRSA","Signature":"alivfc8uvCH1uH6RXU9w6MGfdTHho/9p0SGGRheWWkk49/v5tQjfZSlodc+mGjLhJffgw4fajgKXrKOkwRwumYoe/e+6FmV4wWRIb81ooxTbwTWFG6kFRJuibEoNDf6qiSAoNHdCK1Pj7Jg1zY1QhzWUZpRVYAtpjBe2P7zcoc4="}
+2022/10/10-13:51:24 请求服务器地址:http://127.0.0.1:9051/ebus/ReceiveMerchantTrxReqServlet
+2022/10/10-13:51:26 发送请求报文：成功
+2022/10/10-13:51:26 解析返回报文成功，HTTP响应码:[200]，返回报文：
+                    {"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Common":{"Channel":""},"Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"ReturnCode":"0000","ErrorMessage":"交易成功","TrxType":"OLScanPayOrderReq","OrderNo":"1665381064","OneQRForAll":"https://wx.test.abchina.com/mpay1/mobileBank/zh_CN/EBusinessModule/BarcodeH5Act.aspx?token=16653810860559668555","OrderAmount":"1.00","PaymentURL":"http://10.230.204.198:9053/perbankold/PaymentModeNewAct.ebf?TOKEN=16653810860559668555"},"Signature-Algorithm":"SHA1withRSA","Signature":"fxJYVc8fmMyEy8YgbE0Z8SQQy/NsNrviwLWtT+CJo6SqJy1SwT/g9FC3zSFdGOc5SIDXYqR88SocTXWHCE41ekIfCMksaCBVijfUdGvxB3/3a2ouemROwWfkDCBw7e0W2eOLwcdTVZG93KiA4XTZ6h3krGvW9x1zt1hRum8o2mI="}}
+2022/10/10-13:51:26 验证线上支付平台响应报文的签名：正确
+2022/10/10-13:51:26 交易结束==================================================
