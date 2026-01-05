@@ -1,0 +1,37 @@
+
+2023/01/30-09:51:13 TrustPayClient Java V3.2.2 交易开始==========================
+2023/01/30-09:51:13 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"TrxType":"MigrateSubMerToOtherSubject","FromMerchantNo":"103882200000965","FromSubMerchantNo":"456742","CustomToSubMerchantNo":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"KTl6Y2hAHBN7f8m8GJARx7keLM5Nve0H6PUDGvOAy/wIde4dhuSdYmWg2P+qAbnYh2VhFj1F4MD+6LqMIQbfbPET4yK5+WAmkKnFMS/rHmMx2ZtDs2MfbFlrHADu2h1g/4/ryOelTGM2jvtpT0w76zMDppwPt9APR+yIfwioL2g="}
+2023/01/30-09:51:13 请求服务器地址:http://127.0.0.1:9051/ebus/ReceiveMerchantTrxReqServlet
+2023/01/30-09:51:15 发送请求报文：成功
+2023/01/30-09:51:15 解析返回报文成功，HTTP响应码:[200]，返回报文：
+                    {"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxResponse":{"ReturnCode":"2999","ErrorMessage":"系统发生无法预期的错误","SubMerchantAccNo":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"auiepnQAoq5JWDt9DIM75OoTBCwRVKQqfocw+W3l1735G/fChwUXKzAJvXhJ+Rrw9cY2Myui+7q+WC+mN6qVBg7El6RlObJD1afffj42kbBF6eIqxm0/wJ9w26yadRKnjbYQsuQvlNc4SR7z4fwDbqMIeNwFF/ebZCoGMCGkjzc="}}
+2023/01/30-09:51:15 验证线上支付平台响应报文的签名：正确
+2023/01/30-09:51:15 交易结束==================================================
+2023/01/30-09:51:04 TrustPayClient Java V3.2.2 交易开始==========================
+2023/01/30-09:51:04 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"TrxType":"MigrateSubMerToOtherSubject","FromMerchantNo":"103882200000965","FromSubMerchantNo":"456742","CustomToSubMerchantNo":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"KTl6Y2hAHBN7f8m8GJARx7keLM5Nve0H6PUDGvOAy/wIde4dhuSdYmWg2P+qAbnYh2VhFj1F4MD+6LqMIQbfbPET4yK5+WAmkKnFMS/rHmMx2ZtDs2MfbFlrHADu2h1g/4/ryOelTGM2jvtpT0w76zMDppwPt9APR+yIfwioL2g="}
+2023/01/30-09:51:04 请求服务器地址:http://127.0.0.1:9051/ebus/ReceiveMerchantTrxReqServlet
+2023/01/30-09:51:15 发送请求报文：成功
+2023/01/30-09:51:15 解析返回报文成功，HTTP响应码:[200]，返回报文：
+                    {"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxResponse":{"ReturnCode":"2999","ErrorMessage":"系统发生无法预期的错误","SubMerchantAccNo":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"auiepnQAoq5JWDt9DIM75OoTBCwRVKQqfocw+W3l1735G/fChwUXKzAJvXhJ+Rrw9cY2Myui+7q+WC+mN6qVBg7El6RlObJD1afffj42kbBF6eIqxm0/wJ9w26yadRKnjbYQsuQvlNc4SR7z4fwDbqMIeNwFF/ebZCoGMCGkjzc="}}
+2023/01/30-09:51:15 验证线上支付平台响应报文的签名：正确
+2023/01/30-09:51:15 交易结束==================================================
+2023/01/30-09:51:37 TrustPayClient Java V3.2.2 交易开始==========================
+2023/01/30-09:51:37 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"TrxType":"MigrateSubMerToOtherSubject","FromMerchantNo":"103882200000965","FromSubMerchantNo":"456742","CustomToSubMerchantNo":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"KTl6Y2hAHBN7f8m8GJARx7keLM5Nve0H6PUDGvOAy/wIde4dhuSdYmWg2P+qAbnYh2VhFj1F4MD+6LqMIQbfbPET4yK5+WAmkKnFMS/rHmMx2ZtDs2MfbFlrHADu2h1g/4/ryOelTGM2jvtpT0w76zMDppwPt9APR+yIfwioL2g="}
+2023/01/30-09:51:37 请求服务器地址:http://127.0.0.1:9051/ebus/ReceiveMerchantTrxReqServlet
+2023/01/30-09:53:41 发送请求报文：成功
+2023/01/30-09:53:41 解析返回报文成功，HTTP响应码:[200]，返回报文：
+                    {"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxResponse":{"ReturnCode":"2999","ErrorMessage":"系统发生无法预期的错误","SubMerchantAccNo":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"auiepnQAoq5JWDt9DIM75OoTBCwRVKQqfocw+W3l1735G/fChwUXKzAJvXhJ+Rrw9cY2Myui+7q+WC+mN6qVBg7El6RlObJD1afffj42kbBF6eIqxm0/wJ9w26yadRKnjbYQsuQvlNc4SR7z4fwDbqMIeNwFF/ebZCoGMCGkjzc="}}
+2023/01/30-09:53:41 验证线上支付平台响应报文的签名：正确
+2023/01/30-09:53:41 交易结束==================================================
+2023/01/30-10:32:04 TrustPayClient Java V3.2.2 交易开始==========================
+2023/01/30-10:32:04 准备提交线上支付平台请求报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxRequest":{"TrxType":"MigrateSubMerToOtherSubject","FromMerchantNo":"103882200000965","FromSubMerchantNo":"0200002100","CustomToSubMerchantNo":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"Ukuz0tBps8pX6/+uTIey6AfiFZ28tEFubmffaL8oU9SFMc90CHvPtKsKF6Q+Gr9jtkzLfJxNiVl+XHeAI7Ceuf1CMfGn3tRXOktMA/r0tXtr8ppqU1AWn7XYDBIWPwNRtzw0pwpmu3ci/DG3ammrwgE+c7zCu67KbDyq3AvAWns="}
+2023/01/30-10:32:04 请求服务器地址:http://127.0.0.1:9051/ebus/ReceiveMerchantTrxReqServlet
+2023/01/30-10:32:07 发送请求报文：成功
+2023/01/30-10:32:07 解析返回报文成功，HTTP响应码:[200]，返回报文：
+                    {"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103882200000958"},"TrxResponse":{"ReturnCode":"2999","ErrorMessage":"系统发生无法预期的错误","SubMerchantAccNo":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"auiepnQAoq5JWDt9DIM75OoTBCwRVKQqfocw+W3l1735G/fChwUXKzAJvXhJ+Rrw9cY2Myui+7q+WC+mN6qVBg7El6RlObJD1afffj42kbBF6eIqxm0/wJ9w26yadRKnjbYQsuQvlNc4SR7z4fwDbqMIeNwFF/ebZCoGMCGkjzc="}}
+2023/01/30-10:32:07 验证线上支付平台响应报文的签名：正确
+2023/01/30-10:32:07 交易结束==================================================
