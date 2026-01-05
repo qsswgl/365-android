@@ -1,0 +1,100 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>农行线上支付平台-商户接口范例-获取调用凭证</title>
+    <link rel="stylesheet" type="text/css" href="../../css/semantic.css">
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/semantic.js"></script>
+    <script src="../../js/util.js"></script>
+</head>
+<body>
+<div class="main ui container" style="padding-top: 100px; padding-bottom: 100px">
+    <div>
+        <div class="ui horizontal divider" style="font-size: large;">获取调用凭证</div>
+        <div class="ui message hidden">
+            <i class="close icon"></i>
+            <div class="header">返回报文：</div>
+            <p style="word-break: break-all"></p>
+        </div>
+        <form class="ui form" action='GetWeiXinAuthInfo.jsp' method="post">
+            <div class="five fields">
+                <div class="field">
+                    <label>门店编号*</label>
+                    <input type="text" name="StoreId" value="NFZF2000001">
+                </div>
+                <div class="field">
+                    <label>门店名称*</label>
+                    <input type="text" name="StoreName" value="NFZF2000001">
+                </div>
+                <div class="field">
+                    <label>终端设备编号*</label>
+                    <input type="text" name="DeviceId" value="BD7102033005139">
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="字段格式使用Json">附加字段</label>
+                    <input type="text" name="Attach" value="">
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="由微信人脸SDK的接口返回">初始化数据*</label>
+                    <input type="text" name="RawData"
+                           value="KstAuVx0YpEWKL2zEJMZsfR+DvFEbbS/T7smTK2T0TIHBIK6tf/2ct80RgHHTczGJWZujBHVKmz7qPdy18GF2DT/ScueXLOwD5IWYXmnvLelW88axFQh3gNiydsdwTc7d4M2b4YL165sExnXXEmRarRxdmcuxP5sGyBgx3op2MaKyn+edWA4aSmxwQyX2AG/242qtuOvjO7CrtHXMS9hRTKu6XmAhjZgsox3QfXLa2c1WHXUFb6uQ3ZE2SYkfHPtroHwwgxA/qBixp6h0TY40KurTIfXBIXuvwDRJhAV9JUnHJCyiuQGc0IG9wMO1cxZ6lKnzR9t5w6t4BdQY9sHyXVWMRVDVJoq1peRzZj/2cjdR2o/UMhiV5aVq1ytTt3uxXc84wbUW4rWGz6QyS/nLjGapv3jy09stbPOLcYa36CDoFWqdnjDP55IcVHb2qQioeN4jTsvPS5ncJ/QIRAvvtW9FDc1lFRexi0FMp4Rbx3CO+cAXR1yZmtr8qaoafsOA2vGiUBUQ5uxHfRSI/PoPKbkEZlhDK19GQ9kTPggC631uLTplX/6a3PksMMrlTjGSZj8mnDA4PtxRA8F5XS6XjKzGzxxV95eTXI=">
+                </div>
+            </div>
+            <div class="five fields">
+                <div class="field">
+                    <label>子商户绑定的公众号/小程序appid</label>
+                    <input type="text" name="SubAppId" value="">
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="取当前时间，10位unix时间戳">当前时间*</label>
+                    <input type="text" name="Now" value="1636356407">
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="固定为1">版本号*</label>
+                    <input type="text" name="VersionNo" value="1">
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="目前支持HMAC-SHA256和MD5,默认为MD5">签名类型*</label>
+                    <input type="text" name="SignType" value="MD5">
+                </div>
+            </div>
+            <button class="ui button" type="request" onclick="request(this); return false;">提交</button>
+        </form>
+    </div>
+</div>
+</body>
+<script language="javascript" type="text/javascript">
+    $('.message .close')
+        .on('click', function () {
+            $(this).closest('.message').transition('fade');
+        });
+
+    function request(object) {
+        let responseBoard = $(object).parent().prev();
+        let responseBoardMessag = responseBoard.children("p:last-child");
+        let form = $(object).parent();
+        let action = form.attr("action");
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: action,
+            data: form.serialize(),
+            success: function (result) {
+                console.log(result);
+                responseBoardMessag.html(JSON.stringify(result));
+                if (!responseBoard.hasClass('visible')) responseBoard.transition('fade');
+            },
+            error: function () {
+                console.log("请求农行网上支付平台失败");
+            }
+        });
+    }
+</script>
+</html>
