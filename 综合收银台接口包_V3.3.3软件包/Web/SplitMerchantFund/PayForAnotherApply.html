@@ -1,0 +1,98 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>农行线上支付平台-商户接口范例-校培监管资金划拨申请交易</title>
+    <link rel="stylesheet" type="text/css" href="../../css/semantic.css">
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/semantic.js"></script>
+    <script src="../../js/util.js"></script>
+</head>
+<body>
+<div class="main ui container" style="padding-top: 100px; padding-bottom: 100px">
+    <div>
+        <div class="ui horizontal divider" style="font-size: large;">校培监管资金划拨申请交易</div>
+        <div class="ui message hidden">
+            <i class="close icon"></i>
+            <div class="header">返回报文：</div>
+            <p style="word-break: break-all"></p>
+        </div>
+        <form class="ui form" action='PayForAnotherApply.jsp' method="post">
+            <div class="five fields">
+                <div class="field">
+                    <label>二级商户编号*</label>
+                    <input type="text" name="SubMerId" value="002">
+                </div>
+                <div class="field">
+                    <label>收款账号*</label>
+                    <input type="text" name="Account" value="6231680012001640177">
+                </div>
+                <div class="field">
+                    <label>收款账户名*</label>
+                    <input type="text" name="AccountName" value="赵四">
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="出金金额，不关联支付订单时必须设定">出金金额</label>
+                    <input type="text" name="TrxAmount" value="100">
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="是否关联支付订单编号，0:不关联，1:关联">是否关联支付订单号</label>
+                    <select class="ui selection dropdown" name="DrawingFlag">
+                        <option value="0" selected>不关联</option>
+                        <option value="1">关联</option>
+                    </select>
+                </div>
+            </div>
+            <div class="five fields">
+                <div class="field">
+                    <label>关联的支付订单号</label>
+                    <input type="text" name="OrderNo" value="">
+                </div>
+                <div class="field">
+                    <label>附言</label>
+                    <input type="text" name="Remark" value="综合收银台出金">
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="他行行号，出金至他行卡且金额大于50000时必须上送">他行行号</label>
+                    <input type="text" name="RecBankNo" value="">
+                </div>
+            </div>
+            <button class="ui button" type="request" onclick="request(this); return false;">提交</button>
+        </form>
+    </div>
+</div>
+</body>
+<script language="javascript" type="text/javascript">
+    $(function () {
+        $('.ui.selection.dropdown').dropdown();
+    });
+    $('.message .close')
+        .on('click', function () {
+            $(this).closest('.message').transition('fade');
+        });
+    function request(object) {
+        let responseBoard = $(object).parent().prev();
+        let responseBoardMessag = responseBoard.children("p:last-child");
+        let form = $(object).parent();
+        let action = form.attr("action");
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: action,
+            data: form.serialize(),
+            success: function (result) {
+                console.log(result);
+                responseBoardMessag.html(JSON.stringify(result));
+                if (!responseBoard.hasClass('visible')) responseBoard.transition('fade');
+            },
+            error: function () {
+                console.log("请求农行网上支付平台失败");
+            }
+        });
+    }
+</script>
+</html>

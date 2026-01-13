@@ -1,0 +1,111 @@
+扫码功能诊断报告
+===================
+
+问题描述：
+--------
+扫码测试失败，Android Bridge 的 startBarcodeScanning() 方法调用时发生异常。
+
+症状：
+1. JavaScript 控制台显示"Error: Error invoking startBarcodeScanning"
+2. HTMLButtonListener 报告无法识别 onclick 事件
+3. 多个相同的Java异常堆栈
+
+根本原因分析：
+---------------
+
+1. JavaScript Bridge 异常处理
+   - MainActivity.java 中的 startBarcodeScanning() 方法缺少异常处理
+   - 如果 startActivityForResult() 抛出异常，则不会被捕获
+
+2. UI 线程问题
+   - evaluateJavascript() 的回调可能在非 UI 线程执行
+   - WebView.post() 是必要的，以确保 UI 操作在主线程上进行
+
+3. 权限问题
+   - 尽管权限已授予，但在运行时仍需检查权限
+
+4. JavaScript 回调处理
+   - 原始代码使用 null 作为 ValueCallback，这会导致无法捕获异常
+   - 改进：使用具体的 ValueCallback 实现进行日志记录
+
+解决方案：
+----------
+
+✅ 已应用的修复：
+
+1. 在 startBarcodeScanning() 方法中添加异常处理
+   - 添加 try-catch 块
+   - 添加详细的日志记录
+   - 在异常时调用错误回调
+
+2. 改进 invokeBarcodeScannedCallback() 方法
+   - 使用 webView.post() 确保 UI 操作在主线程上
+   - 实现 ValueCallback 以捕获异常
+   - 添加详细的日志记录
+   - 改进字符串转义以处理所有特殊字符
+
+3. 强化 JavaScript 代码
+   - 添加 try-catch 块在 startScanning() 中
+   - 详细的错误日志和调试输出
+   - 检查 AndroidBridge 可用性和方法存在
+   - 添加 onBarcodeScanned 函数的有效性检查
+
+4. 创建简化版测试页面
+   - barcode-test-simple.html：包含完整的日志系统
+   - 详细的初始化检查
+   - 实时日志显示
+
+测试步骤：
+---------
+
+1. 重新编译应用（已完成）
+2. 安装到设备（已完成）
+3. 启动应用
+4. 在应用菜单中找到"扫码测试"链接
+5. 点击"启动扫码"按钮
+6. 检查日志输出
+
+预期结果：
+---------
+
+✅ 启动扫码：BarcodeScannerActivity 应该打开
+✅ 扫码完成：JavaScript 回调 onBarcodeScanned() 应该被调用
+✅ 结果显示：扫码内容和格式应该在 HTML 中显示
+
+改进后的代码位置：
+-----------------
+
+Java 代码修改：
+- k:\365-android\app\src\main\java\net\qsgl365\MainActivity.java
+  - startBarcodeScanning() 方法（第 314-348 行）
+  - invokeBarcodeScannedCallback() 方法（第 441-502 行）
+
+JavaScript 代码修改：
+- K:\365-android\app\assets\pwa\barcode-scanner-test.html
+  - startScanning() 函数：添加详细的异常处理和日志
+  - onBarcodeScanned() 函数：改进的回调处理
+
+- K:\365-android\app\assets\pwa\barcode-test-simple.html（新增）
+  - 简化版测试页面，包含完整的诊断日志
+
+下一步：
+-------
+
+1. 验证扫码功能是否正常工作
+2. 查看应用日志：adb logcat | grep "WebView\|Barcode"
+3. 检查 Chrome DevTools (chrome://inspect)
+4. 如果仍有问题，进一步诊断
+
+性能优化：
+---------
+
+✅ 权限检查集成到 startBarcodeScanning()
+✅ 使用 webView.post() 避免线程问题
+✅ 详细的日志记录便于调试
+
+安全性改进：
+-----------
+
+✅ 改进的字符串转义（处理 \, ', ", \n, \r）
+✅ onBarcodeScanned 函数存在性检查
+✅ AndroidBridge 对象存在性检查

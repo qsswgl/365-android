@@ -1,0 +1,107 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>农行线上支付平台-商户接口范例-DCEP</title>
+    <link rel="stylesheet" type="text/css" href="/WebRoot/css/semantic.css">
+    <link rel="stylesheet" type="text/css" href="/WebRoot/css/semantic.css">
+
+    <script src="/WebRoot/js/jquery.min.js"></script>
+    <script src="/WebRoot/js/semantic.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/semantic.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/semantic.css">
+    <link rel="stylesheet" type="text/css" href="/ebusclient/css/semantic.css">
+
+    <script src="/ebusclient/js/jquery.min.js"></script>
+    <script src="/ebusclient/js/semantic.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/semantic.js"></script>
+</head>
+<body>
+<div class="main ui container" style="padding-top: 100px; padding-bottom: 100px">
+    <div>
+        <div class="ui horizontal divider" style="font-size: large;">子钱包支付</div>
+        <div class="ui message hidden">
+            <i class="close icon"></i>
+            <div class="header">返回报文：</div>
+            <p style="word-break: break-all"></p>
+        </div>
+        <form class="ui form" action="SubEWalletPay.jsp" method="post">
+            <div class="five fields">
+                <div class="field">
+                    <label>订单号</label>
+                    <input type="text" name="OrderNo" value="ForQR202008310003">
+                </div>
+                <div class="field">
+                    <label>Token</label>
+                    <input type="text" name="Token" value="000003202006300149603301432">
+                </div>
+                <div class="field">
+                    <label>订单金额</label>
+                    <input type="text" name="OrderAmount" value="">
+                </div>
+                <div class="field">
+                    <label>订单描述</label>
+                    <input type="text" name="OrderDesc" value="TEST">
+                </div>
+                <div class="field">
+                    <label>商家附言</label>
+                    <input type="text" name="MerchantRemarks" value="TEST">
+                </div>
+            </div>
+
+            <button class="ui button" type="request" onclick="request(this); return false;">Submit</button>
+        </form>
+    </div>
+
+</div>
+<script>
+
+    $("input[name='OrderDate']").val((new Date()).Format);
+
+    $('.message .close')
+        .on('click', function () {
+            $(this).closest('.message').transition('fade');
+        });
+
+    function request(object) {
+        let responseBoard = $(object).parent().prev();
+        let responseBoardMessag = responseBoard.children("p:last-child");
+        let form = $(object).parent();
+        let action = $(object).parent().attr("action");
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: action,
+            data: form.serialize(),
+            success: function (result) {
+                console.log(result)
+                responseBoardMessag.html(JSON.stringify(result));
+                if (!responseBoard.hasClass('visible')) responseBoard.transition('fade');
+            },
+            error: function () {
+                console.log("请求农行网上支付平台失败");
+            }
+        });
+    }
+
+    var splitAccInfoItems = new Array();
+
+    function addSubInfo() {
+        let splitMerchantID = $("input[name='SplitMerchantID']").val();
+        let splitAmount = $("input[name='SplitAmount']").val();
+        splitAccInfoItems.push({SplitMerchantID: splitMerchantID, SplitAmount: splitAmount});
+        $("input[name='SplitAccInfoItems']").val(JSON.stringify(splitAccInfoItems));
+    }
+
+    function clearSubInfo() {
+        splitAccInfoItems = [];
+        $("input[name='SplitAccInfoItems']").val("");
+    }
+
+</script>
+</body>
+</html>

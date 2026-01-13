@@ -1,0 +1,111 @@
+<html>
+<head>
+    <title>农行线上支付平台-商户接口范例-DC统一app扫码支付请求</title>
+</head>
+<script language="javascript" type="text/javascript">
+
+
+    function SelectedIndexChanged() {
+        var paytypeid = document.getElementById("PayTypeID").value;
+        if (paytypeid == "ImmediatePay") {
+            installmentCode.style.display = "none";
+            installmentNum.style.display = "none";
+        }
+        else if (paytypeid == "PreAuthPay") {
+            installmentCode.style.display = "none";
+            installmentNum.style.display = "none";
+        }
+        else if (paytypeid == "DividedPay") {
+            installmentCode.style.display = "inline";
+            installmentNum.style.display = "inline";
+
+        }
+    }
+
+    function CheckValue() {        
+        var paymenttype = document.getElementById("PaymentType").value;
+        var paymentlinktype = document.getElementById("PaymentLinkType").value;
+        if (paymenttype == "6" && paymentlinktype == "2") {
+            UnionPayLinkType.style.display = "inline";
+        } else {
+            UnionPayLinkType.style.display = "none";
+        }
+    }
+    
+    function addLine() {
+        var row = account.insertRow();
+        for (var j = 0; j < 2; j++) {
+            var col = row.insertCell();
+            switch (j) {
+                case 0:
+                    col.align = "center";
+                    col.innerHTML = "<input type=\"text\" name=\"SplitMerchantID\" style=\"width:95%\" value=\"\">";
+                    break;
+                case 1:
+                    col.align = "center";
+                    col.innerHTML = "<input type=\"text\" name=\"SplitAmount\" style=\"width:95%\" value=\"\">";
+                    break;
+            }
+
+        }
+
+        form1.button.disabled = "";
+    }
+
+</script>
+<body bgcolor='#FFFFFF' value='#000000' link='#0000FF' vlink='#0000FF' alink='#FF0000'>
+    <form name="form1" action='EBusMerchantCommonRequest.jsp' method="post">
+        <table>
+            <tr>
+                <td>交易编号</td>
+                <td><input name='OrderNo' value='ON20140924003'/>*必输</td>
+            </tr>
+            <tr>
+                <td>交易金额</td>
+                <td><input name='OrderAmount' value='2.00' />保留小数点后两位数字,*必输</td>
+            </tr>
+            <tr>
+                <td>订单描述</td>
+                <td><input name='OrderDesc' value='' />*必输</td>
+            </tr>
+            <tr>
+                <td>订单失效时间</td>
+                <td><input name='OrderValidTime' value='170000' />精确到秒(17:00:00)，*必输</td>
+            </tr>
+            <tr>
+                <td>Token预留字段</td>
+                <td><input name='Token' value='1234567890'>选输</td>
+            </tr>
+            <tr>
+                <td>商品名称</td>
+                <td><input name='ProductName' value='1234567890'>选输</td>
+            </tr>
+            <tr>
+                <td>支付类型</td>
+                <td><input name='PaymentType' value='D'>*固定值</td>
+            </tr>
+            <tr>
+                <td>接入方式</td>
+                <td><input name='PaymentLinkType' value='2'>*固定值</td>
+            </tr>
+            <tr>
+                <td>附言</td>
+                <td><input name='MerchantRemarks' value='' />不超过100个字符，选输</td>
+            </tr>
+            <tr>
+                <td>通知方式</td>
+                <td><input name='NotifyType' value='1' />1：服务器通知，*选输</td>
+            </tr>
+            <tr>
+                <td>通知URL地址</td>
+                <td><input name='ResultNotifyURL' value='http://yourwebsite/' />*选输</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit">
+        </table>
+    </form>
+    <center>
+        <a href='../Merchant.html'>回商户首页</a></center>
+</body>
+</html>

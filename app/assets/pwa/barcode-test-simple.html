@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扫码功能测试 - 简化版</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 24px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-start {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-start:hover {
+            background: #5568d3;
+        }
+
+        .btn-clear {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-clear:hover {
+            background: #e0e0e0;
+        }
+
+        .status {
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 14px;
+            display: none;
+        }
+
+        .status.visible {
+            display: block;
+        }
+
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .result {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+            display: none;
+            border: 2px solid #ddd;
+        }
+
+        .result.visible {
+            display: block;
+        }
+
+        .result-row {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .result-row:last-child {
+            border-bottom: none;
+        }
+
+        .result-label {
+            font-size: 12px;
+            color: #999;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .result-value {
+            font-size: 16px;
+            color: #333;
+            font-weight: 600;
+            font-family: monospace;
+            word-break: break-all;
+        }
+
+        .log-area {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 10px;
+            margin-top: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 12px;
+            line-height: 1.4;
+        }
+
+        .log-line {
+            padding: 2px 0;
+            color: #666;
+        }
+
+        .log-line.error {
+            color: #c00;
+        }
+
+        .log-line.success {
+            color: #060;
+        }
+
+        .log-line.info {
+            color: #00a;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #1976d2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📱 扫码测试</h1>
+
+        <div class="info-box">
+            <strong>说明：</strong>点击下方"启动扫码"按钮调用Android原生扫码功能。
+        </div>
+
+        <div class="status" id="status"></div>
+
+        <button class="btn-start" onclick="startBarcodeScan()">🔍 启动扫码</button>
+        <button class="btn-clear" onclick="clearAll()">清空</button>
+
+        <div class="result" id="result">
+            <div class="result-row">
+                <div class="result-label">扫码内容</div>
+                <div class="result-value" id="barcodeValue">-</div>
+            </div>
+            <div class="result-row">
+                <div class="result-label">条码类型</div>
+                <div class="result-value" id="barcodeFormat">-</div>
+            </div>
+            <div class="result-row">
+                <div class="result-label">扫码时间</div>
+                <div class="result-value" id="scanTime">-</div>
+            </div>
+        </div>
+
+        <div style="margin-top: 20px;">
+            <strong>📋 调试日志</strong>
+        </div>
+        <div class="log-area" id="logArea"></div>
+    </div>
+
+    <script>
+        let logs = [];
+        const MAX_LOGS = 50;
+
+        function addLog(message, type = 'info') {
+            const timestamp = new Date().toLocaleTimeString('zh-CN');
+            logs.unshift({message, type, timestamp});
+            if (logs.length > MAX_LOGS) {
+                logs.pop();
+            }
+            updateLogs();
+        }
+
+        function updateLogs() {
+            const logArea = document.getElementById('logArea');
+            logArea.innerHTML = logs.map(log => 
+                `<div class="log-line ${log.type}">[${log.timestamp}] ${log.message}</div>`
+            ).join('');
+            logArea.scrollTop = 0;
+        }
+
+        function showStatus(message, type = 'info') {
+            const statusEl = document.getElementById('status');
+            statusEl.textContent = message;
+            statusEl.className = `status visible ${type}`;
+            addLog(message, type);
+        }
+
+        function startBarcodeScan() {
+            addLog('[开始] 用户点击启动扫码按钮');
+
+            try {
+                // 检查 AndroidBridge 是否存在
+                if (typeof AndroidBridge === 'undefined') {
+                    addLog('[错误] AndroidBridge 对象未定义', 'error');
+                    showStatus('❌ Android Bridge 不可用', 'error');
+                    return;
+                }
+
+                addLog('[检查] AndroidBridge 对象存在');
+
+                // 检查 startBarcodeScanning 方法
+                if (typeof AndroidBridge.startBarcodeScanning !== 'function') {
+                    const methods = Object.keys(AndroidBridge).join(', ');
+                    addLog('[错误] startBarcodeScanning 方法不存在，可用方法：' + methods, 'error');
+                    showStatus('❌ startBarcodeScanning 方法不存在', 'error');
+                    return;
+                }
+
+                addLog('[检查] startBarcodeScanning 方法存在');
+                showStatus('⏳ 正在启动扫码器...', 'info');
+
+                // 调用Java方法
+                addLog('[执行] 调用 AndroidBridge.startBarcodeScanning()');
+                AndroidBridge.startBarcodeScanning();
+                addLog('[成功] startBarcodeScanning() 调用完成', 'success');
+
+            } catch (error) {
+                addLog('[异常] ' + error.message, 'error');
+                addLog('[堆栈] ' + error.stack, 'error');
+                showStatus('❌ 错误：' + error.message, 'error');
+            }
+        }
+
+        // 全局回调函数 - 被Java代码调用
+        function onBarcodeScanned(barcodeValue, barcodeFormat) {
+            addLog('[回调] 收到扫码回调结果', 'success');
+            addLog('[内容] value=' + barcodeValue + ', format=' + barcodeFormat);
+
+            if (barcodeValue === null || barcodeValue === undefined) {
+                if (barcodeFormat === 'CANCELLED') {
+                    addLog('[结果] 用户取消了扫码', 'info');
+                    showStatus('⏸️  扫码已取消', 'info');
+                } else {
+                    addLog('[结果] 扫码失败: ' + barcodeFormat, 'error');
+                    showStatus('❌ 扫码失败: ' + barcodeFormat, 'error');
+                }
+                hideResult();
+            } else {
+                addLog('[结果] 扫码成功！', 'success');
+                showStatus('✅ 扫码成功！', 'success');
+
+                // 显示结果
+                const scanTime = new Date().toLocaleTimeString('zh-CN');
+                document.getElementById('barcodeValue').textContent = barcodeValue;
+                document.getElementById('barcodeFormat').textContent = barcodeFormat;
+                document.getElementById('scanTime').textContent = scanTime;
+                showResult();
+            }
+        }
+
+        function showResult() {
+            document.getElementById('result').classList.add('visible');
+        }
+
+        function hideResult() {
+            document.getElementById('result').classList.remove('visible');
+        }
+
+        function clearAll() {
+            logs = [];
+            updateLogs();
+            hideResult();
+            document.getElementById('barcodeValue').textContent = '-';
+            document.getElementById('barcodeFormat').textContent = '-';
+            document.getElementById('scanTime').textContent = '-';
+            const statusEl = document.getElementById('status');
+            statusEl.classList.remove('visible');
+        }
+
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            addLog('[初始化] 页面加载完成', 'info');
+
+            if (typeof AndroidBridge !== 'undefined') {
+                addLog('[初始化] AndroidBridge 对象可用', 'success');
+                const methods = Object.keys(AndroidBridge);
+                addLog('[初始化] 可用方法数：' + methods.length, 'info');
+                if (methods.includes('startBarcodeScanning')) {
+                    addLog('[初始化] startBarcodeScanning 方法可用', 'success');
+                } else {
+                    addLog('[初始化] startBarcodeScanning 方法不可用！', 'error');
+                }
+            } else {
+                addLog('[初始化] AndroidBridge 未定义！', 'error');
+            }
+
+            addLog('[初始化] onBarcodeScanned 回调已注册', 'info');
+        });
+
+        // 页面获得焦点时重新检查
+        window.addEventListener('focus', function() {
+            addLog('[事件] 页面获得焦点');
+        });
+    </script>
+</body>
+</html>

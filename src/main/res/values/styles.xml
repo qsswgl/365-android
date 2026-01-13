@@ -1,0 +1,5 @@
+﻿<resources>
+    <style name="Theme.App" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize as needed -->
+    </style>
+</resources>

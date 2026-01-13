@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalStorage 同步示例</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+        
+        .section:last-child {
+            border-bottom: none;
+        }
+        
+        h2 {
+            color: #555;
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+        
+        .form-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #4CAF50;
+            box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.1);
+        }
+        
+        button {
+            padding: 10px 20px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        
+        button:hover {
+            background: #45a049;
+        }
+        
+        button:active {
+            transform: scale(0.98);
+        }
+        
+        button.danger {
+            background: #f44336;
+        }
+        
+        button.danger:hover {
+            background: #da190b;
+        }
+        
+        button.info {
+            background: #2196F3;
+        }
+        
+        button.info:hover {
+            background: #0b7dda;
+        }
+        
+        .status {
+            padding: 12px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        
+        .list {
+            background: #f9f9f9;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            padding: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .list-item {
+            padding: 8px;
+            border-bottom: 1px solid #eee;
+            font-size: 13px;
+            word-break: break-all;
+        }
+        
+        .list-item:last-child {
+            border-bottom: none;
+        }
+        
+        .list-item-key {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        
+        .list-item-value {
+            color: #666;
+        }
+        
+        .list-empty {
+            padding: 20px;
+            text-align: center;
+            color: #999;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .debug-log {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            max-height: 200px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: #333;
+            line-height: 1.5;
+        }
+        
+        .log-entry {
+            margin-bottom: 4px;
+        }
+        
+        .log-time {
+            color: #999;
+        }
+        
+        .log-info {
+            color: #2196F3;
+        }
+        
+        .log-success {
+            color: #4CAF50;
+        }
+        
+        .log-error {
+            color: #f44336;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📱 LocalStorage 同步示例</h1>
+        
+        <!-- 状态信息 -->
+        <div class="section">
+            <h2>当前状态</h2>
+            <div id="statusDiv" class="status info">正在初始化...</div>
+            <p style="font-size: 12px; color: #666; margin-top: 8px;">
+                <strong>首次启动：</strong>SQLite 为空，使用默认数据初始化<br>
+                <strong>非首次启动：</strong>从 SQLite 恢复保存的数据
+            </p>
+        </div>
+        
+        <!-- 添加数据 -->
+        <div class="section">
+            <h2>添加数据到 LocalStorage</h2>
+            <div class="form-group">
+                <input type="text" id="keyInput" placeholder="输入键(key)" value="userName">
+                <input type="text" id="valueInput" placeholder="输入值(value)" value="张三">
+                <button onclick="addToLocalStorage()">保存</button>
+            </div>
+        </div>
+        
+        <!-- 查看数据 -->
+        <div class="section">
+            <h2>LocalStorage 中的数据</h2>
+            <div class="button-group">
+                <button class="info" onclick="refreshLocalStorageList()">刷新列表</button>
+                <button class="danger" onclick="clearLocalStorage()">清空所有</button>
+            </div>
+            <div id="localStorageList" class="list">
+                <div class="list-empty">无数据</div>
+            </div>
+        </div>
+        
+        <!-- SQLite 数据库操作 -->
+        <div class="section">
+            <h2>SQLite 数据库操作</h2>
+            <div class="button-group">
+                <button class="info" onclick="checkDbStatus()">检查数据库状态</button>
+                <button class="info" onclick="loadDataFromDb()">从 SQLite 读取数据</button>
+                <button class="info" onclick="saveDataToDb()">保存数据到 SQLite</button>
+            </div>
+            <div id="dbStatusDiv" style="margin-top: 10px;"></div>
+        </div>
+        
+        <!-- 调试日志 -->
+        <div class="section">
+            <h2>调试日志</h2>
+            <button class="danger" style="margin-bottom: 10px;" onclick="clearDebugLog()">清空日志</button>
+            <div id="debugLog" class="debug-log">
+                <div class="log-entry"><span class="log-time">[系统]</span> <span class="log-info">日志准备就绪</span></div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // ==================== 日志系统 ====================
+        class DebugLogger {
+            constructor(elementId) {
+                this.element = document.getElementById(elementId);
+                this.maxLines = 100;
+            }
+            
+            log(message, type = 'info') {
+                const time = new Date().toLocaleTimeString('zh-CN');
+                const classList = `log-entry log-${type}`;
+                const entry = document.createElement('div');
+                entry.className = classList;
+                entry.innerHTML = `<span class="log-time">[${time}]</span> ${message}`;
+                
+                this.element.appendChild(entry);
+                this.element.scrollTop = this.element.scrollHeight;
+                
+                // 限制日志行数
+                while (this.element.children.length > this.maxLines) {
+                    this.element.removeChild(this.element.firstChild);
+                }
+            }
+            
+            info(message) { this.log(message, 'info'); }
+            success(message) { this.log(message, 'success'); }
+            error(message) { this.log(message, 'error'); }
+            clear() { this.element.innerHTML = ''; }
+        }
+        
+        const logger = new DebugLogger('debugLog');
+        
+        // ==================== 初始化系统 ====================
+        
+        window.restoreLocalStorage = function(dbData) {
+            logger.info('Android 调用: window.restoreLocalStorage()');
+            logger.info('收到数据库数据: ' + JSON.stringify(dbData).substring(0, 100) + '...');
+            
+            // 将数据库数据写入 LocalStorage
+            for (const [key, value] of Object.entries(dbData)) {
+                localStorage.setItem(key, value);
+                logger.info(`恢复数据: ${key} = ${value.substring(0, 50)}...`);
+            }
+            
+            logger.success('LocalStorage 恢复完成，共 ' + Object.keys(dbData).length + ' 条记录');
+            updateStatus('已从 SQLite 恢复数据', 'success');
+            refreshLocalStorageList();
+            
+            // 触发自定义事件
+            if (window.onLocalStorageRestored) {
+                window.onLocalStorageRestored(dbData);
+            }
+        };
+        
+        window.onFirstLaunch = function(launchType) {
+            logger.info('Android 调用: window.onFirstLaunch("' + launchType + '")');
+            logger.info('首次启动应用，初始化默认数据');
+            
+            // 首次启动的初始化逻辑
+            initializeDefaultData();
+            
+            updateStatus('首次启动应用，已初始化默认数据', 'success');
+        };
+        
+        // 初始化默认数据
+        function initializeDefaultData() {
+            const defaultData = {
+                'appName': '365应用',
+                'userName': '用户',
+                'userId': '',
+                'theme': 'light',
+                'language': 'zh-CN',
+                'lastLogin': new Date().toISOString(),
+                'settings': JSON.stringify({
+                    notificationEnabled: true,
+                    autoSave: true
+                })
+            };
+            
+            for (const [key, value] of Object.entries(defaultData)) {
+                localStorage.setItem(key, value);
+                logger.info(`初始化: ${key} = ${value.substring(0, 50)}...`);
+            }
+            
+            logger.success('默认数据初始化完成');
+            refreshLocalStorageList();
+        }
+        
+        // ==================== UI 操作 ====================
+        
+        function updateStatus(message, type) {
+            const statusDiv = document.getElementById('statusDiv');
+            statusDiv.textContent = message;
+            statusDiv.className = `status ${type}`;
+        }
+        
+        function addToLocalStorage() {
+            const key = document.getElementById('keyInput').value.trim();
+            const value = document.getElementById('valueInput').value.trim();
+            
+            if (!key) {
+                logger.error('键不能为空');
+                return;
+            }
+            
+            localStorage.setItem(key, value);
+            logger.success(`已保存: ${key} = ${value}`);
+            
+            document.getElementById('keyInput').value = '';
+            document.getElementById('valueInput').value = '';
+            
+            refreshLocalStorageList();
+        }
+        
+        function refreshLocalStorageList() {
+            const list = document.getElementById('localStorageList');
+            
+            if (localStorage.length === 0) {
+                list.innerHTML = '<div class="list-empty">LocalStorage 中无数据</div>';
+                return;
+            }
+            
+            let html = '';
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                const value = localStorage.getItem(key);
+                const displayValue = value.length > 100 ? value.substring(0, 100) + '...' : value;
+                
+                html += `
+                    <div class="list-item">
+                        <span class="list-item-key">${escapeHtml(key)}</span>: 
+                        <span class="list-item-value">${escapeHtml(displayValue)}</span>
+                        <button onclick="deleteLocalStorageItem('${key}')" style="margin-left: 10px; padding: 4px 8px; font-size: 12px;">删除</button>
+                    </div>
+                `;
+            }
+            
+            list.innerHTML = html;
+            logger.info(`LocalStorage 中有 ${localStorage.length} 条记录`);
+        }
+        
+        function deleteLocalStorageItem(key) {
+            localStorage.removeItem(key);
+            logger.info(`已删除: ${key}`);
+            refreshLocalStorageList();
+        }
+        
+        function clearLocalStorage() {
+            if (confirm('确定要清空所有 LocalStorage 数据吗？')) {
+                localStorage.clear();
+                logger.warn('已清空所有 LocalStorage 数据');
+                refreshLocalStorageList();
+            }
+        }
+        
+        function checkDbStatus() {
+            try {
+                const count = AndroidBridge.getDbRecordCount();
+                const statusHtml = `<div class="status info">数据库中有 <strong>${count}</strong> 条记录</div>`;
+                document.getElementById('dbStatusDiv').innerHTML = statusHtml;
+                logger.info(`数据库状态: ${count} 条记录`);
+            } catch (e) {
+                logger.error('无法获取数据库状态: ' + e.message);
+            }
+        }
+        
+        function loadDataFromDb() {
+            try {
+                const jsonData = AndroidBridge.getAllDataFromDb();
+                const data = JSON.parse(jsonData);
+                
+                const recordCount = Object.keys(data).length;
+                const statusHtml = `<div class="status success">从数据库读取了 <strong>${recordCount}</strong> 条记录</div>`;
+                document.getElementById('dbStatusDiv').innerHTML = statusHtml;
+                
+                logger.success(`从数据库读取了 ${recordCount} 条记录`);
+                for (const [key, value] of Object.entries(data)) {
+                    logger.info(`${key} = ${value.substring(0, 50)}...`);
+                }
+            } catch (e) {
+                logger.error('读取数据库失败: ' + e.message);
+                document.getElementById('dbStatusDiv').innerHTML = `<div class="status error">错误: ${e.message}</div>`;
+            }
+        }
+        
+        function saveDataToDb() {
+            try {
+                const allLocalStorage = {};
+                for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i);
+                    allLocalStorage[key] = localStorage.getItem(key);
+                }
+                
+                AndroidBridge.saveAllLocalStorageToDb(JSON.stringify(allLocalStorage));
+                
+                const recordCount = Object.keys(allLocalStorage).length;
+                const statusHtml = `<div class="status success">已保存 <strong>${recordCount}</strong> 条记录到数据库</div>`;
+                document.getElementById('dbStatusDiv').innerHTML = statusHtml;
+                
+                logger.success(`已保存 ${recordCount} 条记录到数据库`);
+            } catch (e) {
+                logger.error('保存到数据库失败: ' + e.message);
+                document.getElementById('dbStatusDiv').innerHTML = `<div class="status error">错误: ${e.message}</div>`;
+            }
+        }
+        
+        function clearDebugLog() {
+            logger.clear();
+        }
+        
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        // ==================== 页面卸载时保存数据 ====================
+        
+        window.addEventListener('beforeunload', function() {
+            logger.info('页面卸载，保存 LocalStorage 到 SQLite');
+            
+            const allLocalStorage = {};
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                allLocalStorage[key] = localStorage.getItem(key);
+            }
+            
+            try {
+                AndroidBridge.saveAllLocalStorageToDb(JSON.stringify(allLocalStorage));
+                logger.success('数据已保存');
+            } catch (e) {
+                logger.error('保存失败: ' + e.message);
+            }
+        });
+        
+        // 应用进入后台时保存
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                logger.info('应用进入后台，保存数据');
+                
+                const allLocalStorage = {};
+                for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i);
+                    allLocalStorage[key] = localStorage.getItem(key);
+                }
+                
+                try {
+                    AndroidBridge.saveAllLocalStorageToDb(JSON.stringify(allLocalStorage));
+                    logger.success('后台数据已保存');
+                } catch (e) {
+                    logger.error('后台保存失败: ' + e.message);
+                }
+            }
+        });
+        
+        // ==================== 页面加载完成 ====================
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            logger.info('页面加载完成');
+            
+            // 刷新列表
+            refreshLocalStorageList();
+            
+            // 检查数据库状态
+            setTimeout(function() {
+                checkDbStatus();
+            }, 500);
+        });
+    </script>
+</body>
+</html>

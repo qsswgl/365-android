@@ -1,0 +1,428 @@
+<!--
+/*
+ * Project: BJP09001
+ *
+ * Description:
+ *    商户接口范例。
+ *
+ * Modify Information:
+ *    Author        Date        Description
+ *    ============  ==========  =======================================
+ *    abchina       2014/04/15  V3.0.0
+ *
+ */
+-->
+<html>
+<head>
+    <title>农行网上支付平台-商户接口范例</title>
+    <style type="text/css">
+        .auto-style1 {
+            font-size: x-large;
+        }
+    </style>
+</head>
+<body bgcolor='#FFFFFF' text='#000000' link='#0000FF' vlink='#0000FF' alink='#FF0000'>
+    <center class="auto-style1">
+        商户接口范例<br />
+    </center>
+    <table align="CENTER">
+        <tr>
+            <td>
+                <a href='MerchantPayment.aspx'>1、 支付请求 </a>
+                <a href='MerchantPaymentIE.aspx'>2、页面支付请求 </a>
+                <a href='MerchantQuickPayment.html'>3、网上K码支付 </a>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <a href='MerchantRefund.aspx'>4、 单笔退款 </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='MerchantBatchRefund.aspx'>5、 批量退款 </a>
+                <a href='MerchantQueryBatchRefund.aspx'>6、 批量退款结果查询 </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='AgentSignContract.aspx'>7、 授权支付签约(银行端)  </a>
+                <a href='MerchantQuickAgentSignContract.html'>8、 授权支付签约(商户端)  </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='AgentSignContractQuery.aspx'>9、 签约结果查询  </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='AgentUnSign.aspx'>10、 授权支付解约  </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='AgentPayment.aspx'>11、 单笔授权扣款  </a>
+                <a href='AgentBatchPayment.aspx'>12、 批量授权扣款  </a>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <a href='MerchantQueryOrder.aspx'>13、 单笔交易查询  </a>
+                <a href='AgentBatchPaymentQuery.aspx'>14、 批量授权扣款结果查询  </a>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <a href='MerchantQueryTrnxRecords.aspx'>15、 交易明细查询  </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='MerchantTrxSettleQuery.aspx'>16、 对账单查询  </a>
+                <a href='MerchantTrxSettleQueryPlatForm.aspx'>17、 平台商户对账单查询  </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='IdentityVerify.aspx'>18、 客户身份验证（页面跳转）  </a>
+                <a href='QuickIdentityVerify.aspx'>19、 客户身份验证（非页面跳转）  </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='SubmitPreAuthPayment.aspx'>20、 预授权确认/取消  </a>
+            </td>
+        </tr>
+        <TR>
+            <TD>
+                <a href='MerchantPaymentUnified.aspx'> 21、微信支付请求  </a>
+                <a href='AlipayRequest.aspx'> 22、支付宝支付请求  </a>
+            </TD>
+        </TR>
+        <TR>
+            <TD>
+                <a href='MerchantInnerPaymentRequest.aspx'> 23、内转交易请求  </a>
+                <a href='MerchantOutPaymentRequest.aspx'> 24、出金交易请求  </a>
+                <a href='MerchantGetReceipt.aspx'>25、 电子回单下载(出金)  </a>
+            </TD>
+        </TR>
+        <TR>
+            <TD>
+                <a href='RegSubMerchantInfo.aspx'> 26、二级商户信息同步（旧）  </a>
+                <a href='SubAccQuery.aspx'> 27、二级商户余额查询  </a>
+            </TD>
+        </TR>
+        <TR>
+            <TD>
+                <a href='MerchantTrxSettleAliWX.aspx'>28、微信支付宝对账单下载   </a>
+                <a href='MerchantTrxSettleAliWXDZH.aspx'>29、垫资户模式微信支付宝对账单下载   </a>
+                <a href='MerchantTrxSettleTransfer.aspx'>30、内转出金对账单下载   </a>
+            </TD>
+        </TR>
+        <TR>
+            <TD>
+                <a href='QueryTransferOut.aspx'>31、外转（出金）查询</a>
+                <a href='QueryAuthenMerchant.aspx'>32、鉴权查询</a>
+            </TD>
+        </TR>
+        <TR>
+            <TD>
+                <a href='MerchantPayCancel.aspx'>33、商户订单撤销</a>
+            </TD>
+        </TR>
+        <TR>
+            <TD>
+                <a href='VerifyMessageCodeAndRandomAmount.aspx'>34、商户短信验证码(或随机金额)验证接口</a>
+            </TD>
+        </TR>
+        <TR>
+            <TD>
+                <a href='QueryPlatformMerchantConfirm.aspx'>35、担保确认查询接口</a>
+            </TD>
+        </TR>
+        <TR>
+            <TD>
+                <a href='SendMobileMessageForSubMer.aspx'>36、二级商户同步短信验证码重发接口</a>
+            </TD>
+        </TR>
+        <TR>
+            <TD>
+                <a href='GuanteePaySendMQOrder.aspx'>37、担保确认接口</a>
+            </TD>
+        </TR>
+        <TR>
+            <TD>
+                <a href='Deposit.aspx'>38、担保商户充值接口</a>
+            </TD>
+        </TR>
+        <TR>
+            <TD>
+                <a href='MigrateSubMerchantInfo.aspx'>39、二级商户迁移接口</a>
+            </TD>
+        </TR>
+        <TR>
+            <TD>
+                <a href='UpdateSubMerchantStatus.aspx'>40、修改二级商户状态</a>
+            </TD>
+        </TR>
+        <!--<TR>
+            <TD>
+                <a href='RegSubMerInfo.aspx'>41-1、二级商户同步(新)</a>
+            </TD>
+        </TR>-->
+        <TR>
+            <TD>
+                <a href='QrySubMerReviewStatus.aspx'>41-1、二级商户同步审核状态查询</a>
+            </TD>
+        </TR>
+        <TR>
+            <TD>
+                <a href='BatchRegSubMerInfo.aspx'>41-2、批量二级商户同步</a>
+            </TD>
+        </TR>
+        <TR>
+            <TD>
+                <a href='BatchUpdateSubMerInfo.aspx'>41-3、批量二级商户信息更新</a>
+            </TD>
+        </TR>
+        <TR>
+            <TD>
+                <a href='RegSubMerInfoNew.aspx'>41-4、新版二级商户进件</a>
+            </TD>
+        </TR>
+        <TR>
+            <TD>
+                <a href='RegSubMerEndInfo.aspx'>41-5、二级商户终端信息同步</a>
+            </TD>
+        </TR>
+        <TR>
+            <TD>
+                <a href='QrySubMerchantInfo.aspx'>42、查询二级商户信息</a>
+            </TD>
+        </TR>
+        <TR>
+            <TD>
+                <a href='ABCQRPayReq.aspx'>43、被扫支付请求（掌银）</a>
+            </TD>
+        </TR>
+        <tr>
+            <td>
+                <a href='SubMerchantSubmitFile.aspx'>44、二级商户证件资料上传</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='SubMerchantSubmitFileNew.aspx'>44-1、新二级商户证件资料上传</a>
+            </td>
+        </tr>
+        <TR>
+            <TD>
+                <a href='QuerySubMerchantSettleAmount.aspx'>45、POS渠道可清算金额查询</a>
+            </TD>
+        </TR>
+        <TR>
+            <TD>
+                <a href='POSThirdFileDownload.aspx'>46、POS对账单下载</a>
+            </TD>
+        </TR>
+        <tr>
+            <td>
+                <a href='ConfirmPOSPayment.aspx'>47、POS订单确认</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='SettleAdvanceFundTransErrorFile.aspx'>48、垫资交易差错文件下载</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='ThirdOrderConfirm.aspx'>49、第三方订单确认</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='MerchantRealTimeRegister.aspx'>50、实时单笔登记第三方订单</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='MerchantFileRegister.aspx'>51、文件登记第三方订单</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='MerchantQueryFileRegister.aspx'>52、查询文件登记第三方订单结果</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='SubAccDetailQuery.aspx'> 53、二级商户明细查询  </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='ThirdOrderConfirmNew.aspx'>54、第三方订单确认(新)</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='QuerySubMerTransDetail.aspx'> 55、二级商户明细查询  </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='SubAccDetailQueryNew.aspx'> 56、二级商户明细查询新接口（支持续查）  </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='EntrustBatchPaymentQuery.aspx'> 57、代收批量扣款结果查询  </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='EntrustPayment.aspx'> 58、代收业务单笔扣款  </a>
+                <a href='EntrustBatchPayment.aspx'> 59、代收业务批量扣款  </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='SubsidyTransfer.aspx'> 60、补贴支付  </a>
+                <a href='SubsidyRefund.aspx'> 61、补贴退款  </a>
+                <a href='QuerySubsidy.aspx'> 62、补贴查询  </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='GuaFundAccDetailQuery.aspx'> 63、保证金账户明细查询  </a>
+                <a href='GuaFundSubAccDetailQuery.aspx'> 64、保证金账簿明细查询  </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='GetWeiXinAuthInfo.aspx'> 65、获取调用凭证  </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='EntrustSignReq.aspx'> 66、代收签约  </a>
+                <a href='EntrustSignResendSMS.aspx'> 67、代收短信验证码重发  </a>
+                <a href='EntrustSignConfirm.aspx'> 68、代收签约确认  </a>
+                <a href='EntrustQuerySign.aspx'> 69、代收签约查询  </a>
+                <a href='EntrustUnSign.aspx'> 70、代收解约  </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='DownloadStatement.aspx'> 71、大文件对账单下载  </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='MigrateSubMerToOtherSubject.aspx'> 72、不同主体二级商户迁移  </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='QueryInternalTransfer.aspx'> 73、内转交易查询  </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='QueryRealTimeRegister.aspx'> 74、第三方订单信息确认结果查询  </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='PlatSubCustomPay.aspx'> 75、客户账簿支付  </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='QrySubCustomReviewStatus.aspx'> 76、客户申请状态查询  </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='RegSubCustomerInfo.aspx'> 77、客户信息同步  </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='QueryCustomAccDetail.aspx'> 78、二级客户账簿明细查询  </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='QueryCustomInfo.aspx'> 79、客户信息查询接口  </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='QueryCustomTransDetail.aspx'> 80、二级客户交易明细查询  </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='PayForAnotherApply.aspx'> 81、二级商户出金申请  </a>
+                <a href='FundTransferApplyQuery.aspx'> 82、资金划拨查询  </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='EWalletPayReq.aspx'> 83、数字人民币主扫交易  </a>
+                <a href='UDCAppQRCodePayReq.aspx'> 84、数字人民币被扫交易  </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='SubEWalletPayForOutterV2.aspx'> 85、子钱包支付交易V2  </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='UDCAppCashierPayReq.aspx'> 86、拉起人行钱包APP收银台下单  </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='SettleQuery.aspx'> 87、清算结果查询  </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='ScanPayOrderReq.aspx'> 88、一码多扫下单  </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='OLScanPayOrderReq.aspx'> 89、线上一码多扫下单  </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='AppendSubmerchantInfo.aspx'> 90、二级商户迁移补录  </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='CancelRegSubmerApply.aspx'> 91、二级商户同步申请撤销  </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href='OverDueConfirm.aspx'> 92、超期担保确认  </a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

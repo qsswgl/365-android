@@ -1,0 +1,5 @@
+﻿<resources>
+    <style name="Theme.App" parent="android:Theme.Material.Light">
+        <!-- Customize as needed -->
+    </style>
+</resources>

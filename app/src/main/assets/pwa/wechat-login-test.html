@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>微信登录测试</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 30px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+        
+        .wechat-info {
+            background: #f0f9ff;
+            border: 1px solid #0ea5e9;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .wechat-info h3 {
+            color: #0369a1;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .wechat-info p {
+            color: #0c4a6e;
+            font-size: 12px;
+            line-height: 1.6;
+            margin: 5px 0;
+        }
+        
+        .wechat-info code {
+            background: #e0f2fe;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 11px;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 15px;
+        }
+        
+        .btn-wechat {
+            background: #07c160;
+            color: white;
+        }
+        
+        .btn-wechat:hover {
+            background: #06ad56;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(7, 193, 96, 0.3);
+        }
+        
+        .btn-wechat:active {
+            transform: translateY(0);
+        }
+        
+        .btn-clear {
+            background: #f1f5f9;
+            color: #64748b;
+        }
+        
+        .btn-clear:hover {
+            background: #e2e8f0;
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 14px;
+            line-height: 1.6;
+            display: none;
+        }
+        
+        .result.success {
+            background: #d1fae5;
+            border: 1px solid #10b981;
+            color: #065f46;
+            display: block;
+        }
+        
+        .result.error {
+            background: #fee2e2;
+            border: 1px solid #ef4444;
+            color: #991b1b;
+            display: block;
+        }
+        
+        .result h3 {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .result pre {
+            background: rgba(0,0,0,0.05);
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 12px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        .log {
+            margin-top: 20px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 15px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .log h3 {
+            color: #334155;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .log-item {
+            font-size: 12px;
+            padding: 5px 0;
+            border-bottom: 1px solid #e2e8f0;
+            color: #475569;
+        }
+        
+        .log-item:last-child {
+            border-bottom: none;
+        }
+        
+        .log-time {
+            color: #94a3b8;
+            margin-right: 5px;
+        }
+        
+        .icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔐 微信登录测试</h1>
+        <p class="subtitle">365酒水 - JSBridge微信登录功能测试</p>
+        
+        <div class="wechat-info">
+            <h3>📱 微信开放平台信息</h3>
+            <p>应用名称：<code>365酒水</code></p>
+            <p>APPID：<code>wx19d89333ff0d3efe</code></p>
+            <p>功能：通过JSBridge调用微信登录，获取授权code</p>
+        </div>
+        
+        <button class="btn btn-wechat" onclick="startWeChatLogin()">
+            <span class="icon">💚</span>
+            微信登录
+        </button>
+        
+        <button class="btn btn-wechat" onclick="getUserInfo()" id="getUserInfoBtn" style="display: none;">
+            <span class="icon">👤</span>
+            获取微信信息
+        </button>
+        
+        <button class="btn btn-clear" onclick="clearResult()">
+            🗑️ 清空结果
+        </button>
+        
+        <div id="result" class="result"></div>
+        
+        <div class="log">
+            <h3>📋 操作日志</h3>
+            <div id="logContainer"></div>
+        </div>
+    </div>
+
+    <script>
+        // 全局变量保存微信登录code
+        let wechatCode = null;
+        let wechatState = null;
+        
+        // 添加日志
+        function addLog(message) {
+            const logContainer = document.getElementById('logContainer');
+            const time = new Date().toLocaleTimeString('zh-CN', { hour12: false });
+            const logItem = document.createElement('div');
+            logItem.className = 'log-item';
+            logItem.innerHTML = `<span class="log-time">${time}</span>${message}`;
+            logContainer.appendChild(logItem);
+            logContainer.scrollTop = logContainer.scrollHeight;
+        }
+        
+        // 显示结果
+        function showResult(success, title, content) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.className = success ? 'result success' : 'result error';
+            resultDiv.innerHTML = `
+                <h3>${success ? '✅' : '❌'} ${title}</h3>
+                <pre>${content}</pre>
+            `;
+        }
+        
+        // 清空结果
+        function clearResult() {
+            document.getElementById('result').style.display = 'none';
+            document.getElementById('logContainer').innerHTML = '';
+            addLog('清空了结果和日志');
+        }
+        
+        // 微信登录成功回调
+        function onWeChatLoginSuccess(result) {
+            console.log('[微信登录] 成功回调:', result);
+            addLog('✅ 微信登录成功');
+            
+            // 保存code和state
+            wechatCode = result.code;
+            wechatState = result.state;
+            
+            const content = `授权码 (code): ${result.code}
+状态 (state): ${result.state}
+
+下一步：
+1. 将 code 发送到服务器
+2. 服务器使用 code + AppSecret 换取 access_token
+3. 使用 access_token 获取用户信息
+
+完整响应:
+${JSON.stringify(result, null, 2)}`;
+            
+            showResult(true, '微信登录成功', content);
+            
+            // 显示"获取微信信息"按钮
+            document.getElementById('getUserInfoBtn').style.display = 'block';
+        }
+        
+        // 微信登录失败回调
+        function onWeChatLoginError(result) {
+            console.error('[微信登录] 失败回调:', result);
+            
+            let message = '';
+            switch(result.error) {
+                case 'CANCEL':
+                    message = '用户取消了登录';
+                    addLog('⚠️ 用户取消了微信登录');
+                    break;
+                case 'DENIED':
+                    message = '用户拒绝了授权';
+                    addLog('❌ 用户拒绝了微信授权');
+                    break;
+                case 'NOT_INSTALLED':
+                    message = '未安装微信客户端';
+                    addLog('❌ 设备未安装微信');
+                    break;
+                case 'VERSION_TOO_LOW':
+                    message = '微信版本过低';
+                    addLog('❌ 微信版本过低');
+                    break;
+                default:
+                    message = result.message || '未知错误';
+                    addLog('❌ 微信登录失败: ' + message);
+            }
+            
+            const content = `错误类型: ${result.error}
+错误信息: ${message}
+
+完整响应:
+${JSON.stringify(result, null, 2)}`;
+            
+            showResult(false, '微信登录失败', content);
+        }
+        
+        // 启动微信登录
+        function startWeChatLogin() {
+            addLog('🚀 开始微信登录...');
+            
+            try {
+                // 检查AndroidBridge是否存在
+                if (typeof AndroidBridge === 'undefined') {
+                    addLog('❌ AndroidBridge不存在（可能不在APP中）');
+                    showResult(false, 'AndroidBridge不存在', 
+                        '此功能仅在365酒水APP中可用。\n请在APP的WebView中打开此页面。');
+                    return;
+                }
+                
+                // 检查微信登录方法是否存在
+                if (typeof AndroidBridge.weChatLogin !== 'function') {
+                    addLog('❌ weChatLogin方法不存在');
+                    showResult(false, '方法不存在', 
+                        'AndroidBridge.weChatLogin 方法不存在。\n请确保APP已正确实现微信登录功能。');
+                    return;
+                }
+                
+                addLog('📱 调用 AndroidBridge.weChatLogin()');
+                addLog('⏳ 等待微信客户端响应...');
+                
+                // 调用AndroidBridge的微信登录方法
+                // 注意：这里使用字符串形式的回调函数名
+                AndroidBridge.weChatLogin('handleWeChatLoginResult');
+                
+            } catch (e) {
+                console.error('[微信登录] 异常:', e);
+                addLog('❌ 调用失败: ' + e.message);
+                showResult(false, '调用异常', e.message);
+            }
+        }
+        
+        // 处理微信登录结果（由Android回调）
+        function handleWeChatLoginResult(result) {
+            console.log('[微信登录] 收到回调:', result);
+            
+            if (result.error) {
+                // 登录失败
+                onWeChatLoginError(result);
+            } else if (result.code) {
+                // 登录成功
+                onWeChatLoginSuccess(result);
+            } else {
+                // 未知响应
+                addLog('⚠️ 收到未知响应');
+                showResult(false, '未知响应', JSON.stringify(result, null, 2));
+            }
+        }
+        
+        // 获取微信用户信息
+        async function getUserInfo() {
+            if (!wechatCode) {
+                alert('请先进行微信登录获取code');
+                return;
+            }
+            
+            addLog('🔄 开始获取微信用户信息...');
+            addLog('📤 调用服务器API');
+            
+            try {
+                // 显示加载状态
+                showResult(true, '正在获取用户信息...', '请稍候...');
+                
+                // 调用服务器API
+                const response = await fetch('https://oauth.qsgl.net/api/Wechat/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        code: wechatCode
+                    })
+                });
+                
+                addLog(`📥 服务器响应: ${response.status} ${response.statusText}`);
+                
+                if (!response.ok) {
+                    // 处理错误响应
+                    const errorText = await response.text();
+                    addLog(`❌ 请求失败: ${errorText}`);
+                    
+                    let errorMessage = `HTTP ${response.status}: ${response.statusText}`;
+                    try {
+                        const errorJson = JSON.parse(errorText);
+                        errorMessage = errorJson.detail || errorJson.title || errorMessage;
+                    } catch (e) {
+                        errorMessage = errorText || errorMessage;
+                    }
+                    
+                    showResult(false, '获取用户信息失败', errorMessage);
+                    return;
+                }
+                
+                // 解析成功响应
+                const userData = await response.json();
+                console.log('[用户信息]:', userData);
+                addLog('✅ 成功获取用户信息');
+                
+                // 显示用户信息
+                const userInfoHtml = `微信用户信息：
+
+UnionID: ${userData.unionid || '未获取'}
+OpenID: ${userData.openid || '未获取'}
+昵称: ${userData.nickname || '未设置'}
+性别: ${userData.sex === 1 ? '男' : userData.sex === 2 ? '女' : '未知'}
+国家: ${userData.country || '未知'}
+省份: ${userData.province || '未知'}
+城市: ${userData.city || '未知'}
+头像URL: ${userData.headImgUrl || '无'}
+
+完整数据:
+${JSON.stringify(userData, null, 2)}`;
+                
+                showResult(true, '✅ 微信用户信息获取成功', userInfoHtml);
+                
+                // 如果有头像，可以显示
+                if (userData.headImgUrl) {
+                    addLog('👤 用户头像: ' + userData.headImgUrl);
+                }
+                
+            } catch (error) {
+                console.error('[获取用户信息] 异常:', error);
+                addLog('❌ 获取用户信息异常: ' + error.message);
+                showResult(false, '获取用户信息失败', `错误: ${error.message}\n\n请检查网络连接和服务器状态`);
+            }
+        }
+        
+        // 页面加载完成
+        window.onload = function() {
+            addLog('📄 页面加载完成');
+            addLog('🔍 检测运行环境...');
+            
+            if (typeof AndroidBridge !== 'undefined') {
+                addLog('✅ 检测到 AndroidBridge');
+                addLog('✅ 运行在365酒水APP中');
+                
+                if (typeof AndroidBridge.weChatLogin === 'function') {
+                    addLog('✅ 微信登录功能可用');
+                } else {
+                    addLog('⚠️ 微信登录功能不可用');
+                }
+            } else {
+                addLog('⚠️ 未检测到 AndroidBridge');
+                addLog('⚠️ 请在365酒水APP中打开');
+            }
+        };
+    </script>
+</body>
+</html>

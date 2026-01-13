@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>二维码/条形码扫描测试</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 100%;
+            padding: 40px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            color: #999;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        button {
+            padding: 14px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #f5f5f5;
+            color: #333;
+            border: 2px solid #ddd;
+        }
+
+        .btn-secondary:hover {
+            background: #efefef;
+            border-color: #ccc;
+        }
+
+        .result-section {
+            background: #f9f9f9;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .result-section.visible {
+            display: block;
+        }
+
+        .result-section h2 {
+            color: #333;
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+
+        .result-item {
+            margin-bottom: 12px;
+        }
+
+        .result-item label {
+            color: #999;
+            font-size: 12px;
+            display: block;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .result-item value {
+            color: #333;
+            font-size: 16px;
+            font-weight: 600;
+            word-break: break-all;
+            font-family: 'Courier New', monospace;
+        }
+
+        .status {
+            padding: 12px;
+            border-radius: 6px;
+            text-align: center;
+            margin-bottom: 20px;
+            display: none;
+            font-weight: 600;
+        }
+
+        .status.visible {
+            display: block;
+        }
+
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
+        .history-section {
+            margin-top: 30px;
+            border-top: 1px solid #e0e0e0;
+            padding-top: 20px;
+        }
+
+        .history-section h2 {
+            color: #333;
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+
+        .history-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .history-item {
+            padding: 10px;
+            background: #f5f5f5;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            font-size: 13px;
+            border-left: 3px solid #667eea;
+        }
+
+        .history-item .time {
+            color: #999;
+            font-size: 11px;
+            margin-bottom: 4px;
+        }
+
+        .history-item .value {
+            color: #333;
+            font-weight: 600;
+            word-break: break-all;
+            font-family: 'Courier New', monospace;
+        }
+
+        .history-item .format {
+            color: #999;
+            font-size: 11px;
+            margin-top: 4px;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            button {
+                padding: 12px 16px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📱 扫码测试</h1>
+        <p class="subtitle">点击下方按钮启动二维码/条形码扫描器</p>
+
+        <div class="status" id="status"></div>
+
+        <div class="btn-group">
+            <button class="btn-primary" onclick="startScanning()">
+                📷 启动扫码
+            </button>
+            <button class="btn-secondary" onclick="clearResults()">
+                🗑️ 清空结果
+            </button>
+        </div>
+
+        <div class="result-section" id="resultSection">
+            <h2>✅ 扫描结果</h2>
+            <div class="result-item">
+                <label>扫描内容</label>
+                <value id="barcodeValue">-</value>
+            </div>
+            <div class="result-item">
+                <label>条码格式</label>
+                <value id="barcodeFormat">-</value>
+            </div>
+            <div class="result-item">
+                <label>扫描时间</label>
+                <value id="scanTime">-</value>
+            </div>
+        </div>
+
+        <div class="history-section">
+            <h2>📋 扫描历史 (<span id="historyCount">0</span>)</h2>
+            <div class="history-list" id="historyList"></div>
+        </div>
+    </div>
+
+    <script>
+        // 全局变量存储扫描历史
+        let scanHistory = [];
+        const MAX_HISTORY = 20;
+
+        /**
+         * 启动二维码/条形码扫描
+         * 这个函数在用户点击扫码按钮时被调用
+         */
+        function startScanning() {
+            console.log('[扫码测试] 用户点击启动扫码');
+            
+            try {
+                // 检查 AndroidBridge 是否可用
+                if (typeof AndroidBridge === 'undefined') {
+                    console.error('[扫码测试] AndroidBridge 未定义');
+                    showStatus('错误：Android Bridge 未加载', 'error');
+                    return;
+                }
+
+                // 检查 startBarcodeScanning 方法是否存在
+                if (typeof AndroidBridge.startBarcodeScanning !== 'function') {
+                    console.error('[扫码测试] startBarcodeScanning 方法不存在');
+                    console.log('[扫码测试] AndroidBridge 可用的方法:', Object.keys(AndroidBridge));
+                    showStatus('错误：startBarcodeScanning 方法不存在', 'error');
+                    return;
+                }
+
+                console.log('[扫码测试] 准备调用 AndroidBridge.startBarcodeScanning()');
+                showStatus('正在启动扫码器...', 'info');
+                
+                // 调用 Java 方法
+                AndroidBridge.startBarcodeScanning();
+                console.log('[扫码测试] startBarcodeScanning() 调用成功');
+            } catch (error) {
+                console.error('[扫码测试] 启动扫码时发生错误:', error);
+                console.error('[扫码测试] 错误详情:', error.message);
+                console.error('[扫码测试] 错误堆栈:', error.stack);
+                showStatus('错误：' + error.message, 'error');
+            }
+        }
+
+        /**
+         * 二维码/条形码扫描回调函数
+         * 这个函数被 Android 原生代码调用，用来返回扫描结果
+         * 
+         * @param {string|null} barcodeValue - 扫描到的条码值，如果为 null 表示取消或失败
+         * @param {string} barcodeFormat - 条码格式（如 'QR_CODE', 'CODE_128', 'CODE_39' 等）
+         */
+        function onBarcodeScanned(barcodeValue, barcodeFormat) {
+            console.log('[扫码测试] 收到扫码回调', {
+                barcodeValue: barcodeValue,
+                barcodeFormat: barcodeFormat,
+                barcodeValueType: typeof barcodeValue,
+                barcodeFormatType: typeof barcodeFormat
+            });
+
+            if (barcodeValue === null || barcodeValue === undefined) {
+                // 用户取消扫描或扫描出错
+                if (barcodeFormat === 'CANCELLED') {
+                    showStatus('扫码已取消', 'info');
+                    console.log('[扫码测试] 用户取消了扫码');
+                } else if (barcodeFormat === 'ERROR') {
+                    showStatus('扫码失败，请重试', 'error');
+                    console.error('[扫码测试] 扫码发生错误');
+                } else {
+                    showStatus('扫码失败: ' + barcodeFormat, 'error');
+                    console.error('[扫码测试] 扫码失败，原因: ' + barcodeFormat);
+                }
+                hideResults();
+                return;
+            }
+
+            // 扫码成功
+            console.log('[扫码测试] 扫码成功，条码内容: ' + barcodeValue);
+            showStatus('✅ 扫码成功！', 'success');
+
+            // 更新结果显示
+            const scanTime = new Date().toLocaleTimeString('zh-CN');
+            document.getElementById('barcodeValue').textContent = barcodeValue;
+            document.getElementById('barcodeFormat').textContent = formatBarcodeType(barcodeFormat);
+            document.getElementById('scanTime').textContent = scanTime;
+            showResults();
+
+            // 添加到历史记录
+            addToHistory(barcodeValue, barcodeFormat, scanTime);
+
+            console.log('[扫码测试] 结果已显示并添加到历史');
+        }
+
+        /**
+         * 将扫描结果添加到历史记录
+         */
+        function addToHistory(value, format, time) {
+            const historyItem = {
+                value: value,
+                format: format,
+                time: time,
+                id: Date.now()
+            };
+
+            scanHistory.unshift(historyItem);
+
+            // 限制历史记录数量
+            if (scanHistory.length > MAX_HISTORY) {
+                scanHistory.pop();
+            }
+
+            updateHistoryDisplay();
+        }
+
+        /**
+         * 更新历史记录显示
+         */
+        function updateHistoryDisplay() {
+            const historyList = document.getElementById('historyList');
+            const historyCount = document.getElementById('historyCount');
+
+            historyList.innerHTML = '';
+            historyCount.textContent = scanHistory.length;
+
+            if (scanHistory.length === 0) {
+                historyList.innerHTML = '<p style="color: #999; text-align: center; padding: 20px;">暂无扫描记录</p>';
+                return;
+            }
+
+            scanHistory.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'history-item';
+                itemDiv.onclick = () => copyToClipboard(item.value);
+                itemDiv.style.cursor = 'pointer';
+
+                itemDiv.innerHTML = `
+                    <div class="time">${item.time}</div>
+                    <div class="value">${escapeHtml(item.value)}</div>
+                    <div class="format">${formatBarcodeType(item.format)}</div>
+                `;
+
+                historyList.appendChild(itemDiv);
+            });
+        }
+
+        /**
+         * 格式化条码类型显示名称
+         */
+        function formatBarcodeType(format) {
+            const formatMap = {
+                'QR_CODE': 'QR 码',
+                'CODE_128': 'Code 128',
+                'CODE_39': 'Code 39',
+                'CODE_93': 'Code 93',
+                'CODABAR': 'Codabar',
+                'DATA_MATRIX': 'Data Matrix',
+                'EAN_13': 'EAN-13',
+                'EAN_8': 'EAN-8',
+                'ITF': 'ITF',
+                'UPC_A': 'UPC-A',
+                'UPC_E': 'UPC-E',
+                'PDF417': 'PDF-417',
+                'AZTEC': 'Aztec Code',
+                'CANCELLED': '已取消',
+                'ERROR': '错误'
+            };
+
+            return formatMap[format] || format;
+        }
+
+        /**
+         * 显示状态消息
+         */
+        function showStatus(message, type) {
+            const statusEl = document.getElementById('status');
+            statusEl.textContent = message;
+            statusEl.className = 'status visible ' + type;
+
+            // 3秒后自动隐藏
+            setTimeout(() => {
+                statusEl.classList.remove('visible');
+            }, 3000);
+        }
+
+        /**
+         * 显示结果区域
+         */
+        function showResults() {
+            document.getElementById('resultSection').classList.add('visible');
+        }
+
+        /**
+         * 隐藏结果区域
+         */
+        function hideResults() {
+            document.getElementById('resultSection').classList.remove('visible');
+        }
+
+        /**
+         * 清空所有结果
+         */
+        function clearResults() {
+            scanHistory = [];
+            updateHistoryDisplay();
+            hideResults();
+            document.getElementById('barcodeValue').textContent = '-';
+            document.getElementById('barcodeFormat').textContent = '-';
+            document.getElementById('scanTime').textContent = '-';
+            showStatus('已清空', 'info');
+        }
+
+        /**
+         * 复制内容到剪贴板
+         */
+        function copyToClipboard(text) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showStatus('✅ 已复制到剪贴板', 'success');
+                }).catch(() => {
+                    showStatus('复制失败', 'error');
+                });
+            } else {
+                // 备用方法
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                document.body.appendChild(textarea);
+                textarea.select();
+                try {
+                    document.execCommand('copy');
+                    showStatus('✅ 已复制到剪贴板', 'success');
+                } catch (err) {
+                    showStatus('复制失败', 'error');
+                }
+                document.body.removeChild(textarea);
+            }
+        }
+
+        /**
+         * HTML 转义，防止 XSS
+         */
+        function escapeHtml(unsafe) {
+            return unsafe
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        // 页面加载完成后的初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('[扫码测试] 页面加载完成');
+            console.log('[扫码测试] AndroidBridge 可用:', typeof AndroidBridge !== 'undefined');
+            
+            if (typeof AndroidBridge !== 'undefined') {
+                console.log('[扫码测试] AndroidBridge 对象可用');
+                console.log('[扫码测试] AndroidBridge 的方法列表:', Object.keys(AndroidBridge));
+                
+                if (typeof AndroidBridge.startBarcodeScanning === 'function') {
+                    console.log('[扫码测试] startBarcodeScanning 方法已就绪');
+                } else {
+                    console.error('[扫码测试] startBarcodeScanning 方法不存在');
+                    showStatus('⚠️ startBarcodeScanning 方法不可用', 'error');
+                }
+            } else {
+                console.error('[扫码测试] AndroidBridge 未定义');
+                showStatus('⚠️ Android Bridge 未准备就绪', 'error');
+            }
+        });
+
+        // 监听页面显示事件（从其他应用返回时）
+        document.addEventListener('visibilitychange', function() {
+            if (document.visibilityState === 'visible') {
+                console.log('[扫码测试] 页面恢复可见');
+                // 重新检查 AndroidBridge
+                if (typeof AndroidBridge !== 'undefined') {
+                    console.log('[扫码测试] AndroidBridge 仍然可用');
+                } else {
+                    console.warn('[扫码测试] AndroidBridge 在页面恢复后不可用');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

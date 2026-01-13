@@ -1,0 +1,225 @@
+<html>
+<head>
+    <meta charset="gb2312">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>农行线上支付平台-商户接口范例-支付请求</title>
+    <link rel="stylesheet" type="text/css" href="../../css/semantic.css">
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/semantic.js"></script>
+    <script src="../../js/util.js"></script>
+</head>
+<body>
+<div class="main ui container" style="padding-top: 100px; padding-bottom: 100px">
+    <div>
+        <div class="ui horizontal divider" style="font-size: large;">支付请求</div>
+        <div class="ui message hidden">
+            <i class="close icon"></i>
+            <div class="header">返回报文：</div>
+            <p style="word-break: break-all"></p>
+        </div>
+        <form class="ui form" action='MerchantPaymentIE.jsp' method="post">
+            <div class="five fields">
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="交易类型，ImmediatePay：直接支付，PreAuthPay：预授权支付，DividedPay：分期支付">交易类型*</label>
+                    <select class="ui selection dropdown" name="PayTypeID">
+                        <option value="ImmediatePay" selected>直接支付</option>
+                        <option value="PreAuthPay">预授权支付</option>
+                        <option value="DividedPay">分期支付</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="YYYY/MM/DD">订单日期*</label>
+                    <input type="text" name="OrderDate">
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="HH:MM:SS">订单时间*</label>
+                    <input type="text" name="OrderTime">
+                </div>
+                <div class="field">
+                    <label>订单号*</label>
+                    <input type="text" name="OrderNo">
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="交易币种，请上送156人民币">交易币种*</label>
+                    <input type="text" name="CurrencyCode" value="156">
+                </div>
+            </div>
+            <div class="five fields">
+                <div class="field">
+                    <label>交易金额*</label>
+                    <input type="text" name="PaymentRequestAmount" value="1.00">
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="分期支付时需要上送，1：进行分期支付，0：不进行分期支付">分期标识*</label>
+                    <select class="ui selection dropdown" name="InstallmentMark">
+                        <option value="0" selected>不进行分期支付</option>
+                        <option value="1">进行分期支付</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="CommodityType: 0101:支付账户充值，0201:虚拟类，0202:传统类，0203:实名类，0301:本行转账，0302:他行转账，
+                           0401:水费，0402:电费，0403:煤气费，0404:有线电视费，0405:通讯费，0406:物业费，0407:保险费，0408:行政费用，0409:税费，0410:学费，0499:其他，0501:基金，0502:理财产品，0599:其他">商品类型*</label>
+                    <input type="text" name="CommodityType" value="0201">
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="支付账户类型，1：农行卡支付 2：国际卡支付 3：农行贷记卡支付 5:基于第三方的B2C跨行支付 A:农行卡支付方式合并(1和3)
+            6：银联跨行支付，7:对公户">支付账户类型*</label>
+                    <select class="ui selection dropdown" name="PaymentType">
+                        <option value="1" selected>农行卡支付</option>
+                        <option value="2">国际卡支付</option>
+                        <option value="3">农行贷记卡支付</option>
+                        <option value="5">基于第三方的B2C跨行支付</option>
+                        <option value="A">农行卡支付方式合并(1和3)</option>
+                        <option value="6">银联跨行支付</option>
+                        <option value="7">对公户</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="支付交易渠道，1：internet网络接入 2：手机网络接入 3:数字电视网络接入 4:智能客户端">支付交易渠道*</label>
+                    <select class="ui selection dropdown" name="PaymentLinkType">
+                        <option value="1" selected>internet网络接入</option>
+                        <option value="2">手机网络接入</option>
+                        <option value="3">数字电视网络接入</option>
+                        <option value="4">智能客户端</option>
+                    </select>
+                </div>
+            </div>
+            <div class="five fields">
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="支付结果通知方式，0：仅URL页面通知 1：服务器通知和URL页面通知">支付结果通知方式*</label>
+                    <select class="ui selection dropdown" name="NotifyType">
+                        <option value="0">仅URL页面通知</option>
+                        <option value="1" selected>服务器通知和URL页面通知</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="商户接收支付结果通知地址，商户自己填写">通知URL地址*</label>
+                    <input type="text" name="ResultNotifyURL" value="http://yourwebsite/appname/MerchantResult.jsp">
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="交易是否支持向二级商户分账，1：进行分账 0：不进行分账">交易是否支持向二级商户分账*</label>
+                    <select class="ui selection dropdown" name="IsBreakAccount">
+                        <option value="0" selected>不进行分账</option>
+                        <option value="1">进行分账</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="产品名称，将显示在农行支付页面">产品名称*</label>
+                    <input type="text" name="ProductName" value="中国移动IP卡"  onchange="addOrderItems(); return false">
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="订单支付有效期，精确到秒">订单超时时间</label>
+                    <input type="text" name="orderTimeoutDate" value="20211231000000">
+                </div>
+            </div>
+            <div class="five fields">
+                <div class="field">
+                    <label>手续费金额</label>
+                    <input type="text" name="Fee" value="">
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="指定客户支付账户，仅针对农行直接支付">指定客户支付账户</label>
+                    <input type="text" name="AccountNo" value="">
+                </div>
+                <div class="field">
+                    <label>订单描述</label>
+                    <input type="text" name="OrderDesc" value="">
+                </div>
+                <div class="field">
+                    <label>订单地址</label>
+                    <input type="text" name="OrderURL" value="">
+                </div>
+                <div class="field">
+                    <label>收货地址</label>
+                    <input type="text" name="ReceiverAddress" value="北京">
+                </div>
+            </div>
+            <div class="five fields">
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="分期支付时需要上送，分期代码">分期代码</label>
+                    <input type="text" name="InstallmentCode" value="">
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="分期支付时需要上送，分期期数">分期期数</label>
+                    <input type="text" name="InstallmentNum" value="">
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="请上送客户真实IP">客户IP</label>
+                    <input type="text" name="BuyIP" value="127.0.0.1">
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="单位:天">订单保存时间</label>
+                    <input type="text" name="ExpiredDate" value="30">
+                </div>
+                <div class="field">
+                    <label data-position="top left"
+                           data-tooltip="银联跨行移动支付接入方式，0：页面接入 ，如果选择的支付帐户类型为6(银联跨行支付)交易渠道为2(手机网络接入)，需要必输">银联跨行移动支付接入方式</label>
+                    <select class="ui selection dropdown" name="UnionPayLinkType">
+                        <option value="0">页面接入</option>
+                    </select>
+                </div>
+            </div>
+            <div class="five fields">
+                <div class="field">
+                    <label>收款方账号</label>
+                    <input type="text" name="ReceiveAccount" value="">
+                </div>
+                <div class="field">
+                    <label>收款方户名</label>
+                    <input type="text" name="ReceiveAccName" value="">
+                </div>
+                <div class="field">
+                    <label>附言</label>
+                    <input type="text" name="MerchantRemarks" value="">
+                </div>
+                <div class="field">
+                    <label>模板分账模板号</label>
+                    <input type="text" name="SplitAccTemplate" value="">
+                </div>
+            </div>
+            <div class="field">
+                <input type="hidden" name="OrderItems">
+            </div>
+            <button class="ui button" type="submit">提交</button>
+        </form>
+    </div>
+</div>
+</body>
+<script language="javascript" type="text/javascript">
+    $(function () {
+        var orderItems = new Array();
+        $('.ui.selection.dropdown').dropdown();
+        $("input[name='OrderDate']").val(getOrderDate());
+        $("input[name='OrderTime']").val(getOrderTime());
+        $("input[name='OrderNo']").val(getOrderNo());
+        let ProductName = $("input[name='ProductName']").val();
+        orderItems.push({ProductName: ProductName});
+        $("input[name='OrderItems']").val(JSON.stringify(orderItems));
+    });
+    function addOrderItems() {
+        var items=new Array();
+        let ProductName = $("input[name='ProductName']").val();
+        items.push({ProductName: ProductName});
+        $("input[name='OrderItems']").val(JSON.stringify(items));
+    }
+</script>
+</html>

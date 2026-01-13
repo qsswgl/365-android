@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>农行微信支付测试</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .button-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        button {
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: white;
+        }
+        
+        .btn-app {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .btn-jsapi {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        .btn-native {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        .btn-clear {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            grid-column: 1 / -1;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .result-box {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+            display: none;
+        }
+        
+        .result-box.show {
+            display: block;
+        }
+        
+        .result-box h3 {
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 16px;
+        }
+        
+        .result-box pre {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .status-success {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status-error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .qr-code {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .qr-code img {
+            max-width: 200px;
+            margin: 20px auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏦 农行微信支付测试</h1>
+        <p class="subtitle">测试农行综合收银台微信支付功能</p>
+        
+        <div class="form-group">
+            <label>支付类型</label>
+            <select id="payType">
+                <option value="APP">APP支付</option>
+                <option value="JSAPI">公众号/小程序支付</option>
+                <option value="NATIVE">扫码支付</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label>订单号（自动生成）</label>
+            <input type="text" id="orderNo" readonly>
+        </div>
+        
+        <div class="form-group">
+            <label>金额（元）</label>
+            <input type="text" id="amount" value="0.01" placeholder="请输入金额">
+        </div>
+        
+        <div class="form-group">
+            <label>商品描述</label>
+            <input type="text" id="orderDesc" value="测试商品购买" placeholder="请输入商品描述">
+        </div>
+        
+        <div class="form-group">
+            <label>通知URL</label>
+            <input type="text" id="notifyUrl" value="http://yourserver.com/notify" placeholder="支付结果通知地址">
+        </div>
+        
+        <div class="form-group" id="appIdGroup">
+            <label>微信APPID（APP支付必填）</label>
+            <input type="text" id="appId" value="wx1234567890abcdef" placeholder="请输入微信APPID">
+        </div>
+        
+        <div class="form-group" id="openIdGroup" style="display:none;">
+            <label>用户OpenID（公众号支付必填）</label>
+            <input type="text" id="openId" value="oABC_123xyz456" placeholder="请输入用户OpenID">
+        </div>
+        
+        <div class="button-group">
+            <button class="btn-app" onclick="testPay()">
+                💳 发起支付
+            </button>
+            <button class="btn-clear" onclick="clearResult()">
+                🗑️ 清空结果
+            </button>
+        </div>
+        
+        <div id="resultBox" class="result-box">
+            <h3>支付结果</h3>
+            <div id="resultContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // 页面加载时生成订单号
+        window.onload = function() {
+            generateOrderNo();
+            updatePayTypeFields();
+        };
+        
+        // 支付类型变化时更新显示字段
+        document.getElementById('payType').addEventListener('change', updatePayTypeFields);
+        
+        function updatePayTypeFields() {
+            var payType = document.getElementById('payType').value;
+            var appIdGroup = document.getElementById('appIdGroup');
+            var openIdGroup = document.getElementById('openIdGroup');
+            
+            if (payType === 'APP') {
+                appIdGroup.style.display = 'block';
+                openIdGroup.style.display = 'none';
+            } else if (payType === 'JSAPI') {
+                appIdGroup.style.display = 'none';
+                openIdGroup.style.display = 'block';
+            } else {
+                appIdGroup.style.display = 'none';
+                openIdGroup.style.display = 'none';
+            }
+        }
+        
+        // 生成订单号
+        function generateOrderNo() {
+            var timestamp = new Date().getTime();
+            var random = Math.floor(Math.random() * 10000);
+            var orderNo = 'ORDER' + timestamp + random;
+            document.getElementById('orderNo').value = orderNo;
+            return orderNo;
+        }
+        
+        // 发起支付
+        function testPay() {
+            // 检查AndroidBridge是否存在
+            if (typeof AndroidBridge === 'undefined') {
+                showResult({
+                    ReturnCode: 'Error',
+                    ErrorMessage: 'AndroidBridge未定义，请在Android WebView中运行'
+                }, false);
+                return;
+            }
+            
+            // 获取表单数据
+            var payType = document.getElementById('payType').value;
+            var orderNo = document.getElementById('orderNo').value;
+            var amount = document.getElementById('amount').value;
+            var orderDesc = document.getElementById('orderDesc').value;
+            var notifyUrl = document.getElementById('notifyUrl').value;
+            
+            // 验证必填项
+            if (!amount || !orderDesc || !notifyUrl) {
+                alert('请填写所有必填项');
+                return;
+            }
+            
+            try {
+                var result;
+                
+                // 根据支付类型调用不同的方法
+                if (payType === 'APP') {
+                    var appId = document.getElementById('appId').value;
+                    if (!appId) {
+                        alert('请填写微信APPID');
+                        return;
+                    }
+                    console.log('调用APP支付:', orderNo, amount, orderDesc, notifyUrl, appId);
+                    result = AndroidBridge.createWeChatPay(orderNo, amount, orderDesc, notifyUrl, appId);
+                    
+                } else if (payType === 'JSAPI') {
+                    var openId = document.getElementById('openId').value;
+                    if (!openId) {
+                        alert('请填写用户OpenID');
+                        return;
+                    }
+                    console.log('调用公众号支付:', orderNo, amount, orderDesc, notifyUrl, openId);
+                    result = AndroidBridge.createWeChatJsApiPay(orderNo, amount, orderDesc, notifyUrl, openId);
+                    
+                } else if (payType === 'NATIVE') {
+                    console.log('调用扫码支付:', orderNo, amount, orderDesc, notifyUrl);
+                    result = AndroidBridge.createWeChatNativePay(orderNo, amount, orderDesc, notifyUrl);
+                }
+                
+                console.log('支付接口返回:', result);
+                
+                // 解析结果
+                var resultObj = JSON.parse(result);
+                showResult(resultObj, resultObj.ReturnCode === '0000');
+                
+                // 如果是扫码支付且成功，显示二维码
+                if (payType === 'NATIVE' && resultObj.ReturnCode === '0000' && resultObj.CodeUrl) {
+                    showQRCode(resultObj.CodeUrl);
+                }
+                
+            } catch (error) {
+                console.error('支付失败:', error);
+                showResult({
+                    ReturnCode: 'Error',
+                    ErrorMessage: error.message
+                }, false);
+            }
+        }
+        
+        // 显示结果
+        function showResult(resultObj, isSuccess) {
+            var resultBox = document.getElementById('resultBox');
+            var resultContent = document.getElementById('resultContent');
+            
+            var statusClass = isSuccess ? 'status-success' : 'status-error';
+            var statusText = isSuccess ? '✅ 成功' : '❌ 失败';
+            
+            var html = '<div class="status ' + statusClass + '">' + statusText + '</div>';
+            html += '<pre>' + JSON.stringify(resultObj, null, 2) + '</pre>';
+            
+            resultContent.innerHTML = html;
+            resultBox.classList.add('show');
+            
+            // 滚动到结果区域
+            resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        
+        // 显示二维码
+        function showQRCode(codeUrl) {
+            var resultContent = document.getElementById('resultContent');
+            var qrHtml = '<div class="qr-code">';
+            qrHtml += '<h4>请扫描二维码支付</h4>';
+            qrHtml += '<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent(codeUrl) + '" />';
+            qrHtml += '<p style="word-break:break-all;font-size:12px;color:#666;">' + codeUrl + '</p>';
+            qrHtml += '</div>';
+            
+            resultContent.innerHTML += qrHtml;
+        }
+        
+        // 清空结果
+        function clearResult() {
+            var resultBox = document.getElementById('resultBox');
+            resultBox.classList.remove('show');
+            
+            // 生成新订单号
+            generateOrderNo();
+        }
+    </script>
+</body>
+</html>
