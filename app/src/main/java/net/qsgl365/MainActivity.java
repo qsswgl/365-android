@@ -22,17 +22,33 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.Set;
+import java.io.InputStream;
+import java.util.Properties;
 
 // 微信登录相关导入
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.tencent.mm.opensdk.modelmsg.SendAuth;
 
+// 微信支付相关导入
+import com.tencent.mm.opensdk.modelpay.PayReq;
+import com.tencent.mm.opensdk.constants.ConstantsAPI;
+
+// 微信小程序相关导入
+import com.tencent.mm.opensdk.modelbiz.WXLaunchMiniProgram;
+
+// 支付宝SDK相关导入
+import com.alipay.sdk.app.PayTask;
+
 public class MainActivity extends AppCompatActivity {
     
     // 微信开放平台信息
     public static final String WECHAT_APP_ID = "wx19d89333ff0d3efe";
     private static final String WECHAT_APP_SECRET = "f4566a825ef87dbb5add80e4a3c887d1";
+    
+    // 配置文件属性
+    private Properties appConfig;
+    private String webviewHomeUrl = "https://www.qsgl.net/html/365app/#/";  // 默认首页地址
     
     // 微信API对象
     private static IWXAPI weChatAPI;
@@ -413,6 +429,401 @@ public class MainActivity extends AppCompatActivity {
                 invokeWeChatLoginCallback("{\"error\":\"EXCEPTION\",\"message\":\"" + e.getMessage() + "\"}");
             }
         }
+        
+        /**
+         * 调起微信支付
+         * 
+         * 前端调用示例:
+         * const payParams = {
+         *   appId: "wx1234567890abcdef",
+         *   timeStamp: "1704530400",
+         *   nonceStr: "abcdef1234567890",
+         *   package: "prepay_id=wx2017033010242291fcfe0db70013231072",
+         *   signType: "MD5",
+         *   paySign: "1234567890abcdef",
+         *   orderNo: "ORD20260106001"
+         * };
+         * AndroidBridge.launchWeChatPay(JSON.stringify(payParams));
+         * 
+         * 支付完成后，会调用前端的回调函数：
+         * handleWeChatPayResult({success: true, message: "支付成功"})  // 成功
+         * handleWeChatPayResult({success: false, errorCode: "CANCEL", errorMessage: "用户取消支付"})  // 失败
+         * 
+         * @param payParamsJson 支付参数JSON字符串
+         */
+        @android.webkit.JavascriptInterface
+        public void launchWeChatPay(String payParamsJson) {
+            Log.d("WebView", "=== JavaScript 调用微信支付 ===");
+            Log.d("WebView", "支付参数: " + payParamsJson);
+            
+            // 检查微信API是否初始化
+            if (weChatAPI == null) {
+                Log.e("WebView", "❌ 微信API未初始化，尝试重新初始化");
+                initWeChat();
+                if (weChatAPI == null) {
+                    Log.e("WebView", "❌ 微信API初始化失败");
+                    invokeWeChatPayCallback("{\"success\":false,\"errorCode\":\"API_INIT_FAILED\",\"errorMessage\":\"微信API初始化失败\"}");
+                    return;
+                }
+            }
+            
+            // 检查微信是否安装
+            if (!weChatAPI.isWXAppInstalled()) {
+                Log.e("WebView", "❌ 微信未安装");
+                invokeWeChatPayCallback("{\"success\":false,\"errorCode\":\"NOT_INSTALLED\",\"errorMessage\":\"未安装微信客户端，无法进行支付测试\"}");
+                return;
+            }
+            
+            // 检查微信版本
+            int wxSdkVersion = weChatAPI.getWXAppSupportAPI();
+            Log.d("WebView", "微信SDK版本: " + wxSdkVersion);
+            
+            try {
+                // 解析支付参数
+                org.json.JSONObject payParams = new org.json.JSONObject(payParamsJson);
+                
+                // 创建微信支付请求对象
+                com.tencent.mm.opensdk.modelpay.PayReq payReq = new com.tencent.mm.opensdk.modelpay.PayReq();
+                payReq.appId = payParams.getString("appId");
+                payReq.partnerId = payParams.optString("partnerId", ""); // 商户号，可选
+                payReq.prepayId = payParams.getString("package").replace("prepay_id=", ""); // 去掉前缀
+                payReq.packageValue = payParams.getString("package");
+                payReq.nonceStr = payParams.getString("nonceStr");
+                payReq.timeStamp = payParams.getString("timeStamp");
+                payReq.sign = payParams.getString("paySign");
+                payReq.signType = payParams.optString("signType", "MD5");
+                
+                Log.d("WebView", "支付参数解析成功:");
+                Log.d("WebView", "  appId: " + payReq.appId);
+                Log.d("WebView", "  partnerId: " + payReq.partnerId);
+                Log.d("WebView", "  prepayId: " + payReq.prepayId);
+                Log.d("WebView", "  timeStamp: " + payReq.timeStamp);
+                Log.d("WebView", "  nonceStr: " + payReq.nonceStr);
+                Log.d("WebView", "  package: " + payReq.packageValue);
+                Log.d("WebView", "  signType: " + payReq.signType);
+                Log.d("WebView", "  sign: " + payReq.sign);
+                
+                // 发起微信支付
+                Log.d("WebView", "准备调用 weChatAPI.sendReq()...");
+                boolean result = weChatAPI.sendReq(payReq);
+                
+                Log.d("WebView", "weChatAPI.sendReq() 返回结果: " + result);
+                
+                if (result) {
+                    Log.d("WebView", "✅ 微信支付请求已发送，等待用户操作");
+                    // 注意：这里不立即回调，等待WXPayEntryActivity的回调
+                } else {
+                    Log.e("WebView", "❌ 微信支付请求发送失败 - 可能原因:");
+                    Log.e("WebView", "  1. 微信未正确注册（AppID不匹配）");
+                    Log.e("WebView", "  2. 支付参数签名无效（Mock数据）");
+                    Log.e("WebView", "  3. prepayId格式错误");
+                    Log.e("WebView", "  4. 微信版本不支持");
+                    
+                    // Mock数据测试提示
+                    if (payReq.prepayId.contains("mock")) {
+                        Log.w("WebView", "⚠️ 检测到Mock数据: " + payReq.prepayId);
+                        Log.w("WebView", "⚠️ Mock数据无法完成真实支付，但可以测试调用流程");
+                        invokeWeChatPayCallback("{\"success\":false,\"errorCode\":\"MOCK_DATA\",\"errorMessage\":\"Mock数据测试：微信SDK拒绝了模拟订单（这是预期行为）。真实支付需要服务器返回的有效参数。\"}");
+                    } else {
+                        invokeWeChatPayCallback("{\"success\":false,\"errorCode\":\"SEND_FAILED\",\"errorMessage\":\"发送支付请求失败\"}");
+                    }
+                }
+            } catch (org.json.JSONException e) {
+                Log.e("WebView", "❌ 支付参数JSON解析失败: " + e.getMessage(), e);
+                invokeWeChatPayCallback("{\"success\":false,\"errorCode\":\"PARAM_ERROR\",\"errorMessage\":\"支付参数格式错误: " + e.getMessage() + "\"}");
+            } catch (Exception e) {
+                Log.e("WebView", "❌ 微信支付异常: " + e.getMessage(), e);
+                invokeWeChatPayCallback("{\"success\":false,\"errorCode\":\"EXCEPTION\",\"errorMessage\":\"" + e.getMessage() + "\"}");
+            }
+        }
+        
+        /**
+         * 拉起微信小程序
+         * 
+         * 前端调用示例:
+         * const miniProgramParams = {
+         *   userName: "gh_xxxxx",  // 小程序原始ID (必填)
+         *   path: "pages/index/index",  // 小程序页面路径 (选填,不填则打开首页)
+         *   miniprogramType: 0  // 小程序类型: 0-正式版 1-开发版 2-体验版 (选填,默认0)
+         * };
+         * AndroidBridge.launchWeChatMiniProgram(JSON.stringify(miniProgramParams));
+         * 
+         * @param miniProgramParamsJson 小程序参数JSON字符串
+         */
+        @android.webkit.JavascriptInterface
+        public void launchWeChatMiniProgram(String miniProgramParamsJson) {
+            Log.d("WebView", "=== JavaScript 调用拉起微信小程序 ===");
+            Log.d("WebView", "小程序参数: " + miniProgramParamsJson);
+            
+            // 检查微信API是否初始化
+            if (weChatAPI == null) {
+                Log.e("WebView", "❌ 微信API未初始化，尝试重新初始化");
+                initWeChat();
+                if (weChatAPI == null) {
+                    Log.e("WebView", "❌ 微信API初始化失败");
+                    invokeMiniProgramCallback("{\"success\":false,\"errorCode\":\"API_INIT_FAILED\",\"errorMessage\":\"微信API初始化失败\"}");
+                    return;
+                }
+            }
+            
+            // 检查微信是否安装
+            if (!weChatAPI.isWXAppInstalled()) {
+                Log.e("WebView", "❌ 微信未安装");
+                invokeMiniProgramCallback("{\"success\":false,\"errorCode\":\"NOT_INSTALLED\",\"errorMessage\":\"未安装微信客户端\"}");
+                return;
+            }
+            
+            try {
+                // 解析小程序参数
+                org.json.JSONObject params = new org.json.JSONObject(miniProgramParamsJson);
+                
+                // 创建拉起小程序请求对象
+                WXLaunchMiniProgram.Req req = new WXLaunchMiniProgram.Req();
+                req.userName = params.getString("userName");  // 小程序原始ID
+                req.path = params.optString("path", "");  // 小程序页面路径,可选
+                req.miniprogramType = params.optInt("miniprogramType", WXLaunchMiniProgram.Req.MINIPTOGRAM_TYPE_RELEASE);  // 默认正式版
+                
+                Log.d("WebView", "小程序参数解析成功:");
+                Log.d("WebView", "  userName: " + req.userName);
+                Log.d("WebView", "  path: " + req.path);
+                Log.d("WebView", "  miniprogramType: " + req.miniprogramType + " (0=正式版, 1=开发版, 2=体验版)");
+                
+                // 发起拉起小程序请求
+                Log.d("WebView", "准备调用 weChatAPI.sendReq()...");
+                boolean result = weChatAPI.sendReq(req);
+                
+                Log.d("WebView", "weChatAPI.sendReq() 返回结果: " + result);
+                
+                if (result) {
+                    Log.d("WebView", "✅ 拉起小程序请求已发送");
+                    invokeMiniProgramCallback("{\"success\":true,\"message\":\"小程序已启动\"}");
+                } else {
+                    Log.e("WebView", "❌ 拉起小程序请求发送失败");
+                    invokeMiniProgramCallback("{\"success\":false,\"errorCode\":\"SEND_FAILED\",\"errorMessage\":\"发送拉起小程序请求失败\"}");
+                }
+            } catch (org.json.JSONException e) {
+                Log.e("WebView", "❌ 小程序参数JSON解析失败: " + e.getMessage(), e);
+                invokeMiniProgramCallback("{\"success\":false,\"errorCode\":\"PARAM_ERROR\",\"errorMessage\":\"小程序参数格式错误: " + e.getMessage() + "\"}");
+            } catch (Exception e) {
+                Log.e("WebView", "❌ 拉起小程序异常: " + e.getMessage(), e);
+                invokeMiniProgramCallback("{\"success\":false,\"errorCode\":\"EXCEPTION\",\"errorMessage\":\"" + e.getMessage() + "\"}");
+            }
+        }
+        
+        /**
+         * 支付宝APP支付
+         * 
+         * 前端调用示例:
+         * const paymentParams = {
+         *   orderNo: "ORD20260115001",
+         *   amount: 199.99,
+         *   merchantId: "103881636900016",
+         *   goodsName: "商品购买",
+         *   notifyUrl: "https://payment.qsgl.net/api/payment/notify"
+         * };
+         * AndroidBridge.requestAlipayPayment(JSON.stringify(paymentParams));
+         * 
+         * @param paymentParamsJson 支付参数JSON字符串
+         */
+        @android.webkit.JavascriptInterface
+        public void requestAlipayPayment(String paymentParamsJson) {
+            Log.d("WebView", "=== JavaScript 调用支付宝支付 ===");
+            Log.d("WebView", "支付参数: " + paymentParamsJson);
+            
+            try {
+                // 解析支付参数
+                org.json.JSONObject params = new org.json.JSONObject(paymentParamsJson);
+                
+                final String orderNo = params.getString("orderNo");
+                final double amount = params.getDouble("amount");
+                final String merchantId = params.getString("merchantId");
+                final String goodsName = params.getString("goodsName");
+                final String notifyUrl = params.optString("notifyUrl", "https://payment.qsgl.net/api/payment/notify");
+                
+                Log.d("WebView", "支付参数解析成功:");
+                Log.d("WebView", "  orderNo: " + orderNo);
+                Log.d("WebView", "  amount: " + amount);
+                Log.d("WebView", "  merchantId: " + merchantId);
+                Log.d("WebView", "  goodsName: " + goodsName);
+                Log.d("WebView", "  notifyUrl: " + notifyUrl);
+                
+                // 调用后台API获取支付宝订单字符串
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Log.d("WebView", "开始请求支付网关API...");
+                            
+                            // 构建请求JSON
+                            org.json.JSONObject requestBody = new org.json.JSONObject();
+                            requestBody.put("orderNo", orderNo);
+                            requestBody.put("amount", amount);
+                            requestBody.put("merchantId", merchantId);
+                            requestBody.put("goodsName", goodsName);
+                            requestBody.put("notifyUrl", notifyUrl);
+                            
+                            // 调用API
+                            String apiUrl = "https://payment.qsgl.net/api/payment/alipay/app";
+                            String requestBodyStr = requestBody.toString();
+                            
+                            Log.d("WebView", "API URL: " + apiUrl);
+                            Log.d("WebView", "Request Body: " + requestBodyStr);
+                            
+                            java.net.URL url = new java.net.URL(apiUrl);
+                            java.net.HttpURLConnection conn = (java.net.HttpURLConnection) url.openConnection();
+                            conn.setRequestMethod("POST");
+                            conn.setRequestProperty("Content-Type", "application/json");
+                            conn.setDoOutput(true);
+                            conn.setConnectTimeout(15000);
+                            conn.setReadTimeout(15000);
+                            
+                            // 发送请求
+                            java.io.OutputStream os = conn.getOutputStream();
+                            os.write(requestBodyStr.getBytes("UTF-8"));
+                            os.flush();
+                            os.close();
+                            
+                            // 读取响应
+                            int responseCode = conn.getResponseCode();
+                            Log.d("WebView", "Response Code: " + responseCode);
+                            
+                            java.io.BufferedReader br;
+                            if (responseCode >= 200 && responseCode < 300) {
+                                br = new java.io.BufferedReader(new java.io.InputStreamReader(conn.getInputStream(), "UTF-8"));
+                            } else {
+                                br = new java.io.BufferedReader(new java.io.InputStreamReader(conn.getErrorStream(), "UTF-8"));
+                            }
+                            
+                            StringBuilder response = new StringBuilder();
+                            String line;
+                            while ((line = br.readLine()) != null) {
+                                response.append(line);
+                            }
+                            br.close();
+                            
+                            String responseStr = response.toString();
+                            Log.d("WebView", "API Response: " + responseStr);
+                            
+                            // 解析响应
+                            org.json.JSONObject jsonResponse = new org.json.JSONObject(responseStr);
+                            boolean isSuccess = jsonResponse.optBoolean("isSuccess", false);
+                            
+                            if (isSuccess) {
+                // 获取支付宝订单字符串
+                final String orderString = jsonResponse.getString("orderString");
+                Log.d("WebView", "✅ 获取支付宝订单字符串成功");
+                Log.d("WebView", "Order String 完整内容:");
+                Log.d("WebView", orderString);                                // 在主线程调用支付宝SDK
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        callAlipaySDK(orderString, orderNo);
+                                    }
+                                });
+                            } else {
+                                String errorMessage = jsonResponse.optString("message", "获取支付参数失败");
+                                String errorCode = jsonResponse.optString("errorCode", "API_ERROR");
+                                Log.e("WebView", "❌ API返回失败: " + errorMessage);
+                                invokeAlipayCallback("{\"success\":false,\"errorCode\":\"" + errorCode + "\",\"errorMessage\":\"" + errorMessage + "\"}");
+                            }
+                            
+                        } catch (Exception e) {
+                            Log.e("WebView", "❌ 请求支付API异常: " + e.getMessage(), e);
+                            invokeAlipayCallback("{\"success\":false,\"errorCode\":\"NETWORK_ERROR\",\"errorMessage\":\"网络请求失败: " + e.getMessage() + "\"}");
+                        }
+                    }
+                }).start();
+                
+            } catch (org.json.JSONException e) {
+                Log.e("WebView", "❌ 支付参数JSON解析失败: " + e.getMessage(), e);
+                invokeAlipayCallback("{\"success\":false,\"errorCode\":\"PARAM_ERROR\",\"errorMessage\":\"支付参数格式错误: " + e.getMessage() + "\"}");
+            } catch (Exception e) {
+                Log.e("WebView", "❌ 支付宝支付异常: " + e.getMessage(), e);
+                invokeAlipayCallback("{\"success\":false,\"errorCode\":\"EXCEPTION\",\"errorMessage\":\"" + e.getMessage() + "\"}");
+            }
+        }
+    }
+    
+    /**
+     * 调用支付宝SDK进行支付
+     * 
+     * @param orderString 支付宝订单字符串
+     * @param orderNo 商户订单号
+     */
+    private void callAlipaySDK(final String orderString, final String orderNo) {
+        Log.d("WebView", "=== 调用支付宝SDK ===");
+        Log.d("WebView", "订单号: " + orderNo);
+        Log.d("WebView", "订单字符串完整内容:");
+        Log.d("WebView", orderString);
+        
+        // 在子线程中调用支付宝SDK（支付宝SDK要求在非UI线程调用）
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Log.d("WebView", "开始创建PayTask...");
+                    PayTask alipay = new PayTask(MainActivity.this);
+                    Log.d("WebView", "PayTask创建成功，开始调用payV2...");
+                    java.util.Map<String, String> result = alipay.payV2(orderString, true);
+                    Log.d("WebView", "payV2调用完成");
+                    
+                    Log.d("WebView", "支付宝SDK返回结果:");
+                    for (java.util.Map.Entry<String, String> entry : result.entrySet()) {
+                        Log.d("WebView", "  " + entry.getKey() + ": " + entry.getValue());
+                    }
+                    
+                    // 解析支付结果
+                    String resultStatus = result.get("resultStatus");
+                    String resultInfo = result.get("result");
+                    
+                    if ("9000".equals(resultStatus)) {
+                        // 支付成功
+                        Log.d("WebView", "✅ 支付宝支付成功");
+                        invokeAlipayCallback("{\"success\":true,\"orderNo\":\"" + orderNo + "\",\"message\":\"支付成功\"}");
+                    } else if ("8000".equals(resultStatus)) {
+                        // 正在处理中
+                        Log.d("WebView", "⏳ 支付结果确认中");
+                        invokeAlipayCallback("{\"success\":false,\"errorCode\":\"PROCESSING\",\"orderNo\":\"" + orderNo + "\",\"errorMessage\":\"支付结果确认中，请稍后查询订单状态\"}");
+                    } else if ("6001".equals(resultStatus)) {
+                        // 用户取消
+                        Log.d("WebView", "❌ 用户取消支付");
+                        invokeAlipayCallback("{\"success\":false,\"errorCode\":\"USER_CANCEL\",\"orderNo\":\"" + orderNo + "\",\"errorMessage\":\"用户取消支付\"}");
+                    } else if ("6002".equals(resultStatus)) {
+                        // 网络连接出错
+                        Log.e("WebView", "❌ 网络连接出错");
+                        invokeAlipayCallback("{\"success\":false,\"errorCode\":\"NETWORK_ERROR\",\"orderNo\":\"" + orderNo + "\",\"errorMessage\":\"网络连接出错\"}");
+                    } else if ("4000".equals(resultStatus)) {
+                        // 支付失败
+                        Log.e("WebView", "❌ 支付失败");
+                        invokeAlipayCallback("{\"success\":false,\"errorCode\":\"PAY_FAILED\",\"orderNo\":\"" + orderNo + "\",\"errorMessage\":\"支付失败\"}");
+                    } else {
+                        // 其他错误
+                        Log.e("WebView", "❌ 支付异常，状态码: " + resultStatus);
+                        invokeAlipayCallback("{\"success\":false,\"errorCode\":\"" + resultStatus + "\",\"orderNo\":\"" + orderNo + "\",\"errorMessage\":\"支付异常\"}");
+                    }
+                    
+                } catch (Exception e) {
+                    Log.e("WebView", "❌ 调用支付宝SDK异常: " + e.getMessage(), e);
+                    invokeAlipayCallback("{\"success\":false,\"errorCode\":\"SDK_ERROR\",\"orderNo\":\"" + orderNo + "\",\"errorMessage\":\"支付宝SDK调用失败: " + e.getMessage() + "\"}");
+                }
+            }
+        }).start();
+    }
+    
+    /**
+     * 调用H5的支付宝支付回调函数
+     * 
+     * @param jsonResult 支付结果JSON字符串
+     */
+    private void invokeAlipayCallback(final String jsonResult) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                String js = "javascript:handleAlipayPaymentResult(" + jsonResult + ")";
+                Log.d("WebView", "调用H5回调: " + js);
+                webView.evaluateJavascript(js, null);
+            }
+        });
     }
     
     // 读取手机号（兼容多种 Android 版本）
@@ -673,6 +1084,17 @@ public class MainActivity extends AppCompatActivity {
     }
     
     /**
+     * 微信支付回调（由WXPayEntryActivity调用）
+     */
+    public static void invokeWeChatPayCallback(String jsonResult) {
+        Log.d("WebView", "微信支付回调: " + jsonResult);
+        
+        if (instance != null) {
+            instance.invokeWeChatPayJsCallback(jsonResult);
+        }
+    }
+    
+    /**
      * 调用JavaScript中的微信登录回调函数
      */
     private void invokeWeChatLoginCallback(final String jsonResult) {
@@ -710,11 +1132,74 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     
+    /**
+     * 调用JavaScript中的微信支付回调函数
+     */
+    private void invokeWeChatPayJsCallback(final String jsonResult) {
+        Log.d("WebView", "🔔 准备调用微信支付回调");
+        Log.d("WebView", "WebView状态: " + (webView != null ? "已初始化" : "未初始化"));
+        Log.d("WebView", "回调数据: " + jsonResult);
+        
+        if (webView == null) {
+            Log.e("WebView", "WebView未初始化，无法调用回调函数");
+            return;
+        }
+        
+        webView.post(() -> {
+            try {
+                // 调用前端的 handleWeChatPayResult 函数
+                String js = String.format("javascript:if(typeof handleWeChatPayResult === 'function') { handleWeChatPayResult(%s); } else { console.error('[微信支付] handleWeChatPayResult 函数不存在'); }",
+                    jsonResult);
+                
+                Log.d("WebView", "调用微信支付回调: handleWeChatPayResult(" + jsonResult + ")");
+                
+                webView.evaluateJavascript(js, value -> {
+                    Log.d("WebView", "微信支付回调执行完成");
+                });
+            } catch (Exception e) {
+                Log.e("WebView", "调用微信支付回调异常: " + e.getMessage(), e);
+            }
+        });
+    }
+    
+    /**
+     * 调用JavaScript中的微信小程序回调函数
+     */
+    private void invokeMiniProgramCallback(final String jsonResult) {
+        Log.d("WebView", "🔔 准备调用微信小程序回调");
+        Log.d("WebView", "WebView状态: " + (webView != null ? "已初始化" : "未初始化"));
+        Log.d("WebView", "回调数据: " + jsonResult);
+        
+        if (webView == null) {
+            Log.e("WebView", "WebView未初始化，无法调用回调函数");
+            return;
+        }
+        
+        webView.post(() -> {
+            try {
+                // 调用前端的 handleMiniProgramResult 函数
+                String js = String.format("javascript:if(typeof handleMiniProgramResult === 'function') { handleMiniProgramResult(%s); } else { console.error('[微信小程序] handleMiniProgramResult 函数不存在'); }",
+                    jsonResult);
+                
+                Log.d("WebView", "调用微信小程序回调: handleMiniProgramResult(" + jsonResult + ")");
+                
+                webView.evaluateJavascript(js, value -> {
+                    Log.d("WebView", "微信小程序回调执行完成");
+                });
+            } catch (Exception e) {
+                Log.e("WebView", "调用微信小程序回调异常: " + e.getMessage(), e);
+            }
+        });
+    }
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d("WebView", "=== APP 启动 ===");
+        
+        // 加载配置文件
+        loadAppConfig();
         
         // 保存实例引用（用于微信登录回调）
         instance = this;
@@ -996,12 +1481,11 @@ public class MainActivity extends AppCompatActivity {
         webView.clearCache(true);
         webView.clearHistory();
         
-        // 加载远程资源，支持 PWA 模式，若失败则自动降级为 H5 模式
-        String remoteUrl = "https://www.qsgl.net/html/365app/#/";
-        webView.loadUrl(remoteUrl);
-        Log.d("WebView", "=== 开始加载远程 PWA 资源 ===");
-        Log.d("WebView", "URL: " + remoteUrl);
-        Log.d("WebView", "如果 PWA 模式加载失败，将自动降级为 H5 模式");
+        // 加载配置的首页地址
+        webView.loadUrl(webviewHomeUrl);
+        Log.d("WebView", "=== 开始加载 WebView 首页 ===");
+        Log.d("WebView", "URL: " + webviewHomeUrl);
+        Log.d("WebView", "支持 PWA 模式，若失败则自动降级为 H5 模式");
         
         // 初始化手势识别器
         initializeGestureDetector();
@@ -1376,6 +1860,29 @@ public class MainActivity extends AppCompatActivity {
         // 不调用 super.onBackPressed()，这样就不会关闭应用
         // 可选：显示 Toast 提示用户已到最顶层
         android.widget.Toast.makeText(this, "已是首页，无法继续返回", android.widget.Toast.LENGTH_SHORT).show();
+    }
+    
+    /**
+     * 加载应用配置文件
+     * 从 assets/config.properties 读取配置
+     */
+    private void loadAppConfig() {
+        appConfig = new Properties();
+        try {
+            InputStream inputStream = getAssets().open("config.properties");
+            appConfig.load(inputStream);
+            inputStream.close();
+            
+            // 读取 WebView 首页地址
+            webviewHomeUrl = appConfig.getProperty("webview.home.url", "https://www.qsgl.net/html/365app/#/");
+            
+            Log.d("WebView", "=== 配置文件加载成功 ===");
+            Log.d("WebView", "WebView 首页地址: " + webviewHomeUrl);
+            
+        } catch (Exception e) {
+            Log.e("WebView", "加载配置文件失败，使用默认配置: " + e.getMessage());
+            webviewHomeUrl = "https://www.qsgl.net/html/365app/#/";
+        }
     }
 }
 

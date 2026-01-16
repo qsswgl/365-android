@@ -187,14 +187,15 @@
 </head>
 <body>
     <div class="container">
-        <h1>🔐 微信登录测试</h1>
-        <p class="subtitle">365酒水 - JSBridge微信登录功能测试</p>
+        <h1>🔐 微信功能测试</h1>
+        <p class="subtitle">365酒水 - 微信登录/支付/小程序功能测试</p>
         
         <div class="wechat-info">
             <h3>📱 微信开放平台信息</h3>
             <p>应用名称：<code>365酒水</code></p>
-            <p>APPID：<code>wx19d89333ff0d3efe</code></p>
-            <p>功能：通过JSBridge调用微信登录，获取授权code</p>
+            <p>移动应用APPID：<code>wx19d89333ff0d3efe</code></p>
+            <p>小程序APPID：<code>wxeccdc65a2acea494</code></p>
+            <p>功能：微信登录、微信支付、拉起小程序</p>
         </div>
         
         <button class="btn btn-wechat" onclick="startWeChatLogin()">
@@ -205,6 +206,21 @@
         <button class="btn btn-wechat" onclick="getUserInfo()" id="getUserInfoBtn" style="display: none;">
             <span class="icon">👤</span>
             获取微信信息
+        </button>
+        
+        <button class="btn btn-wechat" onclick="startWeChatPay()" style="background: #ff6b00;">
+            <span class="icon">💰</span>
+            微信支付测试
+        </button>
+        
+        <button class="btn btn-wechat" onclick="launchMiniProgram()" style="background: #07c160;">
+            <span class="icon">🚀</span>
+            拉起微信小程序
+        </button>
+        
+        <button class="btn btn-wechat" onclick="startAlipayPayment()" style="background: #1677FF;">
+            <span class="icon">💙</span>
+            支付宝支付
         </button>
         
         <button class="btn btn-clear" onclick="clearResult()">
@@ -445,6 +461,233 @@ ${JSON.stringify(userData, null, 2)}`;
             }
         }
         
+        // 微信支付功能
+        // 🔧 开发测试开关：true=使用模拟数据，false=调用真实API
+        const USE_MOCK_PAYMENT_DATA = false; // ✅ 切换到真实API
+        
+        async function startWeChatPay() {
+            addLog('💰 开始微信支付测试...');
+            
+            try {
+                // 检查AndroidBridge是否存在
+                if (typeof AndroidBridge === 'undefined') {
+                    addLog('❌ AndroidBridge不存在（可能不在APP中）');
+                    showResult(false, 'AndroidBridge不存在', 
+                        '此功能仅在365酒水APP中可用。\n请在APP的WebView中打开此页面。');
+                    return;
+                }
+                
+                // 生成订单号
+                const orderNo = 'TEST' + Date.now();
+                const amount = '0.01';
+                const goodsName = '365酒水测试商品';
+                
+                addLog(`📝 订单号: ${orderNo}`);
+                addLog(`💵 金额: ${amount}元`);
+                
+                // 🔧 使用模拟数据进行测试（绕过服务器SSL问题）
+                if (USE_MOCK_PAYMENT_DATA) {
+                    addLog('⚠️ 使用模拟支付数据（开发测试模式）');
+                    showResult(true, '生成模拟支付参数...', '仅用于测试Android端功能');
+                    
+                    // 模拟API延迟
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                    
+                    const mockPaymentData = {
+                        appId: "wx19d89333ff0d3efe",
+                        timeStamp: String(Math.floor(Date.now() / 1000)),
+                        nonceStr: "mock_nonce_" + Math.random().toString(36).substring(2, 15),
+                        package: "prepay_id=mock_prepay_" + Date.now(),
+                        signType: "MD5",
+                        paySign: "MOCK" + Math.random().toString(36).substring(2, 15).toUpperCase(),
+                        orderNo: orderNo,
+                        trxId: "MOCK_TRX_" + Date.now(),
+                        isSuccess: true,
+                        amount: "1", // 1分
+                        goodsDescription: goodsName
+                    };
+                    
+                    console.log('[🧪 模拟支付参数]:', mockPaymentData);
+                    addLog('✅ 模拟支付参数生成成功');
+                    
+                    const paramsInfo = `appId: ${mockPaymentData.appId}
+timeStamp: ${mockPaymentData.timeStamp}
+nonceStr: ${mockPaymentData.nonceStr}
+package: ${mockPaymentData.package}
+signType: ${mockPaymentData.signType}
+paySign: ${mockPaymentData.paySign}
+orderNo: ${mockPaymentData.orderNo}
+amount: ${mockPaymentData.amount}分
+
+🧪 这是模拟数据，用于测试Android端微信SDK调用
+完整响应:
+${JSON.stringify(mockPaymentData, null, 2)}`;
+                    
+                    showResult(true, '✅ 模拟支付参数获取成功', paramsInfo);
+                    
+                    // 调用Android端微信支付
+                    addLog('📲 调用Android端微信支付...');
+                    AndroidBridge.launchWeChatPay(JSON.stringify(mockPaymentData));
+                    addLog('✅ 已发送支付请求到微信');
+                    
+                    return;
+                }
+                
+                // ========== 以下是真实API调用代码 ==========
+                addLog('📤 准备调用支付接口...');
+                
+                const merchantId = '103881636900016'; // 商户ID
+                const notifyUrl = 'https://payment.qsgl.net/api/payment/notify'; // 支付回调地址
+                                addLog(`💵 金额: ${amount}元`);
+                addLog(`📦 商品: ${goodsName}`);
+                
+                // 调用支付接口
+                showResult(true, '正在创建支付订单...', '请稍候...');
+                
+                const response = await fetch('https://payment.qsgl.net/api/payment/wechat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        OrderNo: orderNo,
+                        OrderAmount: amount,  // 字符串类型
+                        MerchantId: merchantId,
+                        GoodsName: goodsName,
+                        NotifyUrl: notifyUrl
+                    })
+                });
+                
+                addLog(`📥 支付接口响应: ${response.status}`);
+                
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    addLog(`❌ 支付接口调用失败: ${errorText}`);
+                    showResult(false, '创建支付订单失败', `HTTP ${response.status}: ${errorText}`);
+                    return;
+                }
+                
+                const paymentData = await response.json();
+                console.log('[支付参数]:', paymentData);
+                addLog('✅ 支付订单创建成功');
+                
+                // 检查返回数据
+                if (!paymentData.isSuccess) {
+                    addLog(`❌ 支付订单创建失败: ${paymentData.errorMessage}`);
+                    showResult(false, '创建支付订单失败', paymentData.errorMessage || '未知错误');
+                    return;
+                }
+                
+                // 显示支付参数
+                const paramsInfo = `appId: ${paymentData.appId}
+timeStamp: ${paymentData.timeStamp}
+nonceStr: ${paymentData.nonceStr}
+package: ${paymentData.package}
+signType: ${paymentData.signType}
+paySign: ${paymentData.paySign}
+orderNo: ${paymentData.orderNo}
+amount: ${paymentData.amount}分
+
+完整响应:
+${JSON.stringify(paymentData, null, 2)}`;
+                
+                showResult(true, '✅ 支付参数获取成功', paramsInfo);
+                addLog('📱 准备调起微信支付...');
+                
+                // 检查原生支付方法
+                if (typeof AndroidBridge.launchWeChatPay !== 'function') {
+                    addLog('❌ AndroidBridge.launchWeChatPay 方法不存在');
+                    showResult(false, '方法不存在', 
+                        'AndroidBridge.launchWeChatPay 方法不存在。\n请确保APP已正确实现微信支付功能。');
+                    return;
+                }
+                
+                // 调用原生方法调起微信支付
+                addLog('🚀 调用 AndroidBridge.launchWeChatPay()');
+                AndroidBridge.launchWeChatPay(JSON.stringify(paymentData));
+                addLog('⏳ 等待微信支付结果...');
+                
+            } catch (error) {
+                console.error('[微信支付] 异常:', error);
+                addLog('❌ 微信支付异常: ' + error.message);
+                showResult(false, '微信支付失败', `错误: ${error.message}\n\n${error.stack || ''}`);
+            }
+        }
+        
+        // 微信支付结果回调（由Android调用）
+        function handleWeChatPayResult(result) {
+            console.log('[微信支付] 收到回调:', result);
+            
+            if (result.success) {
+                addLog('✅ 微信支付成功');
+                showResult(true, '✅ 支付成功', `订单号: ${result.orderNo || '未知'}\n\n${JSON.stringify(result, null, 2)}`);
+            } else {
+                const errorMsg = result.errorMessage || result.message || '未知错误';
+                addLog('❌ 微信支付失败: ' + errorMsg);
+                
+                let title = '支付失败';
+                if (result.errorCode === 'CANCEL' || errorMsg.includes('取消')) {
+                    title = '用户取消支付';
+                }
+                
+                showResult(false, title, `${errorMsg}\n\n${JSON.stringify(result, null, 2)}`);
+            }
+        }
+        
+        // 拉起微信小程序
+        async function launchMiniProgram() {
+            console.log('[微信小程序] 开始拉起小程序');
+            addLog('🚀 准备拉起微信小程序');
+            
+            try {
+                // 检查 AndroidBridge 是否存在
+                if (typeof AndroidBridge === 'undefined') {
+                    throw new Error('AndroidBridge 未定义，请在APP中打开');
+                }
+                
+                if (typeof AndroidBridge.launchWeChatMiniProgram !== 'function') {
+                    throw new Error('launchWeChatMiniProgram 方法不存在');
+                }
+                
+                // 小程序配置
+                const miniProgramConfig = {
+                    userName: "gh_41188c5f7176",  // 小程序原始ID ✅ 已确认
+                    path: "",  // 页面路径,为空则打开首页
+                    miniprogramType: 0  // 0-正式版, 1-开发版, 2-体验版
+                };
+                
+                addLog('📝 小程序配置:');
+                addLog(`  原始ID: ${miniProgramConfig.userName}`);
+                addLog(`  页面路径: ${miniProgramConfig.path || '首页'}`);
+                addLog(`  版本类型: ${miniProgramConfig.miniprogramType === 0 ? '正式版' : miniProgramConfig.miniprogramType === 1 ? '开发版' : '体验版'}`);
+                
+                // 调用原生方法拉起小程序
+                addLog('🚀 调用 AndroidBridge.launchWeChatMiniProgram()');
+                AndroidBridge.launchWeChatMiniProgram(JSON.stringify(miniProgramConfig));
+                addLog('⏳ 等待微信小程序响应...');
+                
+            } catch (error) {
+                console.error('[微信小程序] 异常:', error);
+                addLog('❌ 拉起小程序异常: ' + error.message);
+                showResult(false, '拉起小程序失败', `错误: ${error.message}\n\n${error.stack || ''}`);
+            }
+        }
+        
+        // 微信小程序结果回调（由Android调用）
+        function handleMiniProgramResult(result) {
+            console.log('[微信小程序] 收到回调:', result);
+            
+            if (result.success) {
+                addLog('✅ 小程序已启动');
+                showResult(true, '✅ 小程序启动成功', `${result.message || '小程序已打开'}\n\n${JSON.stringify(result, null, 2)}`);
+            } else {
+                const errorMsg = result.errorMessage || result.message || '未知错误';
+                addLog('❌ 拉起小程序失败: ' + errorMsg);
+                showResult(false, '拉起小程序失败', `${errorMsg}\n\n${JSON.stringify(result, null, 2)}`);
+            }
+        }
+        
         // 页面加载完成
         window.onload = function() {
             addLog('📄 页面加载完成');
@@ -459,11 +702,115 @@ ${JSON.stringify(userData, null, 2)}`;
                 } else {
                     addLog('⚠️ 微信登录功能不可用');
                 }
+                
+                if (typeof AndroidBridge.launchWeChatPay === 'function') {
+                    addLog('✅ 微信支付功能可用');
+                } else {
+                    addLog('⚠️ 微信支付功能不可用');
+                }
+                
+                if (typeof AndroidBridge.launchWeChatMiniProgram === 'function') {
+                    addLog('✅ 微信小程序功能可用');
+                } else {
+                    addLog('⚠️ 微信小程序功能不可用');
+                }
+                
+                if (typeof AndroidBridge.requestAlipayPayment === 'function') {
+                    addLog('✅ 支付宝支付功能可用');
+                } else {
+                    addLog('⚠️ 支付宝支付功能不可用');
+                }
             } else {
                 addLog('⚠️ 未检测到 AndroidBridge');
                 addLog('⚠️ 请在365酒水APP中打开');
             }
         };
+        
+        // ==================== 支付宝支付功能 ====================
+        
+        /**
+         * 发起支付宝支付
+         */
+        function startAlipayPayment() {
+            console.log('[支付宝支付] 准备发起支付');
+            addLog('💙 准备发起支付宝支付...');
+            
+            // 检查 AndroidBridge
+            if (typeof AndroidBridge === 'undefined' || typeof AndroidBridge.requestAlipayPayment !== 'function') {
+                addLog('❌ AndroidBridge.requestAlipayPayment 方法不存在');
+                showResult(false, '支付宝支付失败', 'AndroidBridge.requestAlipayPayment 方法不存在\n\n请在365酒水APP中打开此页面');
+                return;
+            }
+            
+            // 生成订单号
+            const orderNo = 'ALIPAY' + new Date().getTime();
+            
+            // 构建支付参数
+            const paymentParams = {
+                orderNo: orderNo,
+                amount: 0.01,  // 测试金额 1分钱
+                merchantId: '103881636900016',
+                goodsName: '支付宝支付测试商品',
+                notifyUrl: 'https://payment.qsgl.net/api/payment/notify'
+            };
+            
+            addLog('📦 支付参数: ' + JSON.stringify(paymentParams));
+            
+            try {
+                // 调用 Android JSBridge
+                AndroidBridge.requestAlipayPayment(JSON.stringify(paymentParams));
+                addLog('✅ 已调用 AndroidBridge.requestAlipayPayment()');
+            } catch (e) {
+                console.error('[支付宝支付] 调用失败:', e);
+                addLog('❌ 调用 AndroidBridge.requestAlipayPayment() 失败: ' + e.message);
+                showResult(false, '支付宝支付失败', 'Error: ' + e.message);
+            }
+        }
+        
+        /**
+         * 支付宝支付结果回调
+         * 由 Android 端调用
+         */
+        function handleAlipayPaymentResult(result) {
+            console.log('[支付宝支付] 收到支付结果:', result);
+            addLog('📞 收到支付宝支付结果回调');
+            
+            if (result.success) {
+                addLog('✅ 支付宝支付成功');
+                showResult(true, '✅ 支付宝支付成功', `订单号: ${result.orderNo}\n${result.message || '支付成功'}\n\n完整响应:\n${JSON.stringify(result, null, 2)}`);
+            } else {
+                const errorMsg = result.errorMessage || result.message || '支付失败';
+                const errorCode = result.errorCode || 'UNKNOWN';
+                
+                addLog(`❌ 支付宝支付失败: ${errorMsg}`);
+                
+                let errorDesc = '';
+                switch (errorCode) {
+                    case 'USER_CANCEL':
+                        errorDesc = '您取消了支付';
+                        break;
+                    case 'NETWORK_ERROR':
+                        errorDesc = '网络连接失败，请检查网络后重试';
+                        break;
+                    case 'PAY_FAILED':
+                        errorDesc = '支付失败，请重试';
+                        break;
+                    case 'PROCESSING':
+                        errorDesc = '支付结果确认中，请稍后查询订单状态';
+                        break;
+                    case 'PARAM_ERROR':
+                        errorDesc = '支付参数错误';
+                        break;
+                    case 'API_ERROR':
+                        errorDesc = '支付接口调用失败';
+                        break;
+                    default:
+                        errorDesc = errorMsg;
+                }
+                
+                showResult(false, '支付宝支付失败', `错误代码: ${errorCode}\n错误描述: ${errorDesc}\n\n完整响应:\n${JSON.stringify(result, null, 2)}`);
+            }
+        }
     </script>
 </body>
 </html>
